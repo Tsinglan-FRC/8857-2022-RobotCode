@@ -47,7 +47,7 @@ public class upAndShootSystem extends SubsystemBase {
       shootBall_L.setNeutralMode(NeutralMode.Brake); // 设置刹车
       shootBall_R.setNeutralMode(NeutralMode.Brake); // 设置刹车
     } else {
-      shootBall_L.setNeutralMode(NeutralMode.Coast);
+      shootBall_L.setNeutralMode(NeutralMode.Coast); 
       shootBall_R.setNeutralMode(NeutralMode.Coast);
     }
     // if (brake == true) {
