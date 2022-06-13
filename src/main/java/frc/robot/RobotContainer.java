@@ -37,7 +37,9 @@ public class RobotContainer {
                                 () -> joystick2.getRawButton(5)));
 
                 m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(m_upAndShootSystem,
-                                () -> joystick2.getRawButton(7)));
+                                () -> joystick2.getRawButton(7),
+                                () -> joystick2.getRawButton(6),
+                                () -> -joystick1.getRawAxis(5)));
                 // m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(m_upAndShootSystem,
                 //                 () -> joystick2.getRawButton(7),
                 //                 () -> joystick2.getRawButton(6),

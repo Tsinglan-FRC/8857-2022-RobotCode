@@ -22,6 +22,9 @@ public class upAndShootSystem extends SubsystemBase {
   private TalonFX shootBall_L = new TalonFX(MotorConstants.shootBallLeftID); //一左一右两个射球
   private TalonFX shootBall_R = new TalonFX(MotorConstants.shootBallRightID); //一左一右两个射球
   // private TalonFX upBall = new TalonFX(MotorConstants.upBallID); // 暂未更新
+  private TalonFX moveBall_F = new TalonFX(MotorConstants.upBallForwardID); //一左一右两个射球
+  private TalonFX moveBall_B = new TalonFX(MotorConstants.upBallBackwardID); //一左一右两个射球
+  private TalonFX panTilt = new TalonFX(MotorConstants.panTilt); //一左一右两个射球
 
   public upAndShootSystem() {
     // m_pigeon.getGeneralStatus(genStatus);
@@ -46,9 +49,15 @@ public class upAndShootSystem extends SubsystemBase {
     if (brake == true) {
       shootBall_L.setNeutralMode(NeutralMode.Brake); // 设置刹车
       shootBall_R.setNeutralMode(NeutralMode.Brake); // 设置刹车
+      moveBall_F.setNeutralMode(NeutralMode.Brake); // 设置刹车
+      moveBall_B.setNeutralMode(NeutralMode.Brake); // 设置刹车
+      panTilt.setNeutralMode(NeutralMode.Brake); // 设置刹车
     } else {
       shootBall_L.setNeutralMode(NeutralMode.Coast); 
       shootBall_R.setNeutralMode(NeutralMode.Coast);
+      moveBall_F.setNeutralMode(NeutralMode.Coast); 
+      moveBall_B.setNeutralMode(NeutralMode.Coast);
+      panTilt.setNeutralMode(NeutralMode.Coast);
     }
     // if (brake == true) {
     //   upBall.setNeutralMode(NeutralMode.Brake);
@@ -86,8 +95,22 @@ public class upAndShootSystem extends SubsystemBase {
   }
 
   public void setshootBackward(double power) {
-    shootBall_L.set(ControlMode.PercentOutput, power * -1);
-    shootBall_R.set(ControlMode.PercentOutput, power * -1);
+    shootBall_L.set(ControlMode.PercentOutput, power * -1 * 0.6);
+    shootBall_R.set(ControlMode.PercentOutput, power * -1 * 0.6);
+  }
+
+  public void setMoveBallUP(double power){
+    moveBall_B.set(ControlMode.PercentOutput, power);
+    moveBall_F.set(ControlMode.PercentOutput, power);
+  }
+
+  public void setMoveBallDown(double power){
+    moveBall_B.set(ControlMode.PercentOutput, power * -1 * 0.6);
+    moveBall_F.set(ControlMode.PercentOutput, power * -1 * 0.6);
+  }
+
+  public void setPanMove(double power){
+    panTilt.set(ControlMode.PercentOutput, power);
   }
 
   // public void setupBallForward(double power) {

@@ -10,14 +10,16 @@ public final class Constants {
     public static final boolean debug = true;
 
     public static final class MotorConstants {
-        public static final int LeftmasterID = 1;
-        public static final int LeftfollowerID = 2;
-        public static final int RightmasterID = 3;
-        public static final int RightfollowerID = 4;
-        public static final int intakeID = 9;
-        public static final int upBallID = 8;
+        public static final int LeftmasterID = 1; // 四个马达
+        public static final int LeftfollowerID = 2; // 四个马达
+        public static final int RightmasterID = 3; // 四个马达
+        public static final int RightfollowerID = 4; // 四个马达
+        public static final int intakeID = 9; // 收球
+        public static final int upBallForwardID = 8; // 上球
+        public static final int upBallBackwardID = 1919810; // 上球
         public static final int shootBallLeftID = 7;
         public static final int shootBallRightID = 141514;
+        public static final int panTilt = 141514;
         public static final int liftLeftID = 5;
         public static final int liftRightID = 6;
         public static final int MotorxID = 10;
