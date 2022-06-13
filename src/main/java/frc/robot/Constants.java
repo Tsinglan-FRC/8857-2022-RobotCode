@@ -1,6 +1,10 @@
 
 package frc.robot;
 
+// import javax.swing.plaf.synth.SynthLookAndFeel;
+
+// import frc.robot.subsystems.intakeSystem;
+
 public final class Constants {
     public static final int kCANTimeoutMS = 10;
     public static final boolean debug = true;
@@ -12,7 +16,8 @@ public final class Constants {
         public static final int RightfollowerID = 4;
         public static final int intakeID = 9;
         public static final int upBallID = 8;
-        public static final int shootBallID = 7;
+        public static final int shootBallLeftID = 7;
+        public static final int shootBallRightID = 1000;
         public static final int liftLeftID = 5;
         public static final int liftRightID = 6;
         public static final int MotorxID = 10;
