@@ -13,19 +13,19 @@ import frc.robot.subsystems.upAndShootSystem;
 public class UpAndShootComm extends CommandBase {
   // IntakeSysten m_IntakeSysten;
   private final upAndShootSystem uPAndShootSystem;
-  private final Supplier<Boolean> shootBallForward, shootBallBackward;
+  private final Supplier<Boolean> shootBallForward;
   // private final Supplier<Boolean> shootBallForward, shootBallBackward, upBallForward, upBallBackward;
 
   /** Creates a new Intakecomm. */
+  // 下方两行代码是原代码的注释
   // public UpAndShootComm(upAndShootSystem uPAndShootSystem, Supplier<Boolean> shootBallForward,
   //     Supplier<Boolean> shootBallBackward, Supplier<Boolean> upBallForward, Supplier<Boolean> upBallBackward) {
-  public UpAndShootComm(upAndShootSystem uPAndShootSystem, Supplier<Boolean> shootBallForward,
-    Supplier<Boolean> shootBallBackward) {
+  public UpAndShootComm(upAndShootSystem uPAndShootSystem, Supplier<Boolean> shootBallForward) {
       // Use addRequirements() here to declare subsystem dependencies.
     // m_IntakeSysten = mIntakeSysten;
     this.uPAndShootSystem = uPAndShootSystem;
     this.shootBallForward = shootBallForward;
-    this.shootBallBackward = shootBallBackward;
+    // this.shootBallBackward = shootBallBackward;
     // this.upBallForward = upBallForward;
     // this.upBallBackward = upBallBackward;
     addRequirements(uPAndShootSystem);
@@ -46,17 +46,14 @@ public class UpAndShootComm extends CommandBase {
     // m_PneumaticSystem.setCompressorclosedloop(Compressorstart.get());
     // m_PneumaticSystem.setIntake(O_Intake.get(), IntakeStandby.get());
     boolean shootBallForwardStatus = shootBallForward.get();
-    boolean shootBallBackwardStatus = shootBallBackward.get();
+    // boolean shootBallBackwardStatus = shootBallBackward.get();
     // boolean upBallForwardStatus = upBallForward.get();
     // boolean upBallBackwardStatus = upBallBackward.get();
     // System.out.println(shootBallForwardStatus);
     if (shootBallForwardStatus == true)
-      uPAndShootSystem.setshootForward(0.5);
+      uPAndShootSystem.setshootForward(0.5); // 如果控制射球向前等于真
     else {
-      if (shootBallBackwardStatus == true)
-        uPAndShootSystem.setshootBackward(0.5);
-      else
-        uPAndShootSystem.setshootForward(0.0);
+      uPAndShootSystem.setshootForward(0.0); // 如果控制射球向前向后都不等于真
     }
 
     // if (upBallForwardStatus == true)
