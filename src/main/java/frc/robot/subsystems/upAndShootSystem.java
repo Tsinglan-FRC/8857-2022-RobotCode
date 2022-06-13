@@ -21,12 +21,7 @@ public class upAndShootSystem extends SubsystemBase {
   // private TalonFX leftMaster = new TalonFX(MotorConstants.LeftmasterID);
   private TalonFX shootBall_L = new TalonFX(MotorConstants.shootBallLeftID); //一左一右两个射球
   private TalonFX shootBall_R = new TalonFX(MotorConstants.shootBallRightID); //一左一右两个射球
-  private TalonFX upBall = new TalonFX(MotorConstants.upBallID); // 暂未更新
-  // private TalonFX rightMaster = new TalonFX(MotorConstants.RightmasterID);
-  // private TalonFX rightFollower = new TalonFX(MotorConstants.RightfollowerID);
-  // private TalonSRX mSrx = new TalonSRX(0);
-  // private PigeonIMU m_pigeon = new PigeonIMU(mSrx);
-  // private PigeonIMU.GeneralStatus genStatus = new PigeonIMU.GeneralStatus();
+  // private TalonFX upBall = new TalonFX(MotorConstants.upBallID); // 暂未更新
 
   public upAndShootSystem() {
     // m_pigeon.getGeneralStatus(genStatus);
@@ -34,16 +29,16 @@ public class upAndShootSystem extends SubsystemBase {
     shootBall_L.setSensorPhase(true); // 设置传感器状态
     shootBall_R.setInverted(false);// 设置不反转（需要测试）
     shootBall_R.setSensorPhase(true); // 设置传感器状态
-    upBall.setInverted(true);
-    upBall.setSensorPhase(true);
+    // upBall.setInverted(true);
+    // upBall.setSensorPhase(true);
   }
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("intake speed Value", shootBall_L.getMotorOutputPercent());
-    SmartDashboard.putNumber("intake Current", shootBall_L.getSupplyCurrent());
-    SmartDashboard.putNumber("intake speed Value", shootBall_R.getMotorOutputPercent());
-    SmartDashboard.putNumber("intake Current", shootBall_R.getSupplyCurrent());
+    SmartDashboard.putNumber("intake speed Value Left", shootBall_L.getMotorOutputPercent());
+    SmartDashboard.putNumber("intake Current Left", shootBall_L.getSupplyCurrent());
+    SmartDashboard.putNumber("intake speed Value Right", shootBall_R.getMotorOutputPercent());
+    SmartDashboard.putNumber("intake Current Right", shootBall_R.getSupplyCurrent());
 
   }
 
@@ -55,11 +50,11 @@ public class upAndShootSystem extends SubsystemBase {
       shootBall_L.setNeutralMode(NeutralMode.Coast);
       shootBall_R.setNeutralMode(NeutralMode.Coast);
     }
-    if (brake == true) {
-      upBall.setNeutralMode(NeutralMode.Brake);
-    } else {
-      upBall.setNeutralMode(NeutralMode.Coast);
-    }
+    // if (brake == true) {
+    //   upBall.setNeutralMode(NeutralMode.Brake);
+    // } else {
+    //   upBall.setNeutralMode(NeutralMode.Coast);
+    // }
   }
 
   public void configMotor(TalonFX motor, double P, double I, double D, double F, double Izone, double maxout) {
@@ -82,22 +77,24 @@ public class upAndShootSystem extends SubsystemBase {
 
   public void setDrivePID(double P, double I, double D, double F, double Izone, double maxout) {
     configMotor(shootBall_L, P, I, D, F, Izone, maxout);
-    configMotor(upBall, P, I, D, F, Izone, maxout);
+    // configMotor(upBall, P, I, D, F, Izone, maxout);
   }
 
   public void setshootForward(double power) {
     shootBall_L.set(ControlMode.PercentOutput, power);
+    shootBall_R.set(ControlMode.PercentOutput, power);
   }
 
   public void setshootBackward(double power) {
     shootBall_L.set(ControlMode.PercentOutput, power * -1);
+    shootBall_R.set(ControlMode.PercentOutput, power * -1);
   }
 
-  public void setupBallForward(double power) {
-    upBall.set(ControlMode.PercentOutput, power);
-  }
+  // public void setupBallForward(double power) {
+  //   upBall.set(ControlMode.PercentOutput, power);
+  // }
 
-  public void setupBallBackward(double power) {
-    upBall.set(ControlMode.PercentOutput, power * -1);
-  }
+  // public void setupBallBackward(double power) {
+  //   upBall.set(ControlMode.PercentOutput, power * -1);
+  // }
 }

@@ -38,9 +38,12 @@ public class RobotContainer {
 
                 m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(m_upAndShootSystem,
                                 () -> joystick2.getRawButton(7),
-                                () -> joystick2.getRawButton(6),
-                                () -> joystick2.getRawButton(2),
-                                () -> joystick2.getRawButton(4)));
+                                () -> joystick2.getRawButton(6)));
+                // m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(m_upAndShootSystem,
+                //                 () -> joystick2.getRawButton(7),
+                //                 () -> joystick2.getRawButton(6),
+                //                 () -> joystick2.getRawButton(2),
+                //                 () -> joystick2.getRawButton(4)));
 
                 m_PneumaticSystem.setDefaultCommand(new PCM_Conctrl(m_PneumaticSystem,
                                 () -> joystick1.getRawButton(8)));

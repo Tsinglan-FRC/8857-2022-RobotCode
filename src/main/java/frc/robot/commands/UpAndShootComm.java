@@ -13,18 +13,21 @@ import frc.robot.subsystems.upAndShootSystem;
 public class UpAndShootComm extends CommandBase {
   // IntakeSysten m_IntakeSysten;
   private final upAndShootSystem uPAndShootSystem;
-  private final Supplier<Boolean> shootBallForward, shootBallBackward, upBallForward, upBallBackward;
+  private final Supplier<Boolean> shootBallForward, shootBallBackward;
+  // private final Supplier<Boolean> shootBallForward, shootBallBackward, upBallForward, upBallBackward;
 
   /** Creates a new Intakecomm. */
+  // public UpAndShootComm(upAndShootSystem uPAndShootSystem, Supplier<Boolean> shootBallForward,
+  //     Supplier<Boolean> shootBallBackward, Supplier<Boolean> upBallForward, Supplier<Boolean> upBallBackward) {
   public UpAndShootComm(upAndShootSystem uPAndShootSystem, Supplier<Boolean> shootBallForward,
-      Supplier<Boolean> shootBallBackward, Supplier<Boolean> upBallForward, Supplier<Boolean> upBallBackward) {
-    // Use addRequirements() here to declare subsystem dependencies.
+    Supplier<Boolean> shootBallBackward) {
+      // Use addRequirements() here to declare subsystem dependencies.
     // m_IntakeSysten = mIntakeSysten;
     this.uPAndShootSystem = uPAndShootSystem;
     this.shootBallForward = shootBallForward;
     this.shootBallBackward = shootBallBackward;
-    this.upBallForward = upBallForward;
-    this.upBallBackward = upBallBackward;
+    // this.upBallForward = upBallForward;
+    // this.upBallBackward = upBallBackward;
     addRequirements(uPAndShootSystem);
   }
 
@@ -44,8 +47,8 @@ public class UpAndShootComm extends CommandBase {
     // m_PneumaticSystem.setIntake(O_Intake.get(), IntakeStandby.get());
     boolean shootBallForwardStatus = shootBallForward.get();
     boolean shootBallBackwardStatus = shootBallBackward.get();
-    boolean upBallForwardStatus = upBallForward.get();
-    boolean upBallBackwardStatus = upBallBackward.get();
+    // boolean upBallForwardStatus = upBallForward.get();
+    // boolean upBallBackwardStatus = upBallBackward.get();
     // System.out.println(shootBallForwardStatus);
     if (shootBallForwardStatus == true)
       uPAndShootSystem.setshootForward(0.5);
@@ -56,14 +59,14 @@ public class UpAndShootComm extends CommandBase {
         uPAndShootSystem.setshootForward(0.0);
     }
 
-    if (upBallForwardStatus == true)
-      uPAndShootSystem.setupBallForward(0.5);
-    else {
-      if (upBallBackwardStatus == true)
-        uPAndShootSystem.setupBallBackward(0.5);
-      else
-        uPAndShootSystem.setupBallForward(0.0);
-    }
+    // if (upBallForwardStatus == true)
+    //   uPAndShootSystem.setupBallForward(0.5);
+    // else {
+    //   if (upBallBackwardStatus == true)
+    //     uPAndShootSystem.setupBallBackward(0.5);
+    //   else
+    //     uPAndShootSystem.setupBallForward(0.0);
+    // }
   }
 
   // Called once the command ends or is interrupted.
