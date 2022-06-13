@@ -27,9 +27,11 @@ public class UpAndShootComm extends CommandBase {
     this.uPAndShootSystem = uPAndShootSystem;
     this.shootBallForward = shootBallForward;
     this.moveBallUP = moveBallUP;
-    this.panTilt = panTilt; // 写到这了
+    this.panTilt = panTilt;
     // this.upBallForward = upBallForward;
     // this.upBallBackward = upBallBackward;
+    
+
     addRequirements(uPAndShootSystem);
   }
 
@@ -66,7 +68,9 @@ public class UpAndShootComm extends CommandBase {
       uPAndShootSystem.setMoveBallUP(0.0);
     }
 
-    if(Math.abs(movePanT) > 0.05) uPAndShootSystem.setPanMove(movePanT);
+    if(Math.abs(movePanT) > 0.05){
+      uPAndShootSystem.setPanMove(movePanT);
+    }
     else uPAndShootSystem.setPanMove(0.0);
 
 

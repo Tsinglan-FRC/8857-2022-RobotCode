@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.MotorConstants;
 
+// import java.util.concurrent.PriorityBlockingQueue;
+
 // 定义电机
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -25,6 +27,12 @@ public class upAndShootSystem extends SubsystemBase {
   private TalonFX moveBall_F = new TalonFX(MotorConstants.upBallForwardID); //一左一右两个射球
   private TalonFX moveBall_B = new TalonFX(MotorConstants.upBallBackwardID); //一左一右两个射球
   private TalonFX panTilt = new TalonFX(MotorConstants.panTilt); //一左一右两个射球
+
+  public double panTiltAngle;
+  public static double panTiltAngleLimitLow = -200;
+  public static double panTiltAngleLimitHigh = 200;
+
+
 
   public upAndShootSystem() {
     // m_pigeon.getGeneralStatus(genStatus);
@@ -110,7 +118,12 @@ public class upAndShootSystem extends SubsystemBase {
   }
 
   public void setPanMove(double power){
-    panTilt.set(ControlMode.PercentOutput, power);
+    if(panTiltAngle >= panTiltAngleLimitHigh || panTiltAngle <= panTiltAngleLimitLow)
+      panTilt.set(ControlMode.PercentOutput, 0.0);
+    else{
+      panTilt.set(ControlMode.PercentOutput, power);
+      panTiltAngle += power;
+    }
   }
 
   // public void setupBallForward(double power) {
