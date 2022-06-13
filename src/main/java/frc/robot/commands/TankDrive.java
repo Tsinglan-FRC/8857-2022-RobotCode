@@ -1,12 +1,12 @@
 package frc.robot.commands;
 
-import java.sql.Time;
+// import java.sql.Time;
 import java.util.function.Supplier;
 
-import edu.wpi.first.wpilibj.Timer;
+// import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSystem;
-import frc.robot.Constants.MotorConstants;
+// import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.MotorConstants.Telepid;
 
 public class TankDrive extends CommandBase {
@@ -28,7 +28,7 @@ public class TankDrive extends CommandBase {
 
   private final DriveSystem driveSubsystem;
   private final Supplier<Double> LspeedFunction, RspeedFunction;
-  private final Timer timer = new Timer();
+  // private final Timer timer = new Timer();
 
   public TankDrive(DriveSystem driveSubsystem, //
       Supplier<Double> lspeedFunction, Supplier<Double> rspeedFunction) {
