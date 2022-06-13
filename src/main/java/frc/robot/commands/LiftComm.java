@@ -1,0 +1,104 @@
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
+
+package frc.robot.commands;
+
+import java.util.function.Supplier;
+
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.LiftSystem;
+import frc.robot.Constants.MotorConstants.Liftpid;
+
+public class LiftComm extends CommandBase {
+  /*
+   * private final DriveSystem m_drivesystem;
+   * private final Double speedFunction, turnFunction;
+   * private final boolean lowspeedFuntion;
+   * 
+   * public ArcadeDrive(DriveSystem m_drive, double speed, double turn, boolean
+   * lowspeed) {
+   * m_drivesystem = m_drive;
+   * speedFunction = speed;
+   * turnFunction = turn;
+   * lowspeedFuntion = lowspeed;
+   * addRequirements(m_drive);
+   * // Use addRequirements() here to declare subsystem dependencies.
+   * }
+   */
+  boolean defaultvalue = true;
+  boolean togglePressed = false;
+  private final LiftSystem liftSubsystem;
+  private final Supplier<Double> liftForward, liftBackward;
+  private final Supplier<Boolean> liftPneumatic;
+
+  public LiftComm(LiftSystem liftSubsystem, Supplier<Double> liftForward, Supplier<Double> liftBackward,
+      Supplier<Boolean> liftPneumatic) {
+    this.liftForward = liftForward;
+    this.liftBackward = liftBackward;
+    this.liftSubsystem = liftSubsystem;
+    this.liftPneumatic = liftPneumatic;
+    addRequirements(liftSubsystem);
+  }
+
+  // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {
+    liftSubsystem.setLiftPID(Liftpid.kP, Liftpid.kI, Liftpid.kD, Liftpid.kF, Liftpid.kIZone, Liftpid.Maxout);
+    liftSubsystem.setBrake(true);
+    liftSubsystem.setLiftPositionzero();
+  }
+
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
+    double forward = liftForward.get();
+    double backward = liftBackward.get();
+    boolean Pneumatic = liftPneumatic.get();
+    if (Math.abs(forward) < 0.05)
+      forward = 0;
+
+    if (Math.abs(backward) < 0.05)
+      backward = 0;
+    if (forward > backward) {
+      if (liftSubsystem.getLiftPosition() < 1000000) {
+        liftSubsystem.setLiftPower(forward * 0.5);
+        System.out.println(liftSubsystem.getLiftPosition());
+      } else
+        liftSubsystem.setLiftPower(0);
+    } else if (forward < backward) {
+      if (liftSubsystem.getLiftPosition() > -1000000) {
+        liftSubsystem.setLiftPower(-backward * 0.5);
+        System.out.println(liftSubsystem.getLiftPosition());
+      } else
+        liftSubsystem.setLiftPower(0);
+    } else
+      liftSubsystem.setLiftPower(0);
+
+    liftSubsystem.setliftSoleniod(toggle(Pneumatic));
+
+    // arcade(speed, turn, lowspeed);
+  }
+
+  public boolean toggle(boolean btn) {
+    if (btn) {
+      if (!togglePressed) {
+        defaultvalue = !defaultvalue;
+        togglePressed = true;
+      }
+    } else
+      togglePressed = false;
+    return defaultvalue;
+  }
+
+  @Override
+  public void end(boolean interrupted) {
+    liftSubsystem.setBrake(true);
+  }
+
+  // Returns true when the command should end.
+  @Override
+  public boolean isFinished() {
+    return false;
+  }
+}
