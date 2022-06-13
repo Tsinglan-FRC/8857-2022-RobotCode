@@ -19,10 +19,10 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 public class DriveSystem extends SubsystemBase {
   // private TalonFX leftMaster = new TalonFX(DriveConstants.LeftmasterID);
-  private TalonFX leftMaster = new TalonFX(MotorConstants.LeftmasterID);
-  private TalonFX leftFollower = new TalonFX(MotorConstants.LeftfollowerID);
-  private TalonFX rightMaster = new TalonFX(MotorConstants.RightmasterID);
-  private TalonFX rightFollower = new TalonFX(MotorConstants.RightfollowerID);
+  private TalonFX leftMaster = new TalonFX(MotorConstants.LeftmasterID); // 定义电机
+  private TalonFX leftFollower = new TalonFX(MotorConstants.LeftfollowerID); // 定义电机
+  private TalonFX rightMaster = new TalonFX(MotorConstants.RightmasterID); // 定义电机
+  private TalonFX rightFollower = new TalonFX(MotorConstants.RightfollowerID); // 定义电机
   // private TalonFX rightMaster = new TalonFX(DriveConstants.RightmasterID);
   // private TalonFX rightFollower = new TalonFX(DriveConstants.RightfollowerID);
   // private TalonSRX mSrx = new TalonSRX(0);
@@ -31,14 +31,14 @@ public class DriveSystem extends SubsystemBase {
 
   public DriveSystem() {
     // m_pigeon.getGeneralStatus(genStatus);
-    leftMaster.setInverted(true);
-    leftMaster.setSensorPhase(true);
-    leftFollower.setInverted(true);
-    leftFollower.setSensorPhase(true);
-    rightMaster.setInverted(true);
-    rightMaster.setSensorPhase(true);
-    rightFollower.setInverted(true);
-    rightFollower.setSensorPhase(true);
+    leftMaster.setInverted(true); // 定义马达
+    leftMaster.setSensorPhase(true); // 定义马达
+    leftFollower.setInverted(true); // 定义马达
+    leftFollower.setSensorPhase(true); // 定义马达
+    rightMaster.setInverted(true); // 定义马达
+    rightMaster.setSensorPhase(true); // 定义马达
+    rightFollower.setInverted(true); // 定义马达
+    rightFollower.setSensorPhase(true); // 定义马达
 
   }
 

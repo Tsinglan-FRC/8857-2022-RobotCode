@@ -1,11 +1,13 @@
 package frc.robot;
 
-import frc.robot.Constants.OIConstants;
-import frc.robot.subsystems.DriveSystem;
+import frc.robot.Constants.OIConstants; // Import Consts
+// Import subsystems
+import frc.robot.subsystems.DriveSystem; 
 import frc.robot.subsystems.LiftSystem;
 import frc.robot.subsystems.PneumaticSystem;
 import frc.robot.subsystems.intakeSystem;
 import frc.robot.subsystems.upAndShootSystem;
+
 import frc.robot.commands.TankDrive;
 import frc.robot.commands.GoStraight;
 import frc.robot.commands.Intakecomm;
@@ -19,14 +21,14 @@ import edu.wpi.first.wpilibj.Joystick;
 public class RobotContainer {
         private final DriveSystem driveSubsystem = new DriveSystem();
         private final upAndShootSystem m_upAndShootSystem = new upAndShootSystem();
-        private final PneumaticSystem m_PneumaticSystem = new PneumaticSystem();
+        private final PneumaticSystem m_PneumaticSystem = new PneumaticSystem(); // 气动系统
         private final intakeSystem m_IntakeSystem = new intakeSystem();
         private final LiftSystem m_LiftSystem = new LiftSystem();
         private final Joystick joystick1 = new Joystick(OIConstants.Drive_stickPort);
         private final Joystick joystick2 = new Joystick(OIConstants.Operate_stickPort);
 
         public RobotContainer() {
-                driveSubsystem.setDefaultCommand(new TankDrive(driveSubsystem, //
+                driveSubsystem.setDefaultCommand(new TankDrive(driveSubsystem, // 定义手柄
                                 () -> -joystick1.getRawAxis(1),
                                 () -> -joystick1.getRawAxis(5)));
 
