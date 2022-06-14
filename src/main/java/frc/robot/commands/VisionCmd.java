@@ -17,6 +17,7 @@ public class VisionCmd extends CommandBase{
     private final Supplier<Boolean> fire;
     private final Supplier<Boolean> setZero;
 
+
     public VisionCmd(
         upAndShootSystem _shooter,
         VisionSystem _vision,
