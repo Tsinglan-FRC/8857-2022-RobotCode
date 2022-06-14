@@ -126,6 +126,15 @@ public class upAndShootSystem extends SubsystemBase {
     }
   }
 
+  public boolean onTarget(){
+    if(shootBall_L.getSelectedSensorVelocity()>=MotorConstants.isOnTarget && shootBall_R.getSelectedSensorVelocity()>=MotorConstants.isOnTarget){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
   // public void setupBallForward(double power) {
   //   upBall.set(ControlMode.PercentOutput, power);
   // }

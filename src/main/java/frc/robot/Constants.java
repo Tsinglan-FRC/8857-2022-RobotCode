@@ -66,6 +66,8 @@ public final class Constants {
             public static final double kD = 1;
             public static final double Maxout = 0.5;
         }
+
+        public static final double isOnTarget = 1;
     }
 
     public static final class ShooterConstants {
@@ -109,5 +111,16 @@ public final class Constants {
         public static final int O_Fire = 5;
         public static final int O_ShooterZero = 6;
 
+    }
+    
+    public static final class VisionConstants{
+        public static final double kP = 1;
+        public static final double kI = 0;
+        public static final double kD = 0;
+
+        public static final class AutoFire{
+            public static final double POWER10TO20 = 1;
+            public static final double POWER20TO30 = 1;
+        }
     }
 }
