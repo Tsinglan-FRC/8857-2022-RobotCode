@@ -3,7 +3,7 @@ import time
 import datetime
 import locale
 
-a = input("Description: >>")
+a = input("Description (提交描述): >>")
 
 locale.setlocale(locale.LC_CTYPE, 'Chinese')
 
