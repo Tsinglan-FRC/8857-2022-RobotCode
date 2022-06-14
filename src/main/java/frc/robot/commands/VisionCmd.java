@@ -85,6 +85,6 @@ public class VisionCmd extends CommandBase{
 
     //@Override
     public boolean isFInished(){
-        return false;
+        return false;//
     }
 }
