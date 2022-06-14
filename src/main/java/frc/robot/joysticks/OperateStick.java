@@ -5,7 +5,7 @@ import frc.robot.Constants.OIConstants;
 
 public class OperateStick extends Joystick{
     public OperateStick(){
-        super(OIConstants.Operate_stickPort);
+        super(OIConstants.operate_StickPort);
     }
 
     public boolean isFire(){
@@ -17,6 +17,22 @@ public class OperateStick extends Joystick{
     }
 
     public double getHorizontal(){
-        return this.getRawAxis(5);
+        return this.getRawAxis(OIConstants.operate_HorizontalPort);
+    }
+
+    public boolean shallShootBallForward(){
+        return getRawButton(OIConstants.operate_ShootBallForwardPort);
+    }
+
+    public boolean shallMoveBallUp(){
+        return getRawButton(OIConstants.operate_MoveBallUpPort);
+    }
+
+    public boolean getIntakeSpeed(){
+        return getRawButton(OIConstants.operate_IntakeSpeedPort);
+    }
+
+    public boolean getIntakeStatus(){
+        return getRawButton(OIConstants.operate_IntakeStatus);
     }
 }

@@ -95,7 +95,7 @@ public final class Constants {
     }
 
     public static final class OIConstants {
-        public static final int Drive_stickPort = 0;
+        /*public static final int Drive_stickPort = 0;
         public static final int Operate_stickPort = 1;
 
         public static final int L_speed = 1;// getL_Y
@@ -109,7 +109,19 @@ public final class Constants {
         public static final int O_Intake = 3;
         public static final int O_Uptake = 4;
         public static final int O_Fire = 5;
-        public static final int O_ShooterZero = 6;
+        public static final int O_ShooterZero = 6;*/
+
+        public static final int drive_StickPort = 0;
+        public static final int operate_StickPort = 1;
+
+        public static final int operate_HorizontalPort = 5;
+        public static final int operate_ShootBallForwardPort = 7;
+        public static final int operate_MoveBallUpPort = 6;
+        public static final int operate_IntakeSpeedPort = 8;
+        public static final int operate_IntakeStatus = 5;
+        public static final int drive_SpeedPort = 1;
+        public static final int drive_TurnPort = 4;
+        public static final int drive_InLowSpeedPort = 6;
 
     }
     

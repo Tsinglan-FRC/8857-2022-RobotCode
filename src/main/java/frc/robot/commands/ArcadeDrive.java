@@ -32,13 +32,17 @@ public class ArcadeDrive extends CommandBase {
   private final Supplier<Double> SpeedFunction, turnFunction;
   private final Supplier<Boolean> LowspeedFunction;
 
-  public ArcadeDrive(DriveSystem driveSubsystem, //
-      Supplier<Double> SpeedFunction, Supplier<Double> turnFunction, Supplier<Boolean> LowspeedFunction) {
-    this.SpeedFunction = SpeedFunction;
-    this.LowspeedFunction = LowspeedFunction;
-    this.turnFunction = turnFunction;
-    this.driveSubsystem = driveSubsystem;
-    addRequirements(driveSubsystem);
+  public ArcadeDrive(
+    DriveSystem driveSubsystem, //
+    Supplier<Double> SpeedFunction, 
+    Supplier<Double> turnFunction, 
+    Supplier<Boolean> LowspeedFunction
+    ) {
+      this.SpeedFunction = SpeedFunction;
+      this.LowspeedFunction = LowspeedFunction;
+      this.turnFunction = turnFunction;
+      this.driveSubsystem = driveSubsystem;
+      addRequirements(driveSubsystem);
   }
 
   // Called when the command is initially scheduled.
