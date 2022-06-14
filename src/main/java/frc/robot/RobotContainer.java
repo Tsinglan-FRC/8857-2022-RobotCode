@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 public class RobotContainer {
-        private final DriveSystem driveSubsystem = new DriveSystem();
+        private final DriveSystem m_driveSubsystem = new DriveSystem();
         private final upAndShootSystem m_upAndShootSystem = new upAndShootSystem();
         private final PneumaticSystem m_PneumaticSystem = new PneumaticSystem(); // 气动系统
         private final intakeSystem m_IntakeSystem = new intakeSystem();
@@ -32,8 +32,8 @@ public class RobotContainer {
         private final OperateStick joystick2 = new OperateStick();
 
         public RobotContainer() {
-            driveSubsystem.setDefaultCommand(new ArcadeDrive(
-				driveSubsystem, // 定义手柄
+            m_driveSubsystem.setDefaultCommand(new ArcadeDrive(
+				m_driveSubsystem, // 定义手柄
 	            
 				() -> joystick1.getSpeed(),
 				() -> joystick1.getTurn(),
@@ -78,7 +78,18 @@ public class RobotContainer {
         }
 
         public Command getAutonomousCommand() {
-            return new SequentialCommandGroup(new GoStraight(driveSubsystem, 0.1));
+            return new SequentialCommandGroup(new GoStraight(m_driveSubsystem, 0.1));
         }
+
+		public Command getTeleopCommand(){
+			return new SequentialCommandGroup(
+				m_driveSubsystem.getDefaultCommand(),
+				m_IntakeSystem.getDefaultCommand(),
+				m_LiftSystem.getDefaultCommand(),
+				m_PneumaticSystem.getDefaultCommand(),
+				m_VisionSystem.getDefaultCommand(),
+				m_upAndShootSystem.getDefaultCommand()
+			);
+		}
 
 }
