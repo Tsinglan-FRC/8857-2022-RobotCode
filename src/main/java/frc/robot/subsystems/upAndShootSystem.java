@@ -117,14 +117,14 @@ public class upAndShootSystem extends SubsystemBase {
     moveBall_F.set(ControlMode.PercentOutput, power * -1 * 0.6);
   }
 
-  public void setPanMove(double power){
+  /*public void setPanMove(double power){
     if(panTiltAngle >= panTiltAngleLimitHigh || panTiltAngle <= panTiltAngleLimitLow)
       panTilt.set(ControlMode.PercentOutput, 0.0);
     else{
       panTilt.set(ControlMode.PercentOutput, power);
       panTiltAngle += power;
     }
-  }
+  }*/
 
   public boolean onTarget(){
     if(shootBall_L.getSelectedSensorVelocity()>=MotorConstants.isOnTarget && shootBall_R.getSelectedSensorVelocity()>=MotorConstants.isOnTarget){

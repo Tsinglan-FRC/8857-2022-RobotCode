@@ -14,20 +14,21 @@ public class UpAndShootComm extends CommandBase {
   // IntakeSysten m_IntakeSysten;
   private final upAndShootSystem uPAndShootSystem;
   private final Supplier<Boolean> shootBallForward, moveBallUP;
-  private final Supplier<Double> panTilt;
   // private final Supplier<Boolean> shootBallForward, shootBallBackward, upBallForward, upBallBackward;
 
   /** Creates a new Intakecomm. */
   // 下方两行代码是原代码的注释
   // public UpAndShootComm(upAndShootSystem uPAndShootSystem, Supplier<Boolean> shootBallForward,
   //     Supplier<Boolean> shootBallBackward, Supplier<Boolean> upBallForward, Supplier<Boolean> upBallBackward) {
-  public UpAndShootComm(upAndShootSystem uPAndShootSystem, Supplier<Boolean> shootBallForward, Supplier<Boolean> moveBallUP, Supplier<Double> panTilt) {
+  public UpAndShootComm(
+    upAndShootSystem uPAndShootSystem, 
+    Supplier<Boolean> shootBallForward, 
+    Supplier<Boolean> moveBallUP) {
       // Use addRequirements() here to declare subsystem dependencies.
     // m_IntakeSysten = mIntakeSysten;
     this.uPAndShootSystem = uPAndShootSystem;
     this.shootBallForward = shootBallForward;
     this.moveBallUP = moveBallUP;
-    this.panTilt = panTilt;
     // this.upBallForward = upBallForward;
     // this.upBallBackward = upBallBackward;
     
@@ -51,7 +52,6 @@ public class UpAndShootComm extends CommandBase {
     // m_PneumaticSystem.setIntake(O_Intake.get(), IntakeStandby.get());
     boolean shootBallForwardStatus = shootBallForward.get();
     boolean moveBallUPStatus = moveBallUP.get();
-    double movePanT = panTilt.get();
     // boolean shootBallBackwardStatus = shootBallBackward.get();
     // boolean upBallForwardStatus = upBallForward.get();
     // boolean upBallBackwardStatus = upBallBackward.get();
@@ -67,11 +67,6 @@ public class UpAndShootComm extends CommandBase {
     } else {
       uPAndShootSystem.setMoveBallUP(0.0);
     }
-
-    if(Math.abs(movePanT) > 0.05){
-      uPAndShootSystem.setPanMove(movePanT);
-    }
-    else uPAndShootSystem.setPanMove(0.0);
 
 
     // if (upBallForwardStatus == true)
