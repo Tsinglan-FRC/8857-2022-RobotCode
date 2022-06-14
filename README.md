@@ -1,1 +1,1 @@
-![LOGO](/docs/assets/tsinglanLogo.png)
+![LOGO](/docs/assets/tsinglanLogo.png#pic_center)
