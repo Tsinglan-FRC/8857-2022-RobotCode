@@ -36,6 +36,23 @@ public class VisionCmd extends CommandBase{
         addRequirements(m_Vision);
     }
 
+    public VisionCmd(
+        upAndShootSystem _shooter,
+        VisionSystem _vision,
+
+        Supplier<Double> _xTurn,
+        Supplier<Boolean> _fire){
+        m_Shooter = _shooter;
+        m_Vision = _vision;
+
+        xTurn = _xTurn;
+        fire = _fire;
+        setZero=null;
+
+        addRequirements(m_Shooter);
+        addRequirements(m_Vision);
+    }
+
     @Override
     public void initialize(){
         m_Vision.setLED(true);
@@ -43,7 +60,6 @@ public class VisionCmd extends CommandBase{
 
     @Override
     public void execute(){
-        double output = m_PIDController.calculate(m_Vision.getX(),0);
         if(xTurn.get() < -0.5){
             m_Vision.setMotorX(-0.2);
         }
@@ -51,13 +67,13 @@ public class VisionCmd extends CommandBase{
             m_Vision.setMotorX(0.2);
         }
 
-        if(setZero.get() == true){
+        if(setZero!=null) if(setZero.get() == true){
             m_Vision.setMiddle();
         }
 
         if(fire.get() == true){
             if(m_Vision.isValid()){
-                m_Vision.setMotorX(output);
+                m_Vision.setMotorX(m_PIDController.calculate(m_Vision.getX(),0));
                 if(Math.abs(m_Vision.getX()) < 0.1){
                     autoFire();
                 }
@@ -65,6 +81,7 @@ public class VisionCmd extends CommandBase{
         }
         else{
             m_Shooter.setshootForward(0);
+            m_Vision.setMiddle();
         }
     }
 

@@ -66,8 +66,7 @@ public class RobotContainer {
                         m_VisionSystem,
 
                         () -> joystick2.getHorizontal(),
-                        () -> joystick2.isFire(),
-                        () -> joystick2.isSetZero()        
+                        () -> joystick2.isFire()       
                 ));
         }
 
