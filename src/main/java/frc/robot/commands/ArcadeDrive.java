@@ -65,20 +65,7 @@ public class ArcadeDrive extends CommandBase {
     if (Math.abs(turn) < 0.05)
       turn = 0;
 
-    arcade(speed, turn, lowspeed);
-  }
-
-  public void arcade(double speed, double turn, boolean lowspeed) {
-    if (lowspeed) {
-      driveSubsystem.setLeftSpeed(speed * 0.3 + turn * 0.2);
-      driveSubsystem.setRightSpeed(speed * 0.3 - turn * 0.2);
-    }
-
-    else {
-      driveSubsystem.setLeftSpeed(speed * 1.0 + turn * 0.5);
-      driveSubsystem.setRightSpeed(speed * 1.0 - turn * 0.5);
-    }
-
+    driveSubsystem.arcade(speed, turn, lowspeed);
   }
 
   @Override

@@ -172,4 +172,17 @@ public class DriveSystem extends SubsystemBase {
     setLeftPower(-power);
     setRightPower(power);
   }
+
+  public void arcade(double speed, double turn, boolean lowspeed) {
+    if (lowspeed) {
+      setLeftSpeed(speed * 0.3 + turn * 0.2);
+      setRightSpeed(speed * 0.3 - turn * 0.2);
+    }
+
+    else {
+      setLeftSpeed(speed * 1.0 + turn * 0.5);
+      setRightSpeed(speed * 1.0 - turn * 0.5);
+    }
+
+  }
 }
