@@ -34,9 +34,7 @@ public class VisionSystem extends SubsystemBase {
         setLED(false);
 
         setBrake(true);
-        motorX.config_kP(0, 0.3, 10);
-        motorX.config_kI(0, 0, 10);
-        motorX.config_kD(0, 0, 10);
+        configPID();
     }
 
     @Override
