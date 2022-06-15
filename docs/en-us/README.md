@@ -14,21 +14,3 @@ You can contact us on...
 1. QQ chanel: [QQChanel](#)
 2. Wechat: [Wechat Number](#)
 
-# Bilingual Notice Board
-
-## 公告
-> 文档没写完
-> 改天继续写
-> —— Lanbin 2022年6月14日20:44:34
-
-> 哭了，
-> 之前提交那么多代码，
-> 发现提交人不是自己，
-> 欲哭无泪！ —— Lanbin 2022年6月14日20:50:41
-
-## 开发人员
-
-- 郭老师
-- WhiteZH
-- Lanbin
- 
