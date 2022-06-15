@@ -1,3 +1,10 @@
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/ye-tutu/blog-cdn@main/picture/1650693278000.gif">
+</div>
+<h3 align="center">Life Isn't Dangerous Enough</h3>
+
+<hr>
+
 [**中文**](/docs/zh-cn/README.md) | [**English**](/docs/en-us/README.md)
 
 # Tsinglan FRC Robot Code

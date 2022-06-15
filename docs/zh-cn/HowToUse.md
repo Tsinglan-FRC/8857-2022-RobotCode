@@ -17,7 +17,49 @@
 
 ### 文件：
 文件明细
-#### commands
-![目录1](/docs/assets/屏幕截图%202022-06-14%20204031.png)
+
+<div>
+    <details>
+        <summary>commands</summary>
+        <ul>
+            <li>ArcadeDrive.java</li>
+            <li>I_Will.java</li>
+            <li>ArcadeDrive.java</li>
+            <li>Intakecomm.java</li>
+            <li>LiftComm.java</li>
+            <li>PCM_Conctrl.java</li>
+            <li>UpAndShootComm.java</li>
+            <li>VisionCmd.java</li>
+        </ul>
+    </details>
+    <details>
+        <summary>joysticks</summary>
+        <ul>
+            <li>DriverStick.java</li>
+            <li>OperateStick.java</li>
+        </ul>
+    </details>
+    <details>
+        <summary>subsystem</summary>
+        <ul>
+            <li>DriverSystem.java</li>
+            <li>intakeSystem.java</li>
+            <li>ArcadeDrive.java</li>
+            <li>LiftSystem.java</li>
+            <li>PneumaticSystem.java</li>
+            <li>upAndShootSystem.java</li>
+            <li>VisionSystem.java</li>
+            <li>VisionCmd.java</li>
+        </ul>
+    </details>
+    <ul>
+        <li>Constants.java</li>
+        <li>Main.java</li>
+        <li>Robot.java</li>
+        <li>RobotContainer.java</li>
+        <li>Toolkit.java</li>
+    </ul>
+
+</div>
 
 
