@@ -19,4 +19,8 @@ public class DriveStick extends Joystick{
     public boolean isInLowSpeed(){
         return getRawButton(OIConstants.drive_InLowSpeedPort);
     }
+
+    public boolean getCompressorStatus(){
+        return getRawButton(OIConstants.drive_CompressorStatusPort);
+    }
 }

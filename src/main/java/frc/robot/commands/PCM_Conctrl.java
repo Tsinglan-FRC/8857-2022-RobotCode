@@ -12,16 +12,16 @@ import frc.robot.subsystems.PneumaticSystem;
 public class PCM_Conctrl extends CommandBase {
   // IntakeSysten m_IntakeSysten;
   private final PneumaticSystem m_PneumaticSystem;
-  private final Supplier<Boolean> CompressorStatus;
-  boolean togglePressed = false;
-  boolean defaultvalue = true;
+  private final Supplier<Boolean> compressorStatus;
+  //boolean togglePressed = false;
+  //boolean defaultvalue = true;
 
   /** Creates a new Intakecomm. */
-  public PCM_Conctrl(PneumaticSystem m_PneumaticSystem, Supplier<Boolean> CompressorStatus) {
+  public PCM_Conctrl(PneumaticSystem _PneumaticSystem, Supplier<Boolean> _CompressorStatus) {
     // Use addRequirements() here to declare subsystem dependencies.
     // m_IntakeSysten = mIntakeSysten;
-    this.m_PneumaticSystem = m_PneumaticSystem;
-    this.CompressorStatus = CompressorStatus;
+    m_PneumaticSystem = _PneumaticSystem;
+    compressorStatus = _CompressorStatus;
     addRequirements(m_PneumaticSystem);
   }
 
@@ -35,11 +35,11 @@ public class PCM_Conctrl extends CommandBase {
   public void execute() {
     // boolean Com= IntakeStandby.get();
     // System.out.println(Com);
-    m_PneumaticSystem.setCompressorclosedloop(toggle(CompressorStatus.get()));
+    m_PneumaticSystem.setCompressorClosedLoop(compressorStatus.get());
     // m_PneumaticSystem.setIntake(intakeStatus.get());
   }
 
-  public boolean toggle(boolean btn) {
+  /*public boolean toggle(boolean btn) {
     if (btn) {
       if (!togglePressed) {
         defaultvalue = !defaultvalue;
@@ -48,7 +48,7 @@ public class PCM_Conctrl extends CommandBase {
     } else
       togglePressed = false;
     return defaultvalue;
-  }
+  }*/
 
   // Called once the command ends or is interrupted.
   @Override

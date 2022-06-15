@@ -9,8 +9,6 @@ import java.util.function.Supplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSystem;
 
-import frc.robot.Constants.MotorConstants.Telepid;
-
 public class ArcadeDrive extends CommandBase {
   /*
    * private final DriveSystem m_drivesystem;
@@ -29,27 +27,29 @@ public class ArcadeDrive extends CommandBase {
    */
 
   private final DriveSystem driveSubsystem;
-  private final Supplier<Double> SpeedFunction, turnFunction;
+  private final Supplier<Double> SpeedFunction;
+  private final Supplier<Double> turnFunction;
   private final Supplier<Boolean> LowspeedFunction;
 
   public ArcadeDrive(
-    DriveSystem driveSubsystem, //
-    Supplier<Double> SpeedFunction, 
-    Supplier<Double> turnFunction, 
-    Supplier<Boolean> LowspeedFunction
-    ) {
-      this.SpeedFunction = SpeedFunction;
-      this.LowspeedFunction = LowspeedFunction;
-      this.turnFunction = turnFunction;
-      this.driveSubsystem = driveSubsystem;
-      addRequirements(driveSubsystem);
+    DriveSystem _driveSubsystem, //
+    Supplier<Double> _SpeedFunction, 
+    Supplier<Double> _turnFunction, 
+    Supplier<Boolean> _LowspeedFunction) {
+
+    SpeedFunction = _SpeedFunction;
+    LowspeedFunction = _LowspeedFunction;
+    turnFunction = _turnFunction;
+    driveSubsystem = _driveSubsystem;
+
+    addRequirements(driveSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    driveSubsystem.setDrivePID(Telepid.kP, Telepid.kI, Telepid.kD, Telepid.kF, Telepid.kIZone, Telepid.Maxout);
-    driveSubsystem.setBrake(true);
+    /*driveSubsystem.setDrivePID(Telepid.kP, Telepid.kI, Telepid.kD, Telepid.kF, Telepid.kIZone, Telepid.Maxout);
+    driveSubsystem.setBrake(true);*/
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -60,10 +60,12 @@ public class ArcadeDrive extends CommandBase {
     double turn = turnFunction.get();
     boolean lowspeed = LowspeedFunction.get();
 
-    if (Math.abs(speed) < 0.05)
+    if (Math.abs(speed) < 0.05){
       speed = 0;
-    if (Math.abs(turn) < 0.05)
+    }
+    if (Math.abs(turn) < 0.05){
       turn = 0;
+    }
 
     driveSubsystem.arcade(speed, turn, lowspeed);
   }
@@ -71,6 +73,7 @@ public class ArcadeDrive extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     driveSubsystem.setBrake(true);
+    driveSubsystem.stop();
   }
 
   // Returns true when the command should end.

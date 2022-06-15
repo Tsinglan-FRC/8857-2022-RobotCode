@@ -14,12 +14,17 @@ public final class Constants {
         public static final int LeftfollowerID = 2; // 四个马达
         public static final int RightmasterID = 3; // 四个马达
         public static final int RightfollowerID = 4; // 四个马达
+
         public static final int intakeID = 9; // 收球
+        public static final double intakeSpeedTruePower = 0.2;
+        public static final double intakeSpeedFalsePower = -0.2;
+
         public static final int upBallForwardID = 8; // 上球
         public static final int upBallBackwardID = 1919810; // 上球
         public static final int shootBallLeftID = 7;
         public static final int shootBallRightID = 141514;
-        public static final int panTilt = 141514;
+        //public static final int panTilt = 141514;
+        
         public static final int liftLeftID = 5;
         public static final int liftRightID = 6;
         public static final int MotorxID = 10;
@@ -68,6 +73,11 @@ public final class Constants {
         }
 
         public static final double isOnTarget = 1;
+    }
+
+    public static final class SolenoidConstants{
+        public static final int forawrdChannel = 0;
+        public static final int reverseChannel = 1;
     }
 
     public static final class ShooterConstants {
@@ -122,13 +132,16 @@ public final class Constants {
         public static final int drive_SpeedPort = 1;
         public static final int drive_TurnPort = 4;
         public static final int drive_InLowSpeedPort = 6;
+        public static final int drive_CompressorStatusPort = 8;
 
     }
     
     public static final class VisionConstants{
-        public static final double kP = 1;
-        public static final double kI = 0;
-        public static final double kD = 0;
+        public static final class PIDCtrl{
+            public static final double kP = 1;
+            public static final double kI = 0;
+            public static final double kD = 0;
+        }
 
         public static final class AutoFire{
             public static final double POWER10TO20 = 1;

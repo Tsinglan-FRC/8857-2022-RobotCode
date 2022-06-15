@@ -28,7 +28,7 @@ public class OperateStick extends Joystick{
         return getRawButton(OIConstants.operate_MoveBallUpPort);
     }
 
-    public boolean getIntakeSpeed(){
+    public boolean shallPutOut(){
         return getRawButton(OIConstants.operate_IntakeSpeedPort);
     }
 

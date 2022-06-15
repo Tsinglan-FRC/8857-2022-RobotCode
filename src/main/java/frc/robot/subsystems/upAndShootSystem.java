@@ -26,7 +26,7 @@ public class upAndShootSystem extends SubsystemBase {
   // private TalonFX upBall = new TalonFX(MotorConstants.upBallID); // 暂未更新
   private TalonFX moveBall_F = new TalonFX(MotorConstants.upBallForwardID); //一左一右两个射球
   private TalonFX moveBall_B = new TalonFX(MotorConstants.upBallBackwardID); //一左一右两个射球
-  private TalonFX panTilt = new TalonFX(MotorConstants.panTilt); //一左一右两个射球
+  //private TalonFX panTilt = new TalonFX(MotorConstants.panTilt); //一左一右两个射球
 
   public double panTiltAngle;
   public static double panTiltAngleLimitLow = -200;
@@ -59,13 +59,13 @@ public class upAndShootSystem extends SubsystemBase {
       shootBall_R.setNeutralMode(NeutralMode.Brake); // 设置刹车
       moveBall_F.setNeutralMode(NeutralMode.Brake); // 设置刹车
       moveBall_B.setNeutralMode(NeutralMode.Brake); // 设置刹车
-      panTilt.setNeutralMode(NeutralMode.Brake); // 设置刹车
+      //panTilt.setNeutralMode(NeutralMode.Brake); // 设置刹车
     } else {
       shootBall_L.setNeutralMode(NeutralMode.Coast); 
       shootBall_R.setNeutralMode(NeutralMode.Coast);
       moveBall_F.setNeutralMode(NeutralMode.Coast); 
       moveBall_B.setNeutralMode(NeutralMode.Coast);
-      panTilt.setNeutralMode(NeutralMode.Coast);
+      //panTilt.setNeutralMode(NeutralMode.Coast);
     }
     // if (brake == true) {
     //   upBall.setNeutralMode(NeutralMode.Brake);

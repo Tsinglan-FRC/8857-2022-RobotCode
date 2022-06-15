@@ -43,7 +43,7 @@ public class RobotContainer {
             m_IntakeSystem.setDefaultCommand(new Intakecomm(
                 m_IntakeSystem,
                         
-            	() -> joystick2.getIntakeSpeed(),
+            	() -> joystick2.shallPutOut(),
                 () -> joystick2.getIntakeStatus()
 			));
 
@@ -57,7 +57,7 @@ public class RobotContainer {
             m_PneumaticSystem.setDefaultCommand(new PCM_Conctrl(
 				m_PneumaticSystem,
 	            
-				() -> joystick1.getRawButton(8)
+				() -> joystick1.getCompressorStatus()
 			));
 
             m_LiftSystem.setDefaultCommand(new LiftComm(

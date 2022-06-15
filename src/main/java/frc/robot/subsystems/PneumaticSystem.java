@@ -12,10 +12,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Compressor;
 
 public class PneumaticSystem extends SubsystemBase {
-  private Compressor m_pressor = new Compressor(PneumaticsModuleType.CTREPCM);
+  private final Compressor m_pressor;
+  
+  private boolean togglePressed;
+  private boolean defaultvalue;
 
   /** Creates a new Pneumatic. */
   public PneumaticSystem() {
+    m_pressor = new Compressor(PneumaticsModuleType.CTREPCM);
+
+    togglePressed = false;
+    defaultvalue = false;
   }
 
   @Override
@@ -26,11 +33,26 @@ public class PneumaticSystem extends SubsystemBase {
 
   }
 
-  public void setCompressorclosedloop(boolean start) {
+  public void setCompressorClosedLoop(boolean rawinput) {
+    boolean start = toggle(rawinput);
     if (start == true)
       m_pressor.enableDigital();
     else
       m_pressor.disable();
+  }
+
+  public boolean toggle(boolean btn) {
+    if (btn) {
+      if (togglePressed == false) {
+        defaultvalue = true;
+        togglePressed = true;
+      }
+      else{
+        defaultvalue = false;
+        togglePressed = false;
+      }
+    }
+    return defaultvalue;
   }
 
 }

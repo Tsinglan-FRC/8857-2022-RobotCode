@@ -32,7 +32,8 @@ public class VisionSystem extends SubsystemBase {
     public VisionSystem() {
         System.out.println("Limelight init");
         setLED(false);
-        motorX.setNeutralMode(NeutralMode.Brake);
+
+        setBrake(true);
         motorX.config_kP(0, 0.3, 10);
         motorX.config_kI(0, 0, 10);
         motorX.config_kD(0, 0, 10);
@@ -60,6 +61,21 @@ public class VisionSystem extends SubsystemBase {
             return true;
         else
             return false;
+    }
+
+    public void setBrake(boolean brake){
+        if(brake){
+            motorX.setNeutralMode(NeutralMode.Brake);
+        }
+        else{
+            motorX.setNeutralMode(NeutralMode.Coast);
+        }
+    }
+
+    public void configPID(){
+        motorX.config_kP(0, 0.3, 10);
+        motorX.config_kI(0, 0, 10);
+        motorX.config_kD(0, 0, 10);
     }
 
     public void setLED(boolean on) {

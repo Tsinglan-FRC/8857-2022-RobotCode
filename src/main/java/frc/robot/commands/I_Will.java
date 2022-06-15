@@ -13,7 +13,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSystem;
-import frc.robot.Constants.MotorConstants.Telepid;
 
 public class I_Will extends CommandBase{
     private final DriveSystem m_DriveSystem;
@@ -24,15 +23,13 @@ public class I_Will extends CommandBase{
         m_DriveSystem=_DriveSystem;
 
         m_Timer = new Timer();
-        m_Timer.start();
 
         addRequirements(m_DriveSystem);
     }
     
     @Override
     public void initialize() {
-      m_DriveSystem.setDrivePID(Telepid.kP, Telepid.kI, Telepid.kD, Telepid.kF, Telepid.kIZone, Telepid.Maxout);
-      m_DriveSystem.setBrake(true);
+        m_Timer.start();
     }
 
     @Override
@@ -45,7 +42,7 @@ public class I_Will extends CommandBase{
     @Override
     public void end(boolean interrupted) {
       m_DriveSystem.setBrake(true);
-      m_DriveSystem.arcade(0,0, false);
+      m_DriveSystem.stop();
     }
 
     @Override

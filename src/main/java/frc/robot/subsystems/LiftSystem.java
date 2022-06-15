@@ -5,20 +5,17 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import frc.robot.Constants.MotorConstants;
+import frc.robot.Toolkit.TKTalonFX;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.StatorCurrentLimitConfiguration;
-import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
-import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
-public class LiftSystem extends SubsystemBase {
+public class LiftSystem extends SubsystemBase implements TKTalonFX{
   private TalonFX lift_L = new TalonFX(MotorConstants.liftLeftID);
   private TalonFX lift_R = new TalonFX(MotorConstants.liftRightID);
   private DoubleSolenoid liftSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
@@ -53,22 +50,6 @@ public class LiftSystem extends SubsystemBase {
       liftSolenoid.set(Value.kForward);
 
     }
-  }
-
-  public void configMotor(TalonFX motor, double P, double I, double D, double F, double Izone, double maxout) {
-    motor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, MotorConstants.kPIDSlot,
-        Constants.kCANTimeoutMS);
-
-    motor.config_kP(MotorConstants.kPIDSlot, P, Constants.kCANTimeoutMS);
-    motor.config_kI(MotorConstants.kPIDSlot, I, Constants.kCANTimeoutMS);
-    motor.config_kD(MotorConstants.kPIDSlot, D, Constants.kCANTimeoutMS);
-    motor.config_kF(MotorConstants.kPIDSlot, F, Constants.kCANTimeoutMS);
-
-    motor.config_IntegralZone(MotorConstants.kPIDSlot, Izone, Constants.kCANTimeoutMS);
-    motor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, MotorConstants.kCurrentLimitAmps,
-        MotorConstants.kCurrentLimitAmps, MotorConstants.kCurrentLimitDelay));
-    motor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, MotorConstants.kCurrentLimitAmps,
-        MotorConstants.kCurrentLimitAmps, MotorConstants.kCurrentLimitDelay));
   }
 
   public void setLiftPID(double P, double I, double D, double F, double Izone, double maxout) {

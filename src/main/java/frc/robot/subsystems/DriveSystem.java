@@ -6,18 +6,15 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
+import frc.robot.Toolkit.TKTalonFX;
 import frc.robot.Constants.MotorConstants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.StatorCurrentLimitConfiguration;
-import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
-import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
-public class DriveSystem extends SubsystemBase {
+public class DriveSystem extends SubsystemBase implements TKTalonFX{
   // private TalonFX leftMaster = new TalonFX(DriveConstants.LeftmasterID);
   private TalonFX leftMaster = new TalonFX(MotorConstants.LeftmasterID); // 定义电机
   private TalonFX leftFollower = new TalonFX(MotorConstants.LeftfollowerID); // 定义电机
@@ -40,6 +37,12 @@ public class DriveSystem extends SubsystemBase {
     rightFollower.setInverted(true); // 定义马达
     rightFollower.setSensorPhase(true); // 定义马达
 
+    configMotor(leftMaster);
+    configMotor(leftFollower);
+    configMotor(rightMaster);
+    configMotor(rightFollower);
+
+    setBrake(true);
   }
 
   @Override
@@ -52,18 +55,18 @@ public class DriveSystem extends SubsystemBase {
     SmartDashboard.putNumber("Left2 Drive Position Value", leftFollower.getSelectedSensorPosition());
   }
 
-  public void setIMUzero() {
+  /*public void setIMUzero() {
     // m_pigeon.setYaw(0, 10);
     // m_pigeon.setAccumZAngle(0, 10);
-  }
+  }*/
 
-  public double getAngle() {
+  /*public double getAngle() {
     double[] ypr = new double[3];
 
     // m_pigeon.getYawPitchRoll(ypr);
     return ypr[0];
 
-  }
+  }*/
 
   public void setBrake(boolean brake) {
     if (brake == true) {
@@ -79,31 +82,33 @@ public class DriveSystem extends SubsystemBase {
     }
   }
 
-  public void configMotor(TalonFX motor, double P, double I, double D, double F, double Izone, double maxout) {
-    motor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, MotorConstants.kPIDSlot,
-        Constants.kCANTimeoutMS);
-
-    motor.config_kP(MotorConstants.kPIDSlot, P, Constants.kCANTimeoutMS);
-    motor.config_kI(MotorConstants.kPIDSlot, I, Constants.kCANTimeoutMS);
-    motor.config_kD(MotorConstants.kPIDSlot, D, Constants.kCANTimeoutMS);
-    motor.config_kF(MotorConstants.kPIDSlot, F, Constants.kCANTimeoutMS);
-
-    motor.config_IntegralZone(MotorConstants.kPIDSlot, Izone, Constants.kCANTimeoutMS);
-    // motor.configPeakOutputForward(maxout);
-    // motor.configPeakOutputReverse(-maxout);
-    motor.configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, MotorConstants.kCurrentLimitAmps,
-        MotorConstants.kCurrentLimitAmps, MotorConstants.kCurrentLimitDelay));
-    motor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, MotorConstants.kCurrentLimitAmps,
-        MotorConstants.kCurrentLimitAmps, MotorConstants.kCurrentLimitDelay));
-  }
-
-  public void setDrivePID(double P, double I, double D, double F, double Izone, double maxout) {
+  /*public void setDrivePID(double P, double I, double D, double F, double Izone, double maxout) {
     configMotor(leftMaster, P, I, D, F, Izone, maxout);
     configMotor(leftFollower, P, I, D, F, Izone, maxout);
     configMotor(rightMaster, P, I, D, F, Izone, maxout);
     configMotor(rightFollower, P, I, D, F, Izone, maxout);
+  }*/
 
+
+  public void arcade(double speed, double turn, boolean lowspeed) {
+    if (lowspeed) {
+      setLeftSpeed(speed * 0.3 + turn * 0.2);
+      setRightSpeed(speed * 0.3 - turn * 0.2);
+    }
+
+    else {
+      setLeftSpeed(speed * 1.0 + turn * 0.5);
+      setRightSpeed(speed * 1.0 - turn * 0.5);
+    }
   }
+
+  public void stop(){
+    arcade(0,0,false);
+  }
+
+
+
+
 
   public void setLeftPosition() {
     leftMaster.setSelectedSensorPosition(0);
@@ -171,18 +176,5 @@ public class DriveSystem extends SubsystemBase {
   public void turn(double power) {
     setLeftPower(-power);
     setRightPower(power);
-  }
-
-  public void arcade(double speed, double turn, boolean lowspeed) {
-    if (lowspeed) {
-      setLeftSpeed(speed * 0.3 + turn * 0.2);
-      setRightSpeed(speed * 0.3 - turn * 0.2);
-    }
-
-    else {
-      setLeftSpeed(speed * 1.0 + turn * 0.5);
-      setRightSpeed(speed * 1.0 - turn * 0.5);
-    }
-
   }
 }

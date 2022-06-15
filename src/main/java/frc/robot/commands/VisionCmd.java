@@ -4,12 +4,13 @@ import java.util.function.Supplier;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.VisionConstants;
+import frc.robot.Constants.VisionConstants.PIDCtrl;
+import frc.robot.Constants.VisionConstants.AutoFire;
 import frc.robot.subsystems.VisionSystem;
 import frc.robot.subsystems.upAndShootSystem;
 
 public class VisionCmd extends CommandBase{
-    private PIDController m_PIDController = new PIDController(VisionConstants.kP, VisionConstants.kI, VisionConstants.kD);
+    private PIDController m_PIDController;
     private upAndShootSystem m_Shooter;
     private VisionSystem m_Vision;
 
@@ -25,6 +26,9 @@ public class VisionCmd extends CommandBase{
         Supplier<Double> _xTurn,
         Supplier<Boolean> _fire,
         Supplier<Boolean> _setZero ){
+
+        m_PIDController = new PIDController(PIDCtrl.kP, PIDCtrl.kI, PIDCtrl.kD);
+
         m_Shooter = _shooter;
         m_Vision = _vision;
 
@@ -75,26 +79,25 @@ public class VisionCmd extends CommandBase{
             if(m_Vision.isValid()){
                 m_Vision.setMotorX(m_PIDController.calculate(m_Vision.getX(),0));
                 if(Math.abs(m_Vision.getX()) < 0.1){
-                    autoFire();
+
+
+                    if (m_Vision.getY() > 10.0 && m_Vision.getY() < 20.0){
+                        m_Shooter.setshootForward(AutoFire.POWER10TO20);
+                    }
+                    else if (m_Vision.getY() > 20.0 && m_Vision.getY() < 30.0){
+                        m_Shooter.setshootForward(AutoFire.POWER20TO30);
+                    }
+                    // ............more condition.................
+                    if (m_Shooter.onTarget()) {
+                        m_Shooter.setMoveBallUP(0.5);
+                    }
+
                 }
             }
         }
         else{
             m_Shooter.setshootForward(0);
             m_Vision.setMiddle();
-        }
-    }
-
-    public void autoFire(){
-        if (m_Vision.getY() > 10.0 && m_Vision.getY() < 20.0){
-            m_Shooter.setshootForward(VisionConstants.AutoFire.POWER10TO20);
-        }
-        else if (m_Vision.getY() > 20.0 && m_Vision.getY() < 30.0){
-            m_Shooter.setshootForward(VisionConstants.AutoFire.POWER20TO30);
-        }
-        // ............more condition.................
-        if (m_Shooter.onTarget()) {
-            m_Shooter.setMoveBallUP(0.5);
         }
     }
 
