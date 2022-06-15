@@ -35,6 +35,7 @@ public class I_Will extends CommandBase{
     @Override
     public void end(boolean interrupted) {
       m_DriveSystem.setBrake(true);
+      m_DriveSystem.arcade(0,0, false);
     }
 
     @Override
