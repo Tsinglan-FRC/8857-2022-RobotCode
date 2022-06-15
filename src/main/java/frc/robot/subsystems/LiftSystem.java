@@ -20,7 +20,28 @@ public class LiftSystem extends SubsystemBase implements TKTalonFX{
   private TalonFX lift_R = new TalonFX(MotorConstants.liftRightID);
   private DoubleSolenoid liftSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
 
+  private boolean defaultvalue;
+  private boolean togglePressed;
+
+  private boolean toggle(boolean btn) {
+    if (btn) {
+      if (togglePressed == false) {
+        defaultvalue = true;
+        togglePressed = true;
+      }
+      else{
+        defaultvalue = false;
+        togglePressed = false;
+      }
+    }
+    return defaultvalue;
+  }
+
   public LiftSystem() {
+    defaultvalue = true;
+    togglePressed = false;
+
+
     lift_L.setInverted(false);
     lift_L.setSensorPhase(false);
     lift_R.setInverted(true);
@@ -46,7 +67,10 @@ public class LiftSystem extends SubsystemBase implements TKTalonFX{
     }
   }
 
-  public void setliftSoleniod(boolean SW) {
+  public void setliftSoleniod(boolean raw) {
+    boolean SW = toggle(raw);
+
+
     if (SW == true) {
       liftSolenoid.set(Value.kReverse);
 

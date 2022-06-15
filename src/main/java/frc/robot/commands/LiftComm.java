@@ -25,8 +25,6 @@ public class LiftComm extends CommandBase {
    * // Use addRequirements() here to declare subsystem dependencies.
    * }
    */
-  boolean defaultvalue = true;
-  boolean togglePressed = false;
   private final LiftSystem liftSubsystem;
   private final Supplier<Double> liftForward; 
   private final Supplier<Double> liftBackward;
@@ -52,40 +50,39 @@ public class LiftComm extends CommandBase {
     double forward = liftForward.get();
     double backward = liftBackward.get();
     boolean Pneumatic = liftPneumatic.get();
-    if (Math.abs(forward) < 0.05)
-      forward = 0;
 
-    if (Math.abs(backward) < 0.05)
+    if (Math.abs(forward) < 0.05){
+      forward = 0;
+    }
+    if (Math.abs(backward) < 0.05){
       backward = 0;
+    }
+
     if (forward > backward) {
       if (liftSubsystem.getLiftPosition() < 1000000) {
         liftSubsystem.setLiftPower(forward * 0.5);
         System.out.println(liftSubsystem.getLiftPosition());
-      } else
+      } 
+      else{
         liftSubsystem.setLiftPower(0);
-    } else if (forward < backward) {
+      }
+    } 
+    else if (forward < backward) {
       if (liftSubsystem.getLiftPosition() > -1000000) {
         liftSubsystem.setLiftPower(-backward * 0.5);
         System.out.println(liftSubsystem.getLiftPosition());
-      } else
+      } 
+      else{
         liftSubsystem.setLiftPower(0);
-    } else
+      }
+    } 
+    else{
       liftSubsystem.setLiftPower(0);
+    }
 
-    liftSubsystem.setliftSoleniod(toggle(Pneumatic));
+    liftSubsystem.setliftSoleniod(Pneumatic);
 
     // arcade(speed, turn, lowspeed);
-  }
-
-  public boolean toggle(boolean btn) {
-    if (btn) {
-      if (!togglePressed) {
-        defaultvalue = !defaultvalue;
-        togglePressed = true;
-      }
-    } else
-      togglePressed = false;
-    return defaultvalue;
   }
 
   @Override

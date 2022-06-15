@@ -17,6 +17,21 @@ public class PneumaticSystem extends SubsystemBase {
   private boolean togglePressed;
   private boolean defaultvalue;
 
+
+  private boolean toggle(boolean btn) {
+    if (btn) {
+      if (togglePressed == false) {
+        defaultvalue = true;
+        togglePressed = true;
+      }
+      else{
+        defaultvalue = false;
+        togglePressed = false;
+      }
+    }
+    return defaultvalue;
+  }
+
   /** Creates a new Pneumatic. */
   public PneumaticSystem() {
     m_pressor = new Compressor(PneumaticsModuleType.CTREPCM);
@@ -39,20 +54,6 @@ public class PneumaticSystem extends SubsystemBase {
       m_pressor.enableDigital();
     else
       m_pressor.disable();
-  }
-
-  public boolean toggle(boolean btn) {
-    if (btn) {
-      if (togglePressed == false) {
-        defaultvalue = true;
-        togglePressed = true;
-      }
-      else{
-        defaultvalue = false;
-        togglePressed = false;
-      }
-    }
-    return defaultvalue;
   }
 
 }
