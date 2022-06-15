@@ -78,6 +78,7 @@ public class VisionCmd extends CommandBase{
         if(fire.get() == true){
             if(m_Vision.isValid()){
                 m_Vision.setMotorX(m_PIDController.calculate(m_Vision.getX(),0));
+                
                 if(Math.abs(m_Vision.getX()) < 0.1){
 
 
