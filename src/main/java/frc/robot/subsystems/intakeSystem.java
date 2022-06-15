@@ -14,7 +14,6 @@ import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.SolenoidConstants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 public class intakeSystem extends SubsystemBase implements TKTalonFX{
@@ -39,8 +38,6 @@ public class intakeSystem extends SubsystemBase implements TKTalonFX{
     // m_pigeon.getGeneralStatus(genStatus);
     intake.setInverted(true);
     intake.setSensorPhase(true);
-    setBrake(true);
-    configMotor(intake);
     // upBall.setInverted(true);
     // upBall.setSensorPhase(true);
   }
@@ -74,12 +71,12 @@ public class intakeSystem extends SubsystemBase implements TKTalonFX{
     }
   }
 
-  public void setBrake(boolean brake){
+  /*public void setBrake(boolean brake){
     if(brake){
       intake.setNeutralMode(NeutralMode.Brake);
     }
     else{
       intake.setNeutralMode(NeutralMode.Coast);
     }
-  }
+  }*/
 }

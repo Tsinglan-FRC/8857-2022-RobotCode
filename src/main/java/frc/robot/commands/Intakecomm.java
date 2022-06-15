@@ -48,7 +48,7 @@ public class Intakecomm extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    intakeSystem.setBrake(false);
+    //intakeSystem.setBrake(false);
     intakeSystem.setIntake(false,0);
   }
 

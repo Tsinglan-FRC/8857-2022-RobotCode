@@ -6,20 +6,17 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import frc.robot.Constants.MotorConstants;
+import frc.robot.Toolkit.TKTalonFX;
 
 // import java.util.concurrent.PriorityBlockingQueue;
 
 // 定义电机
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.StatorCurrentLimitConfiguration;
-import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
-import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
-public class upAndShootSystem extends SubsystemBase {
+public class upAndShootSystem extends SubsystemBase implements TKTalonFX{
   // private TalonFX leftMaster = new TalonFX(MotorConstants.LeftmasterID);
   private TalonFX shootBall_L = new TalonFX(MotorConstants.shootBallLeftID); //一左一右两个射球
   private TalonFX shootBall_R = new TalonFX(MotorConstants.shootBallRightID); //一左一右两个射球
@@ -42,6 +39,13 @@ public class upAndShootSystem extends SubsystemBase {
     shootBall_R.setSensorPhase(true); // 设置传感器状态
     // upBall.setInverted(true);
     // upBall.setSensorPhase(true);
+
+    configMotor(shootBall_L,PIDType.Telepid);
+    configMotor(shootBall_R,PIDType.Telepid);
+    configMotor(moveBall_B,PIDType.Telepid);
+    configMotor(moveBall_F,PIDType.Telepid);
+
+    setBrake(true);
   }
 
   @Override
@@ -74,7 +78,7 @@ public class upAndShootSystem extends SubsystemBase {
     // }
   }
 
-  public void configMotor(TalonFX motor, double P, double I, double D, double F, double Izone, double maxout) {
+  /*public void configMotor(TalonFX motor, double P, double I, double D, double F, double Izone, double maxout) {
     motor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, MotorConstants.kPIDSlot,
         Constants.kCANTimeoutMS);
 
@@ -95,7 +99,7 @@ public class upAndShootSystem extends SubsystemBase {
   public void setDrivePID(double P, double I, double D, double F, double Izone, double maxout) {
     configMotor(shootBall_L, P, I, D, F, Izone, maxout);
     // configMotor(upBall, P, I, D, F, Izone, maxout);
-  }
+  }*/
 
   public void setshootForward(double power) {
     shootBall_L.set(ControlMode.PercentOutput, power);
@@ -127,7 +131,7 @@ public class upAndShootSystem extends SubsystemBase {
   }*/
 
   public boolean onTarget(){
-    if(shootBall_L.getSelectedSensorVelocity()>=MotorConstants.isOnTarget && shootBall_R.getSelectedSensorVelocity()>=MotorConstants.isOnTarget){
+    if(shootBall_L.getSelectedSensorVelocity()>=MotorConstants.isOnTargetValue && shootBall_R.getSelectedSensorVelocity()>=MotorConstants.isOnTargetValue){
       return true;
     }
     else{

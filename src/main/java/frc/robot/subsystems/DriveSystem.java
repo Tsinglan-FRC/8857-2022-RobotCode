@@ -37,10 +37,10 @@ public class DriveSystem extends SubsystemBase implements TKTalonFX{
     rightFollower.setInverted(true); // 定义马达
     rightFollower.setSensorPhase(true); // 定义马达
 
-    configMotor(leftMaster);
-    configMotor(leftFollower);
-    configMotor(rightMaster);
-    configMotor(rightFollower);
+    configMotor(leftMaster,PIDType.Telepid);
+    configMotor(leftFollower,PIDType.Telepid);
+    configMotor(rightMaster,PIDType.Telepid);
+    configMotor(rightFollower,PIDType.Telepid);
 
     setBrake(true);
   }

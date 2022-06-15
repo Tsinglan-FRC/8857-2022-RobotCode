@@ -6,6 +6,8 @@ import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import frc.robot.Constants.MotorConstants;
+import frc.robot.Constants.MotorConstants.Liftpid;
+import frc.robot.Constants.MotorConstants.Movepid;
 import frc.robot.Constants.MotorConstants.Telepid;
 
 public class Toolkit {
@@ -28,8 +30,27 @@ public class Toolkit {
                 MotorConstants.kCurrentLimitAmps, MotorConstants.kCurrentLimitDelay));
         }
 
-        default void configMotor(TalonFX motor){
-            configMotor(motor,Telepid.kP, Telepid.kI, Telepid.kD, Telepid.kF, Telepid.kIZone, Telepid.Maxout);
+        public enum PIDType{
+            Telepid,
+            Liftpid,
+            Movepid,
+            Turnpid
+        }
+
+        default void configMotor(TalonFX motor,PIDType type){
+            switch(type){
+                case Telepid:
+                configMotor(motor,Telepid.kP, Telepid.kI, Telepid.kD, Telepid.kF, Telepid.kIZone, Telepid.Maxout);
+                break;
+                case Liftpid:
+                configMotor(motor,Liftpid.kP, Liftpid.kI, Liftpid.kD, Liftpid.kF, Liftpid.kIZone, Liftpid.Maxout);
+                break;
+                case Movepid:
+                configMotor(motor,Movepid.kP, Movepid.kI, Movepid.kD, Movepid.kF, Movepid.kIZone, Movepid.Maxout);
+                break;
+                default:
+                return;
+            }
         }
     }
 }

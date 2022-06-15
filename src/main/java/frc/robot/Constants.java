@@ -72,7 +72,7 @@ public final class Constants {
             public static final double Maxout = 0.5;
         }
 
-        public static final double isOnTarget = 1;
+        public static final double isOnTargetValue = 1;
     }
 
     public static final class SolenoidConstants{

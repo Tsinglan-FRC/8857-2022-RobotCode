@@ -25,6 +25,10 @@ public class LiftSystem extends SubsystemBase implements TKTalonFX{
     lift_L.setSensorPhase(false);
     lift_R.setInverted(true);
     lift_R.setSensorPhase(true);
+
+    setLiftPID();
+    setBrake(true);
+    setLiftPositionzero();
   }
 
   @Override
@@ -52,10 +56,9 @@ public class LiftSystem extends SubsystemBase implements TKTalonFX{
     }
   }
 
-  public void setLiftPID(double P, double I, double D, double F, double Izone, double maxout) {
-    configMotor(lift_L, P, I, D, F, Izone, maxout);
-    configMotor(lift_R, P, I, D, F, Izone, maxout);
-
+  public void setLiftPID() {
+    configMotor(lift_L,PIDType.Liftpid);
+    configMotor(lift_R,PIDType.Liftpid);
   }
 
   public void setLiftPositionzero() {

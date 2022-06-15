@@ -7,7 +7,6 @@ package frc.robot.commands;
 import java.util.function.Supplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.MotorConstants.Telepid;
 import frc.robot.subsystems.upAndShootSystem;
 
 public class UpAndShootComm extends CommandBase {
@@ -39,8 +38,8 @@ public class UpAndShootComm extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    uPAndShootSystem.setDrivePID(Telepid.kP, Telepid.kI, Telepid.kD, Telepid.kF, Telepid.kIZone, Telepid.Maxout);
-    uPAndShootSystem.setBrake(true);
+    /*uPAndShootSystem.setDrivePID(Telepid.kP, Telepid.kI, Telepid.kD, Telepid.kF, Telepid.kIZone, Telepid.Maxout);
+    uPAndShootSystem.setBrake(true);*/
   }
 
   // Called every time the scheduler runs while the command is scheduled.

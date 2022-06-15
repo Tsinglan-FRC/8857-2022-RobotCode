@@ -8,7 +8,6 @@ import java.util.function.Supplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.LiftSystem;
-import frc.robot.Constants.MotorConstants.Liftpid;
 
 public class LiftComm extends CommandBase {
   /*
@@ -29,7 +28,8 @@ public class LiftComm extends CommandBase {
   boolean defaultvalue = true;
   boolean togglePressed = false;
   private final LiftSystem liftSubsystem;
-  private final Supplier<Double> liftForward, liftBackward;
+  private final Supplier<Double> liftForward; 
+  private final Supplier<Double> liftBackward;
   private final Supplier<Boolean> liftPneumatic;
 
   public LiftComm(LiftSystem liftSubsystem, Supplier<Double> liftForward, Supplier<Double> liftBackward,
@@ -44,9 +44,6 @@ public class LiftComm extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    liftSubsystem.setLiftPID(Liftpid.kP, Liftpid.kI, Liftpid.kD, Liftpid.kF, Liftpid.kIZone, Liftpid.Maxout);
-    liftSubsystem.setBrake(true);
-    liftSubsystem.setLiftPositionzero();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
