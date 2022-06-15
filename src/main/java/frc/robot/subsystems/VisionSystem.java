@@ -34,7 +34,10 @@ public class VisionSystem extends SubsystemBase {
         setLED(false);
 
         setBrake(true);
-        configPID();
+        
+        motorX.config_kP(0, 0.3, 10);
+        motorX.config_kI(0, 0, 10);
+        motorX.config_kD(0, 0, 10);
     }
 
     @Override
@@ -68,12 +71,6 @@ public class VisionSystem extends SubsystemBase {
         else{
             motorX.setNeutralMode(NeutralMode.Coast);
         }
-    }
-
-    public void configPID(){
-        motorX.config_kP(0, 0.3, 10);
-        motorX.config_kI(0, 0, 10);
-        motorX.config_kD(0, 0, 10);
     }
 
     public void setLED(boolean on) {

@@ -25,9 +25,9 @@ public class upAndShootSystem extends SubsystemBase implements TKTalonFX{
   private TalonFX moveBall_B = new TalonFX(MotorConstants.upBallBackwardID); //一左一右两个射球
   //private TalonFX panTilt = new TalonFX(MotorConstants.panTilt); //一左一右两个射球
 
-  public double panTiltAngle;
-  public static double panTiltAngleLimitLow = -200;
-  public static double panTiltAngleLimitHigh = 200;
+  //public double panTiltAngle;
+  //public static double panTiltAngleLimitLow = -200;
+  //public static double panTiltAngleLimitHigh = 200;
 
 
 
