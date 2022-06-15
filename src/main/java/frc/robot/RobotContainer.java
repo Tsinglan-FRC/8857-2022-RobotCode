@@ -9,7 +9,6 @@ import frc.robot.subsystems.intakeSystem;
 import frc.robot.subsystems.upAndShootSystem;
 
 import frc.robot.commands.ArcadeDrive;
-import frc.robot.commands.GoStraight;
 import frc.robot.commands.Intakecomm;
 import frc.robot.commands.LiftComm;
 import frc.robot.commands.PCM_Conctrl;
@@ -78,7 +77,7 @@ public class RobotContainer {
         }
 
         public Command getAutonomousCommand() {
-            return new SequentialCommandGroup(new GoStraight(m_driveSubsystem, 0.1));
+            return null;
         }
 
 		public Command getTeleopCommand(){
