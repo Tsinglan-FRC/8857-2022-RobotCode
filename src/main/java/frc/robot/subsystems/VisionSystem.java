@@ -23,10 +23,10 @@ public class VisionSystem extends SubsystemBase {
     private final TalonFX motorX = new TalonFX(MotorConstants.MotorxID);
     private final NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
 
-    private final NetworkTableEntry tx = table.getEntry("tx");
-    private final NetworkTableEntry ty = table.getEntry("ty");
-    private final NetworkTableEntry ta = table.getEntry("ta");
-    private final NetworkTableEntry tv = table.getEntry("tv");
+    private final NetworkTableEntry tx = table.getEntry("tx"); //距目标X
+    private final NetworkTableEntry ty = table.getEntry("ty"); //距目标y
+    private final NetworkTableEntry ta = table.getEntry("ta"); //目标面积
+    private final NetworkTableEntry tv = table.getEntry("tv"); //有无目标
     private final NetworkTableEntry ledMode = table.getEntry("ledMode");
 
     public VisionSystem() {
