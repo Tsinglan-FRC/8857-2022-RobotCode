@@ -14,7 +14,7 @@ You can contact us on...
 1. QQ chanel: [QQChanel](#)
 2. Wechat: [Wechat Number](#)
 
-# Bilingual Notice Board
+# Bilingual Board
 
 ## 公告
 > 文档没写完
