@@ -23,4 +23,16 @@ public class DriveStick extends Joystick{
     public boolean getCompressorStatus(){
         return getRawButton(OIConstants.drive_CompressorStatusPort);
     }
+
+    public boolean getPenumatic(){
+        return getRawButton(OIConstants.drive_LiftPneumaticPort);
+    }
+
+    public double getLiftForward(){
+        return getRawAxis(OIConstants.drive_LiftForwardPort);
+    }
+
+    public double getLifeBackward(){
+        return getRawAxis(OIConstants.drive_LiftBackwardPort);
+    }
 }

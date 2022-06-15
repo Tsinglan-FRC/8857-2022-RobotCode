@@ -133,6 +133,9 @@ public final class Constants {
         public static final int drive_TurnPort = 4;
         public static final int drive_InLowSpeedPort = 6;
         public static final int drive_CompressorStatusPort = 8;
+        public static final int drive_LiftForwardPort = 2;
+        public static final int drive_LiftBackwardPort = 3;
+        public static final int drive_LiftPneumaticPort = 2;
 
     }
     
