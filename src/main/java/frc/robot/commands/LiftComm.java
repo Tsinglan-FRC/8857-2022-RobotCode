@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.LiftConstants;
 import frc.robot.Constants.LiftConstants.FGTB;
 import frc.robot.Constants.LiftConstants.FSTB;
+import frc.robot.Toolkit.Toggle;
 import frc.robot.subsystems.LiftSystem;
 
 public class LiftComm extends CommandBase {
@@ -32,6 +33,8 @@ public class LiftComm extends CommandBase {
   private final Supplier<Double> liftForward; 
   private final Supplier<Double> liftBackward;
   private final Supplier<Boolean> liftPneumatic;
+
+  private final Toggle togglePneumatic = new Toggle();
 
   public LiftComm(LiftSystem liftSubsystem, Supplier<Double> liftForward, Supplier<Double> liftBackward,
       Supplier<Boolean> liftPneumatic) {
@@ -83,7 +86,8 @@ public class LiftComm extends CommandBase {
       liftSubsystem.setLiftPower(0);
     }
 
-    liftSubsystem.setliftSoleniod(Pneumatic);
+    togglePneumatic.press(Pneumatic);
+    liftSubsystem.setliftSoleniod(togglePneumatic.get());
 
     // arcade(speed, turn, lowspeed);
   }

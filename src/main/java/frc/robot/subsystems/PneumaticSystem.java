@@ -13,31 +13,11 @@ import edu.wpi.first.wpilibj.Compressor;
 
 public class PneumaticSystem extends SubsystemBase {
   private final Compressor m_pressor;
-  
-  private boolean togglePressed;
-  private boolean defaultvalue;
 
-
-  private boolean toggle(boolean btn) {
-    if (btn) {
-      if (togglePressed == false) {
-        defaultvalue = true;
-        togglePressed = true;
-      }
-      else{
-        defaultvalue = false;
-        togglePressed = false;
-      }
-    }
-    return defaultvalue;
-  }
 
   /** Creates a new Pneumatic. */
   public PneumaticSystem() {
     m_pressor = new Compressor(PneumaticsModuleType.CTREPCM);
-
-    togglePressed = false;
-    defaultvalue = false;
   }
 
   @Override
@@ -48,8 +28,7 @@ public class PneumaticSystem extends SubsystemBase {
 
   }
 
-  public void setCompressorClosedLoop(boolean rawinput) {
-    boolean start = toggle(rawinput);
+  public void setCompressorClosedLoop(boolean start) {
     if (start == true)
       m_pressor.enableDigital();
     else

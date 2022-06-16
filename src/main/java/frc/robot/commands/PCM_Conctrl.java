@@ -6,7 +6,7 @@ package frc.robot.commands;
 
 import java.util.function.Supplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
+import frc.robot.Toolkit.Toggle;
 import frc.robot.subsystems.PneumaticSystem;
 
 public class PCM_Conctrl extends CommandBase {
@@ -15,6 +15,8 @@ public class PCM_Conctrl extends CommandBase {
   private final Supplier<Boolean> compressorStatus;
   //boolean togglePressed = false;
   //boolean defaultvalue = true;
+
+  private final Toggle startToggle = new Toggle();
 
   /** Creates a new Intakecomm. */
   public PCM_Conctrl(PneumaticSystem _PneumaticSystem, Supplier<Boolean> _CompressorStatus) {
@@ -35,7 +37,8 @@ public class PCM_Conctrl extends CommandBase {
   public void execute() {
     // boolean Com= IntakeStandby.get();
     // System.out.println(Com);
-    m_PneumaticSystem.setCompressorClosedLoop(compressorStatus.get());
+    startToggle.press(compressorStatus.get());
+    m_PneumaticSystem.setCompressorClosedLoop(startToggle.get());
     // m_PneumaticSystem.setIntake(intakeStatus.get());
   }
 

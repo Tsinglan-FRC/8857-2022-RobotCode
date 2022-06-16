@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Toolkit.TKTalonFX;
+import frc.robot.Toolkit.TKTalonFX.PIDType;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.MotorConstants;
 
@@ -15,7 +16,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
-public class DriveSystem extends SubsystemBase implements TKTalonFX{
+public class DriveSystem extends SubsystemBase{
   // private TalonFX leftMaster = new TalonFX(DriveConstants.LeftmasterID);
   private TalonFX leftMaster = new TalonFX(MotorConstants.LeftmasterID); // 定义电机
   private TalonFX leftFollower = new TalonFX(MotorConstants.LeftfollowerID); // 定义电机
@@ -38,10 +39,10 @@ public class DriveSystem extends SubsystemBase implements TKTalonFX{
     rightFollower.setInverted(true); // 定义马达
     rightFollower.setSensorPhase(true); // 定义马达
 
-    configMotor(leftMaster,PIDType.Telepid);
-    configMotor(leftFollower,PIDType.Telepid);
-    configMotor(rightMaster,PIDType.Telepid);
-    configMotor(rightFollower,PIDType.Telepid);
+    TKTalonFX.configMotor(leftMaster,PIDType.Telepid);
+    TKTalonFX.configMotor(leftFollower,PIDType.Telepid);
+    TKTalonFX.configMotor(rightMaster,PIDType.Telepid);
+    TKTalonFX.configMotor(rightFollower,PIDType.Telepid);
 
     setBrake(true);
   }

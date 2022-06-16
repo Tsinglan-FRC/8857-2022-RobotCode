@@ -8,14 +8,13 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Toolkit.TKTalonFX;
 import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.SolenoidConstants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
-public class intakeSystem extends SubsystemBase implements TKTalonFX{
+public class intakeSystem extends SubsystemBase{
   // private TalonFX leftMaster = new TalonFX(MotorConstants.LeftmasterID);
   private final TalonFX intake;
   private final Solenoid intakeSolenoid;

@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.SolenoidConstants;
 import frc.robot.Toolkit.TKTalonFX;
+import frc.robot.Toolkit.TKTalonFX.PIDType;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 
@@ -15,31 +16,13 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
-public class LiftSystem extends SubsystemBase implements TKTalonFX{
+public class LiftSystem extends SubsystemBase{
   private TalonFX lift_L = new TalonFX(MotorConstants.liftLeftID);
   private TalonFX lift_R = new TalonFX(MotorConstants.liftRightID);
   private Solenoid liftSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, SolenoidConstants.liftChannel);
 
-  private boolean defaultvalue;
-  private boolean togglePressed;
-
-  private boolean toggle(boolean btn) {
-    if (btn) {
-      if (togglePressed == false) {
-        defaultvalue = true;
-        togglePressed = true;
-      }
-      else{
-        defaultvalue = false;
-        togglePressed = false;
-      }
-    }
-    return defaultvalue;
-  }
 
   public LiftSystem() {
-    defaultvalue = true;
-    togglePressed = false;
 
 
     lift_L.setInverted(false);
@@ -48,8 +31,8 @@ public class LiftSystem extends SubsystemBase implements TKTalonFX{
     lift_R.setSensorPhase(true);
 
     
-    configMotor(lift_L,PIDType.Liftpid);
-    configMotor(lift_R,PIDType.Liftpid);
+    TKTalonFX.configMotor(lift_L,PIDType.Liftpid);
+    TKTalonFX.configMotor(lift_R,PIDType.Liftpid);
     setBrake(true);
     setLiftPositionzero();
   }
@@ -69,9 +52,7 @@ public class LiftSystem extends SubsystemBase implements TKTalonFX{
     }
   }
 
-  public void setliftSoleniod(boolean raw) {
-    boolean SW = toggle(raw);
-
+  public void setliftSoleniod(boolean SW) {
 
     if (SW == true) {
       liftSolenoid.set(false);

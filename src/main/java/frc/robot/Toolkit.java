@@ -11,8 +11,8 @@ import frc.robot.Constants.MotorConstants.Movepid;
 import frc.robot.Constants.MotorConstants.Telepid;
 
 public class Toolkit {
-    public interface TKTalonFX{
-        default void configMotor(TalonFX motor, double P, double I, double D, double F, double Izone, double maxout) {
+    public static class TKTalonFX{
+        public static void configMotor(TalonFX motor, double P, double I, double D, double F, double Izone, double maxout) {
             motor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, MotorConstants.kPIDSlot,
                 Constants.kCANTimeoutMS);
         
@@ -37,7 +37,7 @@ public class Toolkit {
             Turnpid
         }
 
-        default void configMotor(TalonFX motor,PIDType type){
+        public static void configMotor(TalonFX motor,PIDType type){
             switch(type){
                 case Telepid:
                 configMotor(motor,Telepid.kP, Telepid.kI, Telepid.kD, Telepid.kF, Telepid.kIZone, Telepid.Maxout);
@@ -51,6 +51,25 @@ public class Toolkit {
                 default:
                 return;
             }
+        }
+    }
+
+
+    public static class Toggle{
+        private boolean value = false;
+        private boolean lasttime = false;
+
+        public boolean get(){
+            return value;
+        }
+
+        public void press(boolean input){
+            if(lasttime == false){
+                if(input == true){
+                    value = !value;
+                }
+            }
+            lasttime = input;
         }
     }
 }

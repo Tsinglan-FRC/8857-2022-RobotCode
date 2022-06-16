@@ -16,10 +16,11 @@ import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.TurrentConstants.ConfigConstants;
 import frc.robot.Constants.VisionConstants.AutoFire;
 import frc.robot.Toolkit.TKTalonFX;
+import frc.robot.Toolkit.TKTalonFX.PIDType;
 
 
 
-public class TurrentSystem extends SubsystemBase implements TKTalonFX{
+public class TurrentSystem extends SubsystemBase{
 
     private final TalonFX motorX = new TalonFX(MotorConstants.MotorxID);
     private final NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -55,8 +56,8 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
         shootBall_R.setSensorPhase(true); // 设置传感器状态
         shootBall_R.follow(shootBall_L);
 
-        configMotor(shootBall_L,PIDType.Telepid);
-        configMotor(shootBall_R,PIDType.Telepid);
+        TKTalonFX.configMotor(shootBall_L,PIDType.Telepid);
+        TKTalonFX.configMotor(shootBall_R,PIDType.Telepid);
         /*configMotor(moveBall_B,PIDType.Telepid);
         configMotor(moveBall_F,PIDType.Telepid);*/
     }
