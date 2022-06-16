@@ -75,6 +75,9 @@ public class TurrentCmd extends CommandBase{
 		if(justFireGet == true){
 			turrentSystem.setshootForward(1);
 		}
+		else{
+			turrentSystem.setshootForward(0);
+		}
 
 
 	}
