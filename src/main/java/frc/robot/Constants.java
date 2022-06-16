@@ -30,7 +30,7 @@ public final class Constants {
         public static final int MotorxID = 9;
 
         public static final double Encode2Meter = (4 * 2.54 * 0.01 * Math.PI) / 2048.0;// D=4inch
-        public static final double MaxRPM = 2000.0;
+        public static final double MaxRPM = 4000.0;
         public static final double EncoderToRPM = MaxRPM * 2048.0 / 600.0;
         public static final double LiftgearRatio = 3 / 50;
         public static final double DrivegearRatio = 36 / (31 * 7);

@@ -36,6 +36,7 @@ public class intakeSystem extends SubsystemBase{
       SolenoidConstants.intakeChannel);
 
     // m_pigeon.getGeneralStatus(genStatus);
+    intakeSet(true);
     intake.setInverted(false);
     intake.setSensorPhase(true);
     // upBall.setInverted(true);
@@ -61,7 +62,7 @@ public class intakeSystem extends SubsystemBase{
     intake.set(ControlMode.PercentOutput, power);
   }*/
 
-  public void setIntake(boolean SW, double power) {
+  /*public void setIntake(boolean SW, double power) {
     if (SW == true) {
       intakeSolenoid.set(true);
       intake.set(ControlMode.PercentOutput, power);
@@ -69,6 +70,10 @@ public class intakeSystem extends SubsystemBase{
       intakeSolenoid.set(false);
       intake.set(ControlMode.PercentOutput, 0.0);
     }
+  }*/
+
+  public void intakeSet(boolean input){
+    intakeSolenoid.set(input);
   }
 
   public void moveBallIn(double power){
