@@ -18,6 +18,7 @@ public class TurrentCmd extends CommandBase{
     private final Supplier<Double> xTurn;
     private final Supplier<Boolean> fire;
 	private final Supplier<Boolean> justFire;
+	private final Supplier<Boolean> reverseTakeOut;
     
     public TurrentCmd(
         TurrentSystem _turrentSystem,
@@ -26,7 +27,8 @@ public class TurrentCmd extends CommandBase{
         Supplier<Boolean> _moveBallUp,
         Supplier<Double> _xTurn,
         Supplier<Boolean> _fire,
-		Supplier<Boolean> _justFire){
+		Supplier<Boolean> _justFire,
+		Supplier<Boolean> _reverseTakeOut){
             
         turrentSystem = _turrentSystem;
         shootBallForward = _shootBallForward;
@@ -35,6 +37,7 @@ public class TurrentCmd extends CommandBase{
         fire = _fire;
 		justFire = _justFire;
         m_PIDController = new PIDController(PIDCtrl.kP, PIDCtrl.kI, PIDCtrl.kD);
+		reverseTakeOut=_reverseTakeOut;
 
         addRequirements(_turrentSystem);
     }
@@ -51,6 +54,7 @@ public class TurrentCmd extends CommandBase{
 		boolean moveBallUpGet = moveBallUp.get();
 		boolean shootballForwardGet = shootBallForward.get();
 		boolean justFireGet = justFire.get();
+		boolean reverseTakeOutGet = reverseTakeOut.get();
 
 		if(xTurnGet < -0.5){
 			turrentSystem.setMotorX(-0.1);
@@ -87,6 +91,9 @@ public class TurrentCmd extends CommandBase{
 
 		if(moveBallUpGet == true){
 			turrentSystem.setMoveBallUP(1);
+		}
+		else if(reverseTakeOutGet == true){
+			turrentSystem.setMoveBallUP(-1);
 		}
 		else{
 			turrentSystem.setMoveBallUP(0);

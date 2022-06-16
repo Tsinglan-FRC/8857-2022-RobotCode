@@ -54,6 +54,7 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
         shootBall_L.setSensorPhase(true); // 设置传感器状态
         shootBall_R.setInverted(false);// 设置不反转（需要测试）
         shootBall_R.setSensorPhase(true); // 设置传感器状态
+        shootBall_R.follow(shootBall_L);
 
         /*configMotor(shootBall_L,PIDType.Telepid);
         configMotor(shootBall_R,PIDType.Telepid);
@@ -136,7 +137,11 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
         }
     }
 
-    public void setshootForward(double power) {
+    public void setshootForward(double power){
+        shootBall_L.set(ControlMode.PercentOutput, power);
+    }
+
+    /*public void setshootForward(double power) {
         shootBall_L.set(ControlMode.PercentOutput, power);
         shootBall_R.set(ControlMode.PercentOutput, power);
     }
@@ -144,7 +149,7 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
     public void setshootBackward(double power) {
         shootBall_L.set(ControlMode.PercentOutput, power * -1 * 0.6);
         shootBall_R.set(ControlMode.PercentOutput, power * -1 * 0.6);
-    }
+    }*/
     
     public void setMoveBallUP(double power){
         moveBall_B.set(ControlMode.PercentOutput, power);

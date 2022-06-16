@@ -127,8 +127,8 @@ public final class Constants {
         public static final int operate_HorizontalPort = 4;
         public static final int operate_ShootBallForwardPort = 7;
         public static final int operate_MoveBallUpPort = 6;
-        public static final int operate_IntakeSpeedPort = 8;
-        public static final int operate_IntakeStatus = 5;
+        public static final int operate_PutBallOutPort = 5;
+        public static final int operate_IntakeStatus = 8;
         public static final int operate_JustShoot = 1;
 
         public static final int drive_SpeedPort = 1;

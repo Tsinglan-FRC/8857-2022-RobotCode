@@ -14,16 +14,22 @@ public class Intakecomm extends CommandBase {
   private final intakeSystem intakeSystem;
   private final Supplier<Boolean> putOut;
   private final Supplier<Boolean> intakeStatus;
+  private final Supplier<Boolean> getOut;
 
   //private boolean togglePressed = false;
 
   /** Creates a new Intakecomm. */
-  public Intakecomm(intakeSystem _intakeSystem, Supplier<Boolean> _putOut, Supplier<Boolean> _intakeStatus) {
+  public Intakecomm(
+    intakeSystem _intakeSystem, 
+    Supplier<Boolean> _putOut, 
+    Supplier<Boolean> _intakeStatus,
+    Supplier<Boolean> _getOut) {
     // Use addRequirements() here to declare subsystem dependencies.
     // m_IntakeSysten = mIntakeSysten;
     intakeSystem = _intakeSystem;
     putOut = _putOut;
     intakeStatus = _intakeStatus;
+    getOut = _getOut;
 
     addRequirements(intakeSystem);
   }
@@ -37,11 +43,19 @@ public class Intakecomm extends CommandBase {
     // boolean Com= IntakeStandby.get();
     // System.out.println(Com);
 
-    if (putOut.get()){
-      intakeSystem.setIntake(intakeStatus.get(), MotorConstants.intakeSpeedTruePower);
+    boolean putOutGet = putOut.get();
+    boolean getOutGet = getOut.get();
+
+    boolean intakeStatusGet = intakeStatus.get();
+
+    if (putOutGet){
+      intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedTruePower);
+    }
+    else if(getOutGet){
+      intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedFalsePower);
     }
     else{
-      intakeSystem.setIntake(intakeStatus.get(), MotorConstants.intakeSpeedFalsePower);
+      intakeSystem.setIntake(intakeStatusGet,0);
     }
   }
 
