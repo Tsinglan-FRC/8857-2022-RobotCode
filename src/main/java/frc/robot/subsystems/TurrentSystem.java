@@ -31,10 +31,10 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
 
 
 
-    private TalonFX moveBall_F = new TalonFX(MotorConstants.upBallForwardID); //一左一右两个射球
-    private TalonFX moveBall_B = new TalonFX(MotorConstants.upBallBackwardID); //一左一右两个射球
-    private TalonFX shootBall_L = new TalonFX(MotorConstants.shootBallLeftID); //一左一右两个射球
-    private TalonFX shootBall_R = new TalonFX(MotorConstants.shootBallRightID); //一左一右两个射球
+    private final TalonFX moveBall_F = new TalonFX(MotorConstants.upBallForwardID); //一左一右两个射球
+    private final TalonFX moveBall_B = new TalonFX(MotorConstants.upBallBackwardID); //一左一右两个射球
+    private final TalonFX shootBall_L = new TalonFX(MotorConstants.shootBallLeftID); //一左一右两个射球
+    private final TalonFX shootBall_R = new TalonFX(MotorConstants.shootBallRightID); //一左一右两个射球
 
 
 
@@ -55,10 +55,10 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
         shootBall_R.setInverted(false);// 设置不反转（需要测试）
         shootBall_R.setSensorPhase(true); // 设置传感器状态
 
-        configMotor(shootBall_L,PIDType.Telepid);
+        /*configMotor(shootBall_L,PIDType.Telepid);
         configMotor(shootBall_R,PIDType.Telepid);
         configMotor(moveBall_B,PIDType.Telepid);
-        configMotor(moveBall_F,PIDType.Telepid);
+        configMotor(moveBall_F,PIDType.Telepid);*/
     }
 
     @Override
@@ -180,12 +180,7 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
         /*if(onTarget()){
             setMoveBallUP(0.5);
         }*/
-        setMoveBallUP(0.5);
-    }
-
-    public void liitleJustFire(){
-        setshootForward(1);
-        setMoveBallUP(0.5);
+        setMoveBallUP(1);
     }
     
 }
