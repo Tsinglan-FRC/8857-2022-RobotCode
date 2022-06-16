@@ -37,7 +37,7 @@ public class intakeSystem extends SubsystemBase implements TKTalonFX{
       SolenoidConstants.intakeChannel);
 
     // m_pigeon.getGeneralStatus(genStatus);
-    intake.setInverted(true);
+    intake.setInverted(false);
     intake.setSensorPhase(true);
     // upBall.setInverted(true);
     // upBall.setSensorPhase(true);
@@ -70,6 +70,10 @@ public class intakeSystem extends SubsystemBase implements TKTalonFX{
       intakeSolenoid.set(false);
       intake.set(ControlMode.PercentOutput, 0.0);
     }
+  }
+
+  public void move(double power){
+    intake.set(ControlMode.PercentOutput,power);
   }
 
   public void moveBallUP(double power){

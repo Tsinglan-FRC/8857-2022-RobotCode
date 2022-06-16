@@ -72,17 +72,19 @@ public class TurrentCmd extends CommandBase{
 			}
 		}
 
-		//if(justFireGet == true){
+		
+		if(shootballForwardGet == true){
+			turrentSystem.setshootForward(1);
+		}
+		else{
+			turrentSystem.setshootForward(0);
+		}
+
+		if(justFireGet == true){
 			turrentSystem.setshootForward(0.5);
-		//}
+		}
 
 
-		// if(shootballForwardGet == true){
-		// 	turrentSystem.setshootForward(1);
-		// }
-		// else{
-		// 	turrentSystem.setshootForward(0);
-		// }
 	}
 
 	@Override

@@ -48,24 +48,21 @@ public class Intakecomm extends CommandBase {
 
     boolean intakeStatusGet = intakeStatus.get();
 
-    if (putOutGet){
-      intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedTruePower);
-    }
-    else if(getOutGet){
-      intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedFalsePower);
-    }
-    else{
-      intakeSystem.setIntake(intakeStatusGet,0);
-    }
 
 		if(putOutGet == true){
 			intakeSystem.moveBallUP(1);
+      //intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedTruePower);
+      intakeSystem.move(1);
 		}
 		else if(getOutGet == true){
 			intakeSystem.moveBallUP(-1);
+      //intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedFalsePower);
+      intakeSystem.move(-1);
 		}
 		else{
 			intakeSystem.moveBallUP(0);
+      //intakeSystem.setIntake(intakeStatusGet,0);
+      intakeSystem.move(0);
 		}
   }
 
