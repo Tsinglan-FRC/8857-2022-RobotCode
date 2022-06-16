@@ -15,19 +15,19 @@ public final class Constants {
         public static final int RightmasterID = 3; // 四个马达
         public static final int RightfollowerID = 4; // 四个马达
 
-        public static final int intakeID = 9; // 收球
+        public static final int intakeID = 11; // 收球
         public static final double intakeSpeedTruePower = 0.2;
         public static final double intakeSpeedFalsePower = -0.2;
 
-        public static final int upBallForwardID = 8; // 上球
-        public static final int upBallBackwardID = 1919810; // 上球
+        public static final int upBallForwardID = 10; // 上球
+        public static final int upBallBackwardID = 12; // 上球
         public static final int shootBallLeftID = 7;
-        public static final int shootBallRightID = 141514;
+        public static final int shootBallRightID = 8;
         //public static final int panTilt = 141514;
         
         public static final int liftLeftID = 5;
         public static final int liftRightID = 6;
-        public static final int MotorxID = 10;
+        public static final int MotorxID = 9;
 
         public static final double Encode2Meter = (4 * 2.54 * 0.01 * Math.PI) / 2048.0;// D=4inch
         public static final double MaxRPM = 2000.0;
@@ -129,12 +129,13 @@ public final class Constants {
         public static final int operate_MoveBallUpPort = 6;
         public static final int operate_IntakeSpeedPort = 8;
         public static final int operate_IntakeStatus = 5;
+        
         public static final int drive_SpeedPort = 1;
         public static final int drive_TurnPort = 4;
         public static final int drive_InLowSpeedPort = 6;
         public static final int drive_CompressorStatusPort = 8;
         public static final int drive_LiftForwardPort = 2;
-        public static final int drive_LiftBackwardPort = 3;
+        public static final int drive_LiftBackwardPort = 4;
         public static final int drive_LiftPneumaticPort = 2;
 
     }
