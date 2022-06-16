@@ -8,7 +8,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
@@ -147,7 +147,8 @@ public class TurrentSystem extends SubsystemBase{
     }
 
     public void setshootForward(double power){
-        shootBall_L.set(ControlMode.PercentOutput, power);
+        shootBall_L.set(ControlMode.Velocity, power);
+        shootBall_R.set(ControlMode.Velocity, power);
     }
 
     /*public void setshootForward(double power) {
@@ -170,14 +171,14 @@ public class TurrentSystem extends SubsystemBase{
         moveBall_F.set(ControlMode.PercentOutput, power);
     }*/
 
-    public boolean onTarget(){
+    /*public boolean onTarget(){
         if(shootBall_L.getSelectedSensorVelocity()>=MotorConstants.isOnTargetValue && shootBall_R.getSelectedSensorVelocity()>=MotorConstants.isOnTargetValue){
           return true;
         }
         else{
           return false;
         }
-    }
+    }*/
 
 
     public TurrentRangeStatus amIInRange(){
@@ -198,12 +199,20 @@ public class TurrentSystem extends SubsystemBase{
     public void autoFire(){
         double getYGet = getY();
 
-        if(getYGet > 10 && getYGet <= 20){
-            setshootForward(AutoFire.POWER10TO20);
+        if(getYGet > -10 && getYGet <= 0){
+            setshootForward(AutoFire.POWER0TOn10);
         }
-        else if(getYGet > 20 && getYGet <= 30){
-            setshootForward(AutoFire.POWER20TO30);
+        else if(getYGet > -20 && getYGet <= -10){
+            setshootForward(AutoFire.POWERn10TOn20);
         }
+        else if(getYGet > -30 && getYGet <= -20){
+            setshootForward(AutoFire.POWERn20TOn30);
+        }
+        else{
+            setshootForward(AutoFire.POWERDEFAULT);
+        }
+
+        //setshootForward(5000);
 
         /*if(onTarget()){
             setMoveBallUP(0.5);

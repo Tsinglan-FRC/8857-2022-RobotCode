@@ -50,10 +50,10 @@ public class TurrentCmd extends CommandBase{
 
 		if(range!=TurrentRangeStatus.Ok){
 			if(range==TurrentRangeStatus.Left){
-				turrentSystem.setMotorX(TurrentConstants.xMotorSPD);
+				turrentSystem.setMotorX(TurrentConstants.xMotorSPD * -1);
 			}
 			else{
-				turrentSystem.setMotorX(TurrentConstants.xMotorSPD * -1);
+				turrentSystem.setMotorX(TurrentConstants.xMotorSPD);
 			}
 		}
 		else if(fireGet == true){
@@ -74,6 +74,7 @@ public class TurrentCmd extends CommandBase{
 		}
 		else {
 			turrentSystem.setMotorX(0.0);
+			turrentSystem.setshootForward(AutoFire.POWERDEFAULT);
 		}
 	}
 

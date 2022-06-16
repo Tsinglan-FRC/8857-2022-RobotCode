@@ -157,16 +157,22 @@ public final class Constants {
     
     public static final class VisionConstants{
         public static final class PIDCtrl{
-            public static final double kP = 0.1;
+            public static final double kP = 0.02;
             public static final double kI = 0;
-            public static final double kD = 0;
+            public static final double kD = 0.00001;
         }
 
         public static final class AutoFire{
-            public static final double allowedDiff = 0.1;
+            public static final double allowedDiff = 100;
 
-            public static final double POWER10TO20 = 1;
-            public static final double POWER20TO30 = 1;
+            public static final double EncoderToRPM = 1 / 2048 * 600;
+
+            public static final double POWERDEFAULT = 0;
+            public static final double POWER0TOn10 = 6000;
+            public static final double POWERn10TOn20 = 10000;
+            public static final double POWERn20TOn30 = 10000;
+
+            //public static final double OUTOFTIME = 1;
         }
     }
 
