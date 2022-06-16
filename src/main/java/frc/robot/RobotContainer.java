@@ -46,8 +46,9 @@ public class RobotContainer {
         m_IntakeSystem.setDefaultCommand(new Intakecomm(
             m_IntakeSystem,
                         
-        	() -> joystick2.shallPutOut(),
-            () -> joystick2.getIntakeStatus()
+        	() -> joystick2.shallMoveBallUp(),
+            () -> joystick2.getIntakeStatus(),
+            () -> joystick2.shallPutBallOut()
 		));
 
         /*m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(
@@ -86,7 +87,8 @@ public class RobotContainer {
             () -> joystick2.shallMoveBallUp(), 
             () -> joystick2.getHorizontal(), 
             () -> joystick2.isFire(),
-            () -> joystick2.shallJustShoot()));
+            () -> joystick2.shallJustShoot(),
+            () -> joystick2.shallPutBallOut()));
     }
 
     public Command getAutonomousCommand() {
