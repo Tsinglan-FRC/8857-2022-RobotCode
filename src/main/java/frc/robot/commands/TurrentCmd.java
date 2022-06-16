@@ -18,20 +18,17 @@ public class TurrentCmd extends CommandBase{
     private final PIDController m_PIDController;
     private final Supplier<Double> xTurn;
     private final Supplier<Boolean> fire;
-	private final Supplier<Boolean> justFire;
 	//private final Supplier<Boolean> reverseTakeOut;
     
     public TurrentCmd(
         TurrentSystem _turrentSystem,
         
         Supplier<Double> _xTurn,
-        Supplier<Boolean> _fire,
-		Supplier<Boolean> _justFire){
+        Supplier<Boolean> _fire){
             
         turrentSystem = _turrentSystem;
         xTurn = _xTurn;
         fire = _fire;
-		justFire = _justFire;
         m_PIDController = new PIDController(PIDCtrl.kP, PIDCtrl.kI, PIDCtrl.kD);
 		//reverseTakeOut=_reverseTakeOut;
 
@@ -47,17 +44,7 @@ public class TurrentCmd extends CommandBase{
 	public void execute(){
 		double xTurnGet = xTurn.get();
 		boolean fireGet = fire.get();
-		boolean justFireGet = justFire.get();
-
-		if(xTurnGet < TurrentConstants.deadZone * -1){
-			turrentSystem.setMotorX(TurrentConstants.xMotorSPD);
-		} else{ 
-			if(xTurnGet > TurrentConstants.deadZone){
-				turrentSystem.setMotorX(TurrentConstants.xMotorSPD * -1);
-			} else {
-				turrentSystem.setMotorX(0.0);
-			}
-		}
+		
 
 		if(fireGet == true){
 			if(turrentSystem.isValid()){
@@ -69,17 +56,15 @@ public class TurrentCmd extends CommandBase{
 				}
 			}
 		}
-
-
-
-		if(justFireGet == true){
-			turrentSystem.setshootForward(1);
+		else if(xTurnGet < TurrentConstants.deadZone * -1){
+			turrentSystem.setMotorX(TurrentConstants.xMotorSPD);
+		} 
+		else if(xTurnGet > TurrentConstants.deadZone){
+			turrentSystem.setMotorX(TurrentConstants.xMotorSPD * -1);
 		}
-		else{
-			turrentSystem.setshootForward(0);
+		else {
+			turrentSystem.setMotorX(0.0);
 		}
-
-
 	}
 
 	@Override

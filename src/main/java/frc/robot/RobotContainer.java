@@ -83,8 +83,7 @@ public class RobotContainer {
         m_TurrentSystem.setDefaultCommand(new TurrentCmd(
             m_TurrentSystem, 
             
-            () -> joystick2.getRightX(), 
-            () -> false,
+            () -> joystick2.getRightX(),
             () -> joystick2.getA()));
     }
 
