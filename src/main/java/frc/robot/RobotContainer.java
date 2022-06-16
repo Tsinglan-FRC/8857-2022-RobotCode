@@ -38,17 +38,17 @@ public class RobotContainer {
         m_driveSubsystem.setDefaultCommand(new ArcadeDrive(
 			m_driveSubsystem, // 定义手柄
 	            
-			() -> joystick1.getSpeed(),
-			() -> joystick1.getTurn(),
-			() -> joystick1.isInLowSpeed()
+			() -> joystick1.getLeftY(),
+			() -> joystick1.getRightX(),
+			() -> joystick1.getRight1()
 		));
 
         m_IntakeSystem.setDefaultCommand(new Intakecomm(
             m_IntakeSystem,
                         
-        	() -> joystick2.shallMoveBallUp(),
-            () -> joystick2.getIntakeStatus(),
-            () -> joystick2.shallPutBallOut()
+        	() -> joystick2.getRight1(),
+            () -> joystick2.getSTART(),
+            () -> joystick2.getLeft1()
 		));
 
         /*m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(
@@ -61,15 +61,15 @@ public class RobotContainer {
         m_PneumaticSystem.setDefaultCommand(new PCM_Conctrl(
 			m_PneumaticSystem,
 	            
-			() -> joystick1.getCompressorStatus()
+			() -> joystick1.getSTART()
 		));
 
         m_LiftSystem.setDefaultCommand(new LiftComm(
 			m_LiftSystem,
                 
-			() -> joystick1.getRawAxis(2),
-            () -> joystick1.getRawAxis(3),
-            () -> joystick1.getRawButton(2)
+			() -> joystick1.getLeft2(),
+            () -> joystick1.getRight2(),
+            () -> joystick1.getB()
 		));
 
         /*m_VisionSystem.setDefaultCommand(new VisionCmd(
@@ -83,9 +83,9 @@ public class RobotContainer {
         m_TurrentSystem.setDefaultCommand(new TurrentCmd(
             m_TurrentSystem, 
             
-            () -> joystick2.getHorizontal(), 
-            () -> joystick2.isFire(),
-            () -> joystick2.shallJustShoot()));
+            () -> joystick2.getRightX(), 
+            () -> false,
+            () -> joystick2.getA()));
     }
 
     public Command getAutonomousCommand() {

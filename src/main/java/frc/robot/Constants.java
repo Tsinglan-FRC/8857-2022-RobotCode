@@ -138,20 +138,20 @@ public final class Constants {
         public static final int drive_StickPort = 0;
         public static final int operate_StickPort = 1;
 
-        public static final int operate_HorizontalPort = 4;
-        public static final int operate_ShootBallForwardPort = 7;
-        public static final int operate_MoveBallUpPort = 6;
-        public static final int operate_PutBallOutPort = 5;
-        public static final int operate_IntakeStatus = 8;
-        public static final int operate_JustShoot = 1;
+        public static final int operate_RightXPort = 4;
+        public static final int operate_BACKPort = 7;
+        public static final int operate_Right1Port = 6;
+        public static final int operate_Left1Port = 5;
+        public static final int operate_STARTPort = 8;
+        public static final int operate_APort = 1;
 
-        public static final int drive_SpeedPort = 1;
-        public static final int drive_TurnPort = 4;
-        public static final int drive_InLowSpeedPort = 6;
-        public static final int drive_CompressorStatusPort = 8;
-        public static final int drive_LiftForwardPort = 2;
-        public static final int drive_LiftBackwardPort = 4;
-        public static final int drive_LiftPneumaticPort = 2;
+        public static final int drive_LeftYPort = 1;
+        public static final int drive_RightXPort = 4;
+        public static final int drive_Right1Port = 6;
+        public static final int drive_STARTPort = 8;
+        public static final int drive_Left2Port = 2;
+        public static final int drive_Right2Port = 3;
+        public static final int drive_BPort = 2;
 
     }
     

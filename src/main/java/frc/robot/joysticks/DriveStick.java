@@ -8,31 +8,31 @@ public class DriveStick extends Joystick{
         super(OIConstants.drive_StickPort);
     }
 
-    public double getSpeed(){
-        return -1 * getRawAxis(OIConstants.drive_SpeedPort);
+    public double getLeftY(){
+        return -1 * getRawAxis(OIConstants.drive_LeftYPort);
     }
 
-    public double getTurn(){
-        return getRawAxis(OIConstants.drive_TurnPort);
+    public double getRightX(){
+        return getRawAxis(OIConstants.drive_RightXPort);
     }
 
-    public boolean isInLowSpeed(){
-        return getRawButton(OIConstants.drive_InLowSpeedPort);
+    public boolean getRight1(){
+        return getRawButton(OIConstants.drive_Right1Port);
     }
 
-    public boolean getCompressorStatus(){
-        return getRawButton(OIConstants.drive_CompressorStatusPort);
+    public boolean getSTART(){
+        return getRawButton(OIConstants.drive_STARTPort);
     }
 
-    public boolean getPenumatic(){
-        return getRawButton(OIConstants.drive_LiftPneumaticPort);
+    public boolean getB(){
+        return getRawButton(OIConstants.drive_BPort);
     }
 
-    public double getLiftForward(){
-        return getRawAxis(OIConstants.drive_LiftForwardPort);
+    public double getLeft2(){
+        return getRawAxis(OIConstants.drive_Left2Port);
     }
 
-    public double getLifeBackward(){
-        return getRawAxis(OIConstants.drive_LiftBackwardPort);
+    public double getRight2(){
+        return getRawAxis(OIConstants.drive_Right2Port);
     }
 }

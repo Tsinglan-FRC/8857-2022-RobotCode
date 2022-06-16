@@ -93,8 +93,8 @@ public class DriveSystem extends SubsystemBase implements TKTalonFX{
 
   public void arcade(double speed, double turn, boolean lowspeed) {
     if (lowspeed) {
-      setLeftSpeed(speed * DriveConstants.speedFactor_slowspeed + turn * DriveConstants.turnFactor_slowspeed);
-      setRightSpeed(speed * DriveConstants.speedFactor_slowspeed - turn * DriveConstants.turnFactor_slowspeed);
+      setLeftSpeed(speed * DriveConstants.speedFactor_slowspeed * -1 + turn * DriveConstants.turnFactor_slowspeed);
+      setRightSpeed(speed * DriveConstants.speedFactor_slowspeed * -1 - turn * DriveConstants.turnFactor_slowspeed);
     }
 
     else {

@@ -8,31 +8,27 @@ public class OperateStick extends Joystick{
         super(OIConstants.operate_StickPort);
     }
 
-    public boolean isFire(){
+    /*public boolean isSetZero(){
         return false;
+    }*/
+
+    public double getRightX(){
+        return this.getRawAxis(OIConstants.operate_RightXPort);
     }
 
-    public boolean isSetZero(){
-        return false;
+    public boolean getRight1(){
+        return getRawButton(OIConstants.operate_Right1Port);
     }
 
-    public double getHorizontal(){
-        return this.getRawAxis(OIConstants.operate_HorizontalPort) * -1;
+    public boolean getLeft1(){
+        return getRawButton(OIConstants.operate_Left1Port);
     }
 
-    public boolean shallMoveBallUp(){
-        return getRawButton(OIConstants.operate_MoveBallUpPort);
+    public boolean getSTART(){
+        return getRawButton(OIConstants.operate_STARTPort);
     }
 
-    public boolean shallPutBallOut(){
-        return getRawButton(OIConstants.operate_PutBallOutPort);
-    }
-
-    public boolean getIntakeStatus(){
-        return getRawButton(OIConstants.operate_IntakeStatus);
-    }
-
-    public boolean shallJustShoot(){
-        return getRawButton(OIConstants.operate_JustShoot);
+    public boolean getA(){
+        return getRawButton(OIConstants.operate_APort);
     }
 }
