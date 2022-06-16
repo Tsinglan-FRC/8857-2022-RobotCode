@@ -102,7 +102,7 @@ public class RobotContainer {
 		);
 	}*/
 
-    public Command getTeleopCommand(){
+    /*public Command getTeleopCommand(){
         return new SequentialCommandGroup(
             new TurrentCmd(
                 m_TurrentSystem, 
@@ -138,6 +138,5 @@ public class RobotContainer {
                 () -> joystick1.isInLowSpeed()
             )
         );
-    }
-
+    }*/
 }
