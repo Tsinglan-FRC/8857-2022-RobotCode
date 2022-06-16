@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -19,7 +20,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 public class intakeSystem extends SubsystemBase implements TKTalonFX{
   // private TalonFX leftMaster = new TalonFX(MotorConstants.LeftmasterID);
   private final TalonFX intake;
-  private final DoubleSolenoid intakeSolenoid;
+  private final Solenoid intakeSolenoid;
   // private TalonFX upBall = new TalonFX(MotorConstants.upBallID);
   // private TalonFX rightMaster = new TalonFX(MotorConstants.RightmasterID);
   // private TalonFX rightFollower = new TalonFX(MotorConstants.RightfollowerID);
@@ -30,10 +31,9 @@ public class intakeSystem extends SubsystemBase implements TKTalonFX{
 
   public intakeSystem() {
     intake = new TalonFX(MotorConstants.intakeID);
-    intakeSolenoid = new DoubleSolenoid(
+    intakeSolenoid = new Solenoid(
       PneumaticsModuleType.CTREPCM, 
-      SolenoidConstants.forawrdChannel, 
-      SolenoidConstants.reverseChannel);
+      SolenoidConstants.intakeChannel);
 
     // m_pigeon.getGeneralStatus(genStatus);
     intake.setInverted(true);
@@ -63,10 +63,10 @@ public class intakeSystem extends SubsystemBase implements TKTalonFX{
 
   public void setIntake(boolean SW, double power) {
     if (SW == true) {
-      intakeSolenoid.set(Value.kForward);
+      intakeSolenoid.set(true);
       intake.set(ControlMode.PercentOutput, power);
     } else {
-      intakeSolenoid.set(Value.kReverse);
+      intakeSolenoid.set(false);
       intake.set(ControlMode.PercentOutput, 0.0);
     }
   }

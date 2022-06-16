@@ -5,10 +5,13 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.Constants.MotorConstants;
+import frc.robot.Constants.SolenoidConstants;
 import frc.robot.Toolkit.TKTalonFX;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -18,7 +21,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 public class LiftSystem extends SubsystemBase implements TKTalonFX{
   private TalonFX lift_L = new TalonFX(MotorConstants.liftLeftID);
   private TalonFX lift_R = new TalonFX(MotorConstants.liftRightID);
-  private DoubleSolenoid liftSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
+  private Solenoid liftSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, SolenoidConstants.liftChannel);
 
   private boolean defaultvalue;
   private boolean togglePressed;
@@ -64,8 +67,8 @@ public class LiftSystem extends SubsystemBase implements TKTalonFX{
       lift_L.setNeutralMode(NeutralMode.Brake);
       lift_R.setNeutralMode(NeutralMode.Brake);
     } else {
-      lift_L.setNeutralMode(NeutralMode.Brake);
-      lift_R.setNeutralMode(NeutralMode.Brake);
+      lift_L.setNeutralMode(NeutralMode.Coast);
+      lift_R.setNeutralMode(NeutralMode.Coast);
     }
   }
 
@@ -74,10 +77,10 @@ public class LiftSystem extends SubsystemBase implements TKTalonFX{
 
 
     if (SW == true) {
-      liftSolenoid.set(Value.kReverse);
+      liftSolenoid.set(false);
 
     } else {
-      liftSolenoid.set(Value.kForward);
+      liftSolenoid.set(true);
 
     }
   }
