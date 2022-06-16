@@ -50,10 +50,10 @@ public class TurrentCmd extends CommandBase{
 		boolean justFireGet = justFire.get();
 
 		if(xTurnGet < TurrentConstants.deadZone * -1){
-			turrentSystem.setMotorX(TurrentConstants.xMotorSPD * -1);
+			turrentSystem.setMotorX(TurrentConstants.xMotorSPD);
 		} else{ 
 			if(xTurnGet > TurrentConstants.deadZone){
-				turrentSystem.setMotorX(TurrentConstants.xMotorSPD);
+				turrentSystem.setMotorX(TurrentConstants.xMotorSPD * -1);
 			} else {
 				turrentSystem.setMotorX(0.0);
 			}

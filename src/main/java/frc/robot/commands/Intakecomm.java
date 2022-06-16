@@ -7,6 +7,7 @@ package frc.robot.commands;
 import java.util.function.Supplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.Toolkit.Toggle;
 import frc.robot.subsystems.intakeSystem;
 
 public class Intakecomm extends CommandBase {
@@ -15,6 +16,8 @@ public class Intakecomm extends CommandBase {
   private final Supplier<Boolean> putOut;
   private final Supplier<Boolean> intakeStatus;
   private final Supplier<Boolean> getOut;
+
+  private final Toggle intakeToggle = new Toggle();
 
   //private boolean togglePressed = false;
 
@@ -64,13 +67,18 @@ public class Intakecomm extends CommandBase {
       //intakeSystem.setIntake(intakeStatusGet,0);
       intakeSystem.moveBallIn(0);
 		}
+
+    intakeToggle.press(intakeStatusGet);
+    intakeSystem.intakeSet(intakeToggle.get());
+    
+
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     //intakeSystem.setBrake(false);
-    intakeSystem.setIntake(false,0);
+    //intakeSystem.setIntake(false,0);
   }
 
   // Returns true when the command should end.
