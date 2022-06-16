@@ -31,8 +31,6 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
 
 
 
-    private final TalonFX moveBall_F = new TalonFX(MotorConstants.upBallForwardID); //一左一右两个射球
-    private final TalonFX moveBall_B = new TalonFX(MotorConstants.upBallBackwardID); //一左一右两个射球
     private final TalonFX shootBall_L = new TalonFX(MotorConstants.shootBallLeftID); //一左一右两个射球
     private final TalonFX shootBall_R = new TalonFX(MotorConstants.shootBallRightID); //一左一右两个射球
 
@@ -42,7 +40,7 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
         System.out.println("Limelight init");
         setLED(false);
 
-        setBrake(true);
+        //setBrake(true);
         
         motorX.config_kP(0, 0.3, 10);
         motorX.config_kI(0, 0, 10);
@@ -92,23 +90,23 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
             return false;
     }
 
-    public void setBrake(boolean brake){
+    /*public void setBrake(boolean brake){
         if(brake){
             motorX.setNeutralMode(NeutralMode.Brake);
             
             shootBall_L.setNeutralMode(NeutralMode.Brake); // 设置刹车
             shootBall_R.setNeutralMode(NeutralMode.Brake); // 设置刹车
-            moveBall_F.setNeutralMode(NeutralMode.Brake); // 设置刹车
-            moveBall_B.setNeutralMode(NeutralMode.Brake);
+            //moveBall_F.setNeutralMode(NeutralMode.Brake); // 设置刹车
+            //moveBall_B.setNeutralMode(NeutralMode.Brake);
         }
         else{
             motorX.setNeutralMode(NeutralMode.Coast);
             shootBall_L.setNeutralMode(NeutralMode.Coast); 
             shootBall_R.setNeutralMode(NeutralMode.Coast);
-            moveBall_F.setNeutralMode(NeutralMode.Coast); 
-            moveBall_B.setNeutralMode(NeutralMode.Coast);
+            //moveBall_F.setNeutralMode(NeutralMode.Coast); 
+            //moveBall_B.setNeutralMode(NeutralMode.Coast);
         }
-    }
+    }*/
 
     public void setLED(boolean on) {
         if (on == true)
@@ -151,15 +149,15 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
         shootBall_R.set(ControlMode.PercentOutput, power * -1 * 0.6);
     }*/
     
-    public void setMoveBallUP(double power){
+    /*public void setMoveBallUP(double power){
         moveBall_B.set(ControlMode.PercentOutput, power);
         moveBall_F.set(ControlMode.PercentOutput, power * -1);
-    }
+    }*/
     
-    public void setMoveBallDown(double power){
+    /*public void setMoveBallDown(double power){
         moveBall_B.set(ControlMode.PercentOutput, power * -1);
         moveBall_F.set(ControlMode.PercentOutput, power);
-    }
+    }*/
 
     public boolean onTarget(){
         if(shootBall_L.getSelectedSensorVelocity()>=MotorConstants.isOnTargetValue && shootBall_R.getSelectedSensorVelocity()>=MotorConstants.isOnTargetValue){
@@ -185,7 +183,7 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
         /*if(onTarget()){
             setMoveBallUP(0.5);
         }*/
-        setMoveBallUP(1);
+        //setMoveBallUP(1);
     }
     
 }

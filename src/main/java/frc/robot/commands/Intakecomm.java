@@ -57,6 +57,16 @@ public class Intakecomm extends CommandBase {
     else{
       intakeSystem.setIntake(intakeStatusGet,0);
     }
+
+		if(putOutGet == true){
+			intakeSystem.moveBallUP(1);
+		}
+		else if(getOutGet == true){
+			intakeSystem.moveBallUP(-1);
+		}
+		else{
+			intakeSystem.moveBallUP(0);
+		}
   }
 
   // Called once the command ends or is interrupted.

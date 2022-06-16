@@ -19,6 +19,9 @@ public class intakeSystem extends SubsystemBase implements TKTalonFX{
   // private TalonFX leftMaster = new TalonFX(MotorConstants.LeftmasterID);
   private final TalonFX intake;
   private final Solenoid intakeSolenoid;
+
+  private final TalonFX moveBall_F = new TalonFX(MotorConstants.upBallForwardID); //一左一右两个射球
+  private final TalonFX moveBall_B = new TalonFX(MotorConstants.upBallBackwardID); //一左一右两个射球
   // private TalonFX upBall = new TalonFX(MotorConstants.upBallID);
   // private TalonFX rightMaster = new TalonFX(MotorConstants.RightmasterID);
   // private TalonFX rightFollower = new TalonFX(MotorConstants.RightfollowerID);
@@ -67,6 +70,11 @@ public class intakeSystem extends SubsystemBase implements TKTalonFX{
       intakeSolenoid.set(false);
       intake.set(ControlMode.PercentOutput, 0.0);
     }
+  }
+
+  public void moveBallUP(double power){
+    moveBall_B.set(ControlMode.PercentOutput, power);
+    moveBall_F.set(ControlMode.PercentOutput, power * -1);
   }
 
   /*public void setBrake(boolean brake){
