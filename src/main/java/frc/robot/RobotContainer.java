@@ -102,4 +102,42 @@ public class RobotContainer {
 		);
 	}*/
 
+    public Command getTeleopCommand(){
+        return new SequentialCommandGroup(
+            new TurrentCmd(
+                m_TurrentSystem, 
+                
+                () -> joystick2.shallShootBallForward(), 
+                () -> joystick2.shallMoveBallUp(), 
+                () -> joystick2.getHorizontal(), 
+                () -> joystick2.isFire()
+            ),
+            new LiftComm(
+                m_LiftSystem,
+                    
+                () -> joystick1.getRawAxis(2),
+                () -> joystick1.getRawAxis(3),
+                () -> joystick1.getRawButton(2)
+            ),
+            new PCM_Conctrl(
+                m_PneumaticSystem,
+                    
+                () -> joystick1.getCompressorStatus()
+            ),
+            new Intakecomm(
+                m_IntakeSystem,
+                            
+                () -> joystick2.shallPutOut(),
+                () -> joystick2.getIntakeStatus()
+            ),
+            new ArcadeDrive(
+                m_driveSubsystem, // 定义手柄
+                    
+                () -> joystick1.getSpeed(),
+                () -> joystick1.getTurn(),
+                () -> joystick1.isInLowSpeed()
+            )
+        );
+    }
+
 }
