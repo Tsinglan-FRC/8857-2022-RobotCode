@@ -93,7 +93,7 @@ public class TurrentCmd extends CommandBase{
 			turrentSystem.setMoveBallUP(1);
 		}
 		else if(reverseTakeOutGet == true){
-			turrentSystem.setMoveBallDown(1);
+			turrentSystem.setMoveBallUP(-1);
 		}
 		else{
 			turrentSystem.setMoveBallUP(0);

@@ -46,9 +46,9 @@ public class RobotContainer {
         m_IntakeSystem.setDefaultCommand(new Intakecomm(
             m_IntakeSystem,
                         
-        	() -> joystick2.shallMoveBallUp(),
+        	() -> joystick2.shallMoveBallUp2(),
             () -> joystick2.getIntakeStatus(),
-            () -> joystick2.shallPutBallOut()
+            () -> joystick2.shallPutBallOut2()
 		));
 
         /*m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(
