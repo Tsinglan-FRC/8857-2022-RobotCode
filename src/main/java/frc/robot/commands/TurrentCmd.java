@@ -49,10 +49,13 @@ public class TurrentCmd extends CommandBase{
 		boolean shootballForwardGet = shootBallForward.get();
 
 		if(xTurnGet < -0.5){
-			turrentSystem.setMotorX(-0.2);
-		}
-		else if(xTurnGet > 0.5){
-			turrentSystem.setMotorX(0.2);
+			turrentSystem.setMotorX(-0.1);
+		} else{ 
+			if(xTurnGet > 0.5){
+				turrentSystem.setMotorX(0.1);
+			} else {
+				turrentSystem.setMotorX(0.0);
+			}
 		}
 
 		if(fireGet == true){
