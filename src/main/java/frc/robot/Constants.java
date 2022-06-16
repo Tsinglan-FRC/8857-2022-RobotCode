@@ -188,6 +188,11 @@ public final class Constants {
             public static final double kD_value = 0;
             public static final int kD_timeoutMs = 10;
         }
+
+        public static final class TurrentRangeConstants{
+            public static final int Left = 12000;
+            public static final int Right = -12000;
+        }
     }
 
     public static final class LiftConstants{

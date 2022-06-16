@@ -8,6 +8,7 @@ import frc.robot.Constants.TurrentConstants;
 import frc.robot.Constants.VisionConstants.AutoFire;
 import frc.robot.Constants.VisionConstants.PIDCtrl;
 import frc.robot.subsystems.TurrentSystem;
+import frc.robot.subsystems.TurrentSystem.TurrentRangeStatus;
 
 
 public class TurrentCmd extends CommandBase{
@@ -44,9 +45,18 @@ public class TurrentCmd extends CommandBase{
 	public void execute(){
 		double xTurnGet = xTurn.get();
 		boolean fireGet = fire.get();
+		TurrentRangeStatus range = turrentSystem.amIInRange();
 		
 
-		if(fireGet == true){
+		if(range!=TurrentRangeStatus.Ok){
+			if(range==TurrentRangeStatus.Left){
+				turrentSystem.setMotorX(TurrentConstants.xMotorSPD);
+			}
+			else{
+				turrentSystem.setMotorX(TurrentConstants.xMotorSPD * -1);
+			}
+		}
+		else if(fireGet == true){
 			if(turrentSystem.isValid()){
 				double getXGet = turrentSystem.getX();
 				turrentSystem.setMotorX(m_PIDController.calculate(getXGet,0));

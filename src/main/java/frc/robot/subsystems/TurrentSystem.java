@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.TurrentConstants.ConfigConstants;
+import frc.robot.Constants.TurrentConstants.TurrentRangeConstants;
 import frc.robot.Constants.VisionConstants.AutoFire;
 import frc.robot.Toolkit.TKTalonFX;
 import frc.robot.Toolkit.TKTalonFX.PIDType;
@@ -36,6 +37,13 @@ public class TurrentSystem extends SubsystemBase{
     private final TalonFX shootBall_L = new TalonFX(MotorConstants.shootBallLeftID); //一左一右两个射球
     private final TalonFX shootBall_R = new TalonFX(MotorConstants.shootBallRightID); //一左一右两个射球
 
+
+
+    public enum TurrentRangeStatus{
+        Left,
+        Ok,
+        Right
+    }
 
 
     public TurrentSystem(){
@@ -171,6 +179,20 @@ public class TurrentSystem extends SubsystemBase{
         }
     }
 
+
+    public TurrentRangeStatus amIInRange(){
+        double range = motorX.getSelectedSensorPosition();
+
+        if(range>TurrentRangeConstants.Left){
+            return TurrentRangeStatus.Left;
+        }
+        else if(range<TurrentRangeConstants.Right){
+            return TurrentRangeStatus.Right;
+        }
+        else{
+            return TurrentRangeStatus.Ok;
+        }
+    }
 
 
     public void autoFire(){
