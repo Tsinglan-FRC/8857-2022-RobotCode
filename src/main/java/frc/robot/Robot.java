@@ -30,7 +30,7 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer(); // 定义机器人容器
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-    m_TeleopCommand = m_robotContainer.getTeleopCommand();
+    //m_TeleopCommand = m_robotContainer.getTeleopCommand();
 
   }
 
@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     // schedule the autonomous command (example)
-    CommandScheduler.getInstance().cancelAll();
+    //CommandScheduler.getInstance().cancelAll();
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
@@ -77,10 +77,10 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    CommandScheduler.getInstance().cancelAll();
+    /*CommandScheduler.getInstance().cancelAll();
     if(m_TeleopCommand != null){
       m_TeleopCommand.schedule();
-    }
+    }*/
   }
 
   /** This function is called periodically during operator control. */

@@ -92,7 +92,7 @@ public class RobotContainer {
         return new I_Will(m_driveSubsystem);
     }
 
-	public Command getTeleopCommand(){
+	/*public Command getTeleopCommand(){
 		return new SequentialCommandGroup(
 			m_driveSubsystem.getDefaultCommand(),
 			m_IntakeSystem.getDefaultCommand(),
@@ -100,6 +100,6 @@ public class RobotContainer {
 			m_PneumaticSystem.getDefaultCommand(),
 			m_TurrentSystem.getDefaultCommand()
 		);
-	}
+	}*/
 
 }
