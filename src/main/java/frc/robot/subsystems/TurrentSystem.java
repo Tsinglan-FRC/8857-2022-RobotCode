@@ -148,12 +148,12 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
     
     public void setMoveBallUP(double power){
         moveBall_B.set(ControlMode.PercentOutput, power);
-        moveBall_F.set(ControlMode.PercentOutput, power);
+        moveBall_F.set(ControlMode.PercentOutput, power * -1);
     }
     
     public void setMoveBallDown(double power){
-        moveBall_B.set(ControlMode.PercentOutput, power * -1 * 0.6);
-        moveBall_F.set(ControlMode.PercentOutput, power * -1 * 0.6);
+        moveBall_B.set(ControlMode.PercentOutput, power * -1);
+        moveBall_F.set(ControlMode.PercentOutput, power);
     }
 
     public boolean onTarget(){
@@ -177,9 +177,15 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
             setshootForward(AutoFire.POWER20TO30);
         }
 
-        if(onTarget()){
+        /*if(onTarget()){
             setMoveBallUP(0.5);
-        }
+        }*/
+        setMoveBallUP(0.5);
+    }
+
+    public void liitleJustFire(){
+        setshootForward(1);
+        setMoveBallUP(0.5);
     }
     
 }

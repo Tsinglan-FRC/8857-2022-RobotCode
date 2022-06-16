@@ -9,7 +9,7 @@ public class DriveStick extends Joystick{
     }
 
     public double getSpeed(){
-        return getRawAxis(OIConstants.drive_SpeedPort);
+        return -1 * getRawAxis(OIConstants.drive_SpeedPort);
     }
 
     public double getTurn(){

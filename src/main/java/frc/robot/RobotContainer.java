@@ -85,7 +85,8 @@ public class RobotContainer {
             () -> joystick2.shallShootBallForward(), 
             () -> joystick2.shallMoveBallUp(), 
             () -> joystick2.getHorizontal(), 
-            () -> joystick2.isFire()));
+            () -> joystick2.isFire(),
+            () -> joystick2.shallJustShoot()));
     }
 
     public Command getAutonomousCommand() {

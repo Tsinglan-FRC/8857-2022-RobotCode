@@ -60,10 +60,10 @@ public class ArcadeDrive extends CommandBase {
     double turn = turnFunction.get();
     boolean lowspeed = LowspeedFunction.get();
 
-    if (Math.abs(speed) < 0.05){
+    if (Math.abs(speed) < 0.1){
       speed = 0;
     }
-    if (Math.abs(turn) < 0.05){
+    if (Math.abs(turn) < 0.1){
       turn = 0;
     }
 
