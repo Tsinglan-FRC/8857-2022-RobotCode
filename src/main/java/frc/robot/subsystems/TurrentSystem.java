@@ -40,7 +40,7 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
         System.out.println("Limelight init");
         setLED(false);
 
-        //setBrake(true);
+        setBrake(true);
         
         motorX.config_kP(0, 0.3, 10);
         motorX.config_kI(0, 0, 10);
@@ -54,9 +54,9 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
         shootBall_R.setSensorPhase(true); // 设置传感器状态
         shootBall_R.follow(shootBall_L);
 
-        /*configMotor(shootBall_L,PIDType.Telepid);
+        configMotor(shootBall_L,PIDType.Telepid);
         configMotor(shootBall_R,PIDType.Telepid);
-        configMotor(moveBall_B,PIDType.Telepid);
+        /*configMotor(moveBall_B,PIDType.Telepid);
         configMotor(moveBall_F,PIDType.Telepid);*/
     }
 
@@ -90,7 +90,7 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
             return false;
     }
 
-    /*public void setBrake(boolean brake){
+    public void setBrake(boolean brake){
         if(brake){
             motorX.setNeutralMode(NeutralMode.Brake);
             
@@ -106,7 +106,7 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
             //moveBall_F.setNeutralMode(NeutralMode.Coast); 
             //moveBall_B.setNeutralMode(NeutralMode.Coast);
         }
-    }*/
+    }
 
     public void setLED(boolean on) {
         if (on == true)
