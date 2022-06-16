@@ -66,10 +66,11 @@ public class TurrentSystem extends SubsystemBase{
     public void periodic() {
         updateTelemetry();
 
-        SmartDashboard.putNumber("intake speed Value Left", shootBall_L.getMotorOutputPercent());
+        /*SmartDashboard.putNumber("intake speed Value Left", shootBall_L.getMotorOutputPercent());
         SmartDashboard.putNumber("intake Current Left", shootBall_L.getSupplyCurrent());
         SmartDashboard.putNumber("intake speed Value Right", shootBall_R.getMotorOutputPercent());
-        SmartDashboard.putNumber("intake Current Right", shootBall_R.getSupplyCurrent());
+        SmartDashboard.putNumber("intake Current Right", shootBall_R.getSupplyCurrent());*/
+        SmartDashboard.putNumber("Turrent Position : ", motorX.getSelectedSensorPosition());
     }
 
 
