@@ -7,6 +7,7 @@ package frc.robot.commands;
 import java.util.function.Supplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.DriveSystem;
 
 public class ArcadeDrive extends CommandBase {
@@ -60,10 +61,10 @@ public class ArcadeDrive extends CommandBase {
     double turn = turnFunction.get();
     boolean lowspeed = LowspeedFunction.get();
 
-    if (Math.abs(speed) < 0.1){
+    if (Math.abs(speed) < DriveConstants.joystickDeadZone){
       speed = 0;
     }
-    if (Math.abs(turn) < 0.1){
+    if (Math.abs(turn) < DriveConstants.joystickDeadZone){
       turn = 0;
     }
 

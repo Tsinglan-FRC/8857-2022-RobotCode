@@ -72,13 +72,21 @@ public class intakeSystem extends SubsystemBase implements TKTalonFX{
     }
   }
 
-  public void move(double power){
+  public void moveBallIn(double power){
     intake.set(ControlMode.PercentOutput,power);
+  }
+
+  public void moveBallOut(double power){
+    moveBallIn(power * -1);
   }
 
   public void moveBallUP(double power){
     moveBall_B.set(ControlMode.PercentOutput, power);
     moveBall_F.set(ControlMode.PercentOutput, power * -1);
+  }
+
+  public void moveBallDown(double power){
+    moveBallUP(power * -1);
   }
 
   /*public void setBrake(boolean brake){

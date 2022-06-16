@@ -80,6 +80,15 @@ public final class Constants {
         public static final int liftChannel = 7;
     }
 
+    public static final class DriveConstants{
+        public static final double joystickDeadZone = 0.1;
+
+        public static final double speedFactor = 1;
+        public static final double speedFactor_slowspeed = 0.3;
+        public static final double turnFacotr = 0.5;
+        public static final double turnFactor_slowspeed = 0.2;
+    }
+
     public static final class ShooterConstants {
 
         public static final int kickID = 7;
@@ -101,6 +110,11 @@ public final class Constants {
 
         public static final double Uptakepower = 0.5;
         public static final double Intakepower = 0.5;
+
+        public static final double power_MoveBallUp = 1;
+        public static final double power_MoveBallIn = 1;
+        public static final double power_MoveBallDown = 1;
+        public static final double power_MoveBallOut = 1;
 
     }
 
@@ -149,8 +163,44 @@ public final class Constants {
         }
 
         public static final class AutoFire{
+            public static final double allowedDiff = 0.1;
+
             public static final double POWER10TO20 = 1;
             public static final double POWER20TO30 = 1;
+        }
+    }
+
+    public static final class TurrentConstants{
+        public static final double deadZone = 0.5;
+
+        public static final double xMotorSPD = 0.1;
+
+        public static final class ConfigConstants{
+            public static final int kP_slotIdx = 0;
+            public static final double kP_value = 0.3;
+            public static final int kP_timeoutMs = 10;
+
+            public static final int kI_slotIdx = 0;
+            public static final double kI_value = 0;
+            public static final int kI_timeoutMs = 10;
+
+            public static final int kD_slotIdx = 0;
+            public static final double kD_value = 0;
+            public static final int kD_timeoutMs = 10;
+        }
+    }
+
+    public static final class LiftConstants{
+        public static final double joystickDeadZone = 0.05;
+
+        public static final class FGTB{
+            public static final double LPosMAX = 10000000;
+            public static final double LPowFAC = 0.5;
+        }
+
+        public static final class FSTB{
+            public static final double LPosMIN = -10000000;
+            public static final double LPowFAC = 0.5;
         }
     }
 }

@@ -20,10 +20,6 @@ public class OperateStick extends Joystick{
         return this.getRawAxis(OIConstants.operate_HorizontalPort) * -1;
     }
 
-    public boolean shallShootBallForward(){
-        return getRawButton(OIConstants.operate_ShootBallForwardPort);
-    }
-
     public boolean shallMoveBallUp(){
         return getRawButton(OIConstants.operate_MoveBallUpPort);
     }

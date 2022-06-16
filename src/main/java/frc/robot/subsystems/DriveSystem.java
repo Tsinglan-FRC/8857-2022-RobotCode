@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Toolkit.TKTalonFX;
+import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.MotorConstants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -92,13 +93,13 @@ public class DriveSystem extends SubsystemBase implements TKTalonFX{
 
   public void arcade(double speed, double turn, boolean lowspeed) {
     if (lowspeed) {
-      setLeftSpeed(speed * 0.3 + turn * 0.2);
-      setRightSpeed(speed * 0.3 - turn * 0.2);
+      setLeftSpeed(speed * DriveConstants.speedFactor_slowspeed + turn * DriveConstants.turnFactor_slowspeed);
+      setRightSpeed(speed * DriveConstants.speedFactor_slowspeed - turn * DriveConstants.turnFactor_slowspeed);
     }
 
     else {
-      setLeftSpeed(speed * 1.0 + turn * 0.5);
-      setRightSpeed(speed * 1.0 - turn * 0.5);
+      setLeftSpeed(speed * DriveConstants.speedFactor + turn * DriveConstants.turnFacotr);
+      setRightSpeed(speed * DriveConstants.speedFactor- turn * DriveConstants.turnFacotr);
     }
   }
 

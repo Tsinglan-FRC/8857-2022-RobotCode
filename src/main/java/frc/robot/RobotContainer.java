@@ -83,7 +83,6 @@ public class RobotContainer {
         m_TurrentSystem.setDefaultCommand(new TurrentCmd(
             m_TurrentSystem, 
             
-            () -> joystick2.shallShootBallForward(),
             () -> joystick2.getHorizontal(), 
             () -> joystick2.isFire(),
             () -> joystick2.shallJustShoot()));

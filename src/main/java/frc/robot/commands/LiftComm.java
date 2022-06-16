@@ -7,6 +7,9 @@ package frc.robot.commands;
 import java.util.function.Supplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.LiftConstants;
+import frc.robot.Constants.LiftConstants.FGTB;
+import frc.robot.Constants.LiftConstants.FSTB;
 import frc.robot.subsystems.LiftSystem;
 
 public class LiftComm extends CommandBase {
@@ -51,16 +54,16 @@ public class LiftComm extends CommandBase {
     double backward = liftBackward.get();
     boolean Pneumatic = liftPneumatic.get();
 
-    if (Math.abs(forward) < 0.05){
+    if (Math.abs(forward) < LiftConstants.joystickDeadZone){
       forward = 0;
     }
-    if (Math.abs(backward) < 0.05){
+    if (Math.abs(backward) < LiftConstants.joystickDeadZone){
       backward = 0;
     }
 
     if (forward > backward) {
-      if (liftSubsystem.getLiftPosition() < 1000000) {
-        liftSubsystem.setLiftPower(forward * 0.5);
+      if (liftSubsystem.getLiftPosition() < FGTB.LPosMAX) {
+        liftSubsystem.setLiftPower(forward * FGTB.LPowFAC);
         System.out.println(liftSubsystem.getLiftPosition());
       } 
       else{
@@ -68,8 +71,8 @@ public class LiftComm extends CommandBase {
       }
     } 
     else if (forward < backward) {
-      if (liftSubsystem.getLiftPosition() > -1000000) {
-        liftSubsystem.setLiftPower(-backward * 0.5);
+      if (liftSubsystem.getLiftPosition() > FSTB.LPosMIN) {
+        liftSubsystem.setLiftPower(-backward * FSTB.LPowFAC);
         System.out.println(liftSubsystem.getLiftPosition());
       } 
       else{

@@ -6,7 +6,7 @@ package frc.robot.commands;
 
 import java.util.function.Supplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.MotorConstants;
+import frc.robot.Constants.IntakeConstants;
 import frc.robot.subsystems.intakeSystem;
 
 public class Intakecomm extends CommandBase {
@@ -50,19 +50,19 @@ public class Intakecomm extends CommandBase {
 
 
 		if(putOutGet == true){
-			intakeSystem.moveBallUP(1);
+			intakeSystem.moveBallUP(IntakeConstants.power_MoveBallUp);
       //intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedTruePower);
-      intakeSystem.move(1);
+      intakeSystem.moveBallIn(IntakeConstants.power_MoveBallIn);
 		}
 		else if(getOutGet == true){
-			intakeSystem.moveBallUP(-1);
+			intakeSystem.moveBallDown(IntakeConstants.power_MoveBallDown);
       //intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedFalsePower);
-      intakeSystem.move(-1);
+      intakeSystem.moveBallOut(IntakeConstants.power_MoveBallOut);
 		}
 		else{
 			intakeSystem.moveBallUP(0);
       //intakeSystem.setIntake(intakeStatusGet,0);
-      intakeSystem.move(0);
+      intakeSystem.moveBallIn(0);
 		}
   }
 

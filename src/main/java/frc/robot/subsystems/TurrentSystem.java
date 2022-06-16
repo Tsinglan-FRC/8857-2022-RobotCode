@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
 import frc.robot.Constants.MotorConstants;
+import frc.robot.Constants.TurrentConstants.ConfigConstants;
 import frc.robot.Constants.VisionConstants.AutoFire;
 import frc.robot.Toolkit.TKTalonFX;
 
@@ -42,9 +43,9 @@ public class TurrentSystem extends SubsystemBase implements TKTalonFX{
 
         setBrake(true);
         
-        motorX.config_kP(0, 0.3, 10);
-        motorX.config_kI(0, 0, 10);
-        motorX.config_kD(0, 0, 10);
+        motorX.config_kP(ConfigConstants.kP_slotIdx, ConfigConstants.kP_value, ConfigConstants.kP_timeoutMs);
+        motorX.config_kI(ConfigConstants.kI_slotIdx, ConfigConstants.kI_value, ConfigConstants.kI_timeoutMs);
+        motorX.config_kD(ConfigConstants.kD_slotIdx, ConfigConstants.kD_value, ConfigConstants.kD_timeoutMs);
 
 
 
