@@ -1,6 +1,8 @@
 
 package frc.robot;
 
+import frc.robot.Toolkit.ShootZone;
+
 // import javax.swing.plaf.synth.SynthLookAndFeel;
 
 // import frc.robot.subsystems.intakeSystem;
@@ -175,10 +177,16 @@ public final class Constants {
             public static final double EncoderToRPM = 1 / 2048 * 600;
 
             public static final double POWERDEFAULT = 7000;
-            public static final double POWER0TOn10 = 7000;
+            
+            /*public static final double POWER0TOn10 = 7000;
             public static final double POWER0TOn15 = 7500;
             public static final double POWERn10TOn20 = 8000;
-            public static final double POWERn20TOn30 = 9000;
+            public static final double POWERn20TOn30 = 9000;*/
+
+            public static final ShootZone[] shootZone={ 
+                new ShootZone(-4, 0, 7000),
+                new ShootZone(-12,-6,8000)
+            };
 
             //public static final double OUTOFTIME = 1;
         }

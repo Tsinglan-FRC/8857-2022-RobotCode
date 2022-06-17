@@ -11,6 +11,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
+import frc.robot.Toolkit;
 import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.TurrentConstants;
 import frc.robot.Constants.TurrentConstants.ConfigConstants;
@@ -209,7 +210,7 @@ public class TurrentSystem extends SubsystemBase{
     public void autoFire(){
         double getYGet = getY();
 
-        if(getYGet > -3.4 && getYGet <= 0.9){
+        /*if(getYGet > -3.4 && getYGet <= 0.9){
             setshootForward(AutoFire.POWER0TOn10);
         }
         else if(getYGet <= -3.4 && getYGet >= -6.3){
@@ -219,6 +220,18 @@ public class TurrentSystem extends SubsystemBase{
             setshootForward(AutoFire.POWERn10TOn20);
         }
         else{
+            setshootForward(AutoFire.POWERDEFAULT);
+        }*/
+
+        boolean ok = true;
+        for(Toolkit.ShootZone ele : AutoFire.shootZone){
+            if(getYGet > ele.Min && getYGet <= ele.Max){
+                setshootForward(ele.Speed);
+                ok = false;
+                break;
+            }
+        }
+        if(ok){
             setshootForward(AutoFire.POWERDEFAULT);
         }
 
