@@ -110,11 +110,15 @@ public final class Constants {
 
         public static final double Uptakepower = 0.5;
         public static final double Intakepower = 0.5;
+        public static final double slowUppower = 0.1;
+        public static final double slowDownpower = 0.1;
 
         public static final double power_MoveBallUp = 0.5;
         public static final double power_MoveBallIn = 0.5;
         public static final double power_MoveBallDown = 0.5;
         public static final double power_MoveBallOut = 0.5;
+
+        public static final double slowMovementDeadzone = 0.1;
 
     }
 
@@ -144,6 +148,8 @@ public final class Constants {
         public static final int operate_Left1Port = 5;
         public static final int operate_STARTPort = 8;
         public static final int operate_APort = 1;
+        public static final int operate_Right2Port = 3;
+        public static final int operate_Left2Port = 2;
 
         public static final int drive_LeftYPort = 1;
         public static final int drive_RightXPort = 4;

@@ -48,7 +48,9 @@ public class RobotContainer {
                         
         	() -> joystick2.getRight1(),
             () -> joystick2.getSTART(),
-            () -> joystick2.getLeft1()
+            () -> joystick2.getLeft1(),
+            () -> joystick2.getRight2(),
+            () -> joystick2.getLeft2()
 		));
 
         /*m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(

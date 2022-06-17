@@ -20,8 +20,16 @@ public class OperateStick extends Joystick{
         return getRawButton(OIConstants.operate_Right1Port);
     }
 
+    public double getRight2(){
+        return getRawAxis(OIConstants.operate_Right2Port);
+    }
+
     public boolean getLeft1(){
         return getRawButton(OIConstants.operate_Left1Port);
+    }
+
+    public double getLeft2(){
+        return getRawAxis(OIConstants.operate_Left2Port);
     }
 
     public boolean getSTART(){
