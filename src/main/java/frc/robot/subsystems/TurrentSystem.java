@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
 import frc.robot.Constants.MotorConstants;
+import frc.robot.Constants.TurrentConstants;
 import frc.robot.Constants.TurrentConstants.ConfigConstants;
 import frc.robot.Constants.TurrentConstants.TurrentRangeConstants;
 import frc.robot.Constants.VisionConstants.AutoFire;
@@ -148,6 +149,11 @@ public class TurrentSystem extends SubsystemBase{
     public void setshootForward(double power){
         shootBall_L.set(ControlMode.Velocity, power);
         shootBall_R.set(ControlMode.Velocity, power);
+    }
+
+    public void turning(){
+        shootBall_L.set(ControlMode.Velocity, TurrentConstants.turningFac);
+        shootBall_R.set(ControlMode.Velocity, TurrentConstants.turningFac);
     }
 
     /*public void setshootForward(double power) {

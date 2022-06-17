@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.TurrentConstants;
 import frc.robot.Constants.VisionConstants.AutoFire;
 import frc.robot.Constants.VisionConstants.PIDCtrl;
@@ -19,18 +20,21 @@ public class TurrentCmd extends CommandBase{
     private final PIDController m_PIDController;
     private final Supplier<Double> xTurn;
     private final Supplier<Boolean> fire;
+	private final Supplier<Boolean> intaking;
 	//private final Supplier<Boolean> reverseTakeOut;
     
     public TurrentCmd(
         TurrentSystem _turrentSystem,
         
         Supplier<Double> _xTurn,
-        Supplier<Boolean> _fire){
+        Supplier<Boolean> _fire,
+		Supplier<Boolean> _intaking){
             
         turrentSystem = _turrentSystem;
         xTurn = _xTurn;
         fire = _fire;
         m_PIDController = new PIDController(PIDCtrl.kP, PIDCtrl.kI, PIDCtrl.kD);
+		intaking = _intaking;
 		//reverseTakeOut=_reverseTakeOut;
 
         addRequirements(_turrentSystem);
@@ -46,6 +50,7 @@ public class TurrentCmd extends CommandBase{
 		double xTurnGet = xTurn.get();
 		boolean fireGet = fire.get();
 		TurrentRangeStatus range = turrentSystem.amIInRange();
+		boolean  intakingGet = intaking.get();
 		
 
 		if(range!=TurrentRangeStatus.Ok){
@@ -71,6 +76,9 @@ public class TurrentCmd extends CommandBase{
 		} 
 		else if(xTurnGet > TurrentConstants.deadZone){
 			turrentSystem.setMotorX(TurrentConstants.xMotorSPD * -1);
+		}
+		else if(intakingGet){
+			turrentSystem.turning();
 		}
 		else {
 			turrentSystem.setMotorX(0.0);

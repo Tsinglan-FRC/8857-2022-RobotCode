@@ -16,8 +16,8 @@ public class Intakecomm extends CommandBase {
   private final Supplier<Boolean> putOut;
   private final Supplier<Boolean> intakeStatus;
   private final Supplier<Boolean> getOut;
-  private final Supplier<Double> slowUp;
-  private final Supplier<Double> slowDown;
+  private final Supplier<Boolean> slowUp;
+  private final Supplier<Boolean> slowDown;
 
   private final Toggle intakeToggle = new Toggle();
 
@@ -29,8 +29,8 @@ public class Intakecomm extends CommandBase {
     Supplier<Boolean> _putOut, 
     Supplier<Boolean> _intakeStatus,
     Supplier<Boolean> _getOut,
-    Supplier<Double> _slowUp,
-    Supplier<Double> _slowDown) {
+    Supplier<Boolean> _slowUp,
+    Supplier<Boolean> _slowDown) {
     // Use addRequirements() here to declare subsystem dependencies.
     // m_IntakeSysten = mIntakeSysten;
     intakeSystem = _intakeSystem;
@@ -57,8 +57,8 @@ public class Intakecomm extends CommandBase {
 
     boolean intakeStatusGet = intakeStatus.get();
 
-    double slowUpGet = slowUp.get();
-    double slowDownGet = slowDown.get();
+    boolean slowUpGet = slowUp.get();
+    boolean slowDownGet = slowDown.get();
 
 
 		if(putOutGet == true){
@@ -71,10 +71,10 @@ public class Intakecomm extends CommandBase {
       //intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedFalsePower);
       intakeSystem.moveBallOut(IntakeConstants.power_MoveBallOut);
 		}
-    else if(slowUpGet>IntakeConstants.slowMovementDeadzone && slowDownGet<=IntakeConstants.slowMovementDeadzone){
+    else if(slowUpGet && !slowDownGet){
       intakeSystem.moveBallUP(IntakeConstants.slowUppower);
     }
-    else if(slowDownGet>IntakeConstants.slowMovementDeadzone && slowUpGet<=IntakeConstants.slowMovementDeadzone){
+    else if(slowDownGet && !slowUpGet){
       intakeSystem.moveBallDown(IntakeConstants.slowDownpower);
     }
 		else{

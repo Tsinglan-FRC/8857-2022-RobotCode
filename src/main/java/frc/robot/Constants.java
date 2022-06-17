@@ -110,8 +110,8 @@ public final class Constants {
 
         public static final double Uptakepower = 0.5;
         public static final double Intakepower = 0.5;
-        public static final double slowUppower = 0.1;
-        public static final double slowDownpower = 0.1;
+        public static final double slowUppower = 0.15;
+        public static final double slowDownpower = 0.15;
 
         public static final double power_MoveBallUp = 0.5;
         public static final double power_MoveBallIn = 0.5;
@@ -186,6 +186,8 @@ public final class Constants {
         public static final double deadZone = 0.5;
 
         public static final double xMotorSPD = 0.1;
+
+        public static final double turningFac = -500;
 
         public static final class ConfigConstants{
             public static final int kP_slotIdx = 0;

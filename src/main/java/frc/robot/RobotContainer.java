@@ -8,7 +8,7 @@ import frc.robot.subsystems.TurrentSystem;
 //import frc.robot.subsystems.VisionSystem;
 import frc.robot.subsystems.intakeSystem;
 //import frc.robot.subsystems.upAndShootSystem;
-
+import frc.robot.Constants.IntakeConstants;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.I_Will;
 import frc.robot.commands.Intakecomm;
@@ -49,8 +49,8 @@ public class RobotContainer {
         	() -> joystick2.getRight1(),
             () -> joystick2.getSTART(),
             () -> joystick2.getLeft1(),
-            () -> joystick2.getRight2(),
-            () -> joystick2.getLeft2()
+            () -> joystick2.getRight2()<IntakeConstants.slowMovementDeadzone,
+            () -> joystick2.getLeft2()<IntakeConstants.slowMovementDeadzone
 		));
 
         /*m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(
@@ -86,7 +86,9 @@ public class RobotContainer {
             m_TurrentSystem, 
             
             () -> joystick2.getRightX(),
-            () -> joystick2.getA()));
+            () -> joystick2.getA(),
+            () -> joystick2.getRight2()<IntakeConstants.slowMovementDeadzone || joystick2.getRight1()
+        ));
     }
 
     public Command getAutonomousCommand() {
