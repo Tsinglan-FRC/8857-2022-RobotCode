@@ -36,7 +36,7 @@ public class intakeSystem extends SubsystemBase{
       SolenoidConstants.intakeChannel);
 
     // m_pigeon.getGeneralStatus(genStatus);
-    intakeSet(true);
+    //intakeSet(false);
     intake.setInverted(false);
     intake.setSensorPhase(true);
     // upBall.setInverted(true);

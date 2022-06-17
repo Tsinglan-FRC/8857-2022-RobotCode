@@ -49,8 +49,8 @@ public class RobotContainer {
         	() -> joystick2.getRight1(),
             () -> joystick2.getSTART(),
             () -> joystick2.getLeft1(),
-            () -> joystick2.getRight2()<IntakeConstants.slowMovementDeadzone,
-            () -> joystick2.getLeft2()<IntakeConstants.slowMovementDeadzone
+            () -> joystick2.getRight2()>IntakeConstants.slowMovementDeadzone,
+            () -> joystick2.getLeft2()>IntakeConstants.slowMovementDeadzone
 		));
 
         /*m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(
@@ -87,7 +87,7 @@ public class RobotContainer {
             
             () -> joystick2.getRightX(),
             () -> joystick2.getA(),
-            () -> joystick2.getRight2()<IntakeConstants.slowMovementDeadzone || joystick2.getRight1()
+            () -> joystick2.getRight2()>IntakeConstants.slowMovementDeadzone || joystick2.getRight1()
         ));
     }
 

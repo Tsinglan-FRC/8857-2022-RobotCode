@@ -163,13 +163,13 @@ public final class Constants {
     
     public static final class VisionConstants{
         public static final class PIDCtrl{
-            public static final double kP = 0.02;
+            public static final double kP = 0.01;
             public static final double kI = 0;
             public static final double kD = 0.00001;
         }
 
         public static final class AutoFire{
-            public static final double allowedDiff = 100;
+            public static final double allowedDiff = 250;
 
             public static final double EncoderToRPM = 1 / 2048 * 600;
 

@@ -78,7 +78,8 @@ public class TurrentSystem extends SubsystemBase{
         SmartDashboard.putNumber("intake Current Left", shootBall_L.getSupplyCurrent());
         SmartDashboard.putNumber("intake speed Value Right", shootBall_R.getMotorOutputPercent());
         SmartDashboard.putNumber("intake Current Right", shootBall_R.getSupplyCurrent());*/
-        SmartDashboard.putNumber("Turrent Position : ", motorX.getSelectedSensorPosition());
+        //SmartDashboard.putNumber("Turrent Position : ", motorX.getSelectedSensorPosition());
+        SmartDashboard.putNumber("Turrent Angle : ",ty.getDouble(0));
     }
 
 
@@ -204,7 +205,7 @@ public class TurrentSystem extends SubsystemBase{
     public void autoFire(){
         double getYGet = getY();
 
-        if(getYGet > -10 && getYGet <= 0){
+        /*if(getYGet > -10 && getYGet <= 0){
             setshootForward(AutoFire.POWER0TOn10);
         }
         else if(getYGet > -20 && getYGet <= -10){
@@ -215,7 +216,9 @@ public class TurrentSystem extends SubsystemBase{
         }
         else{
             setshootForward(AutoFire.POWERDEFAULT);
-        }
+        }*/
+
+        setshootForward(AutoFire.POWERDEFAULT);
 
         //setshootForward(5000);
 
