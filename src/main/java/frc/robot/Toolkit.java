@@ -9,6 +9,7 @@ import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.MotorConstants.Liftpid;
 import frc.robot.Constants.MotorConstants.Movepid;
 import frc.robot.Constants.MotorConstants.Telepid;
+import pabeles.concurrency.IntOperatorTask.Max;
 
 public class Toolkit {
     public static class TKTalonFX{
@@ -76,6 +77,11 @@ public class Toolkit {
     public static class ShootZone{
         public double Min;
         public double Max;
-        public double Zone;
+        public double Speed;
+        public ShootZone(double Min,double Max,double Speed){
+            this.Min = Min;
+            this.Max = Max;
+            this.Speed = Speed;
+        }
     }
 }
