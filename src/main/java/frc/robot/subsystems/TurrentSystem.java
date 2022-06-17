@@ -132,6 +132,10 @@ public class TurrentSystem extends SubsystemBase{
         motorX.set(ControlMode.PercentOutput, power);
     }
 
+    public double getMotorXPosition(){
+        return motorX.getSelectedSensorPosition();
+    }
+
     public void setMiddle() {
         motorX.set(ControlMode.Position, 0);
     }

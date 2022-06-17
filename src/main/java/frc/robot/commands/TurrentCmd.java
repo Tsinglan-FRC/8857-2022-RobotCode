@@ -66,7 +66,11 @@ public class TurrentCmd extends CommandBase{
 			}
 		}
 		else if(middleGet){
-			turrentSystem.setMiddle();
+			turrentSystem.setMotorX(m_PIDController.calculate(0,0));
+
+			if(Math.abs(turrentSystem.getMotorXPosition()) < AutoFire.allowedDiff){
+				turrentSystem.setMiddle();
+			}
 		}
 		else if(fireGet == true){
 			if(turrentSystem.isValid()){
