@@ -72,4 +72,10 @@ public class Toolkit {
             lasttime = input;
         }
     }
+
+    public static class ShootZone{
+        public double Min;
+        public double Max;
+        public double Zone;
+    }
 }
