@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.IntakeConstants;
+// import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.TurrentConstants;
 import frc.robot.Constants.VisionConstants.AutoFire;
 import frc.robot.Constants.VisionConstants.PIDCtrl;
