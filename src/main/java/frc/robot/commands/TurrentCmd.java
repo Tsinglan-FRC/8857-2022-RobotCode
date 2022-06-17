@@ -21,6 +21,7 @@ public class TurrentCmd extends CommandBase{
     private final Supplier<Double> xTurn;
     private final Supplier<Boolean> fire;
 	private final Supplier<Boolean> intaking;
+	private final Supplier<Boolean> middle;
 	//private final Supplier<Boolean> reverseTakeOut;
     
     public TurrentCmd(
@@ -28,13 +29,15 @@ public class TurrentCmd extends CommandBase{
         
         Supplier<Double> _xTurn,
         Supplier<Boolean> _fire,
-		Supplier<Boolean> _intaking){
+		Supplier<Boolean> _intaking,
+		Supplier<Boolean> _middle){
             
         turrentSystem = _turrentSystem;
         xTurn = _xTurn;
         fire = _fire;
         m_PIDController = new PIDController(PIDCtrl.kP, PIDCtrl.kI, PIDCtrl.kD);
 		intaking = _intaking;
+		middle = _middle;
 		//reverseTakeOut=_reverseTakeOut;
 
         addRequirements(_turrentSystem);
@@ -51,6 +54,7 @@ public class TurrentCmd extends CommandBase{
 		boolean fireGet = fire.get();
 		TurrentRangeStatus range = turrentSystem.amIInRange();
 		boolean  intakingGet = intaking.get();
+		boolean middleGet = middle.get();
 		
 
 		if(range!=TurrentRangeStatus.Ok){
@@ -60,6 +64,9 @@ public class TurrentCmd extends CommandBase{
 			else{
 				turrentSystem.setMotorX(TurrentConstants.xMotorSPD);
 			}
+		}
+		else if(middleGet){
+			turrentSystem.setMiddle();
 		}
 		else if(fireGet == true){
 			if(turrentSystem.isValid()){

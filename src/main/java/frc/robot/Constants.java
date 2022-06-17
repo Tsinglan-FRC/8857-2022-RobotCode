@@ -150,6 +150,7 @@ public final class Constants {
         public static final int operate_APort = 1;
         public static final int operate_Right2Port = 3;
         public static final int operate_Left2Port = 2;
+        public static final int operate_XPort = 3;
 
         public static final int drive_LeftYPort = 1;
         public static final int drive_RightXPort = 4;
@@ -173,10 +174,11 @@ public final class Constants {
 
             public static final double EncoderToRPM = 1 / 2048 * 600;
 
-            public static final double POWERDEFAULT = 10000;
-            public static final double POWER0TOn10 = 6000;
-            public static final double POWERn10TOn20 = 10000;
-            public static final double POWERn20TOn30 = 10000;
+            public static final double POWERDEFAULT = 7000;
+            public static final double POWER0TOn10 = 7000;
+            public static final double POWER0TOn15 = 7500;
+            public static final double POWERn10TOn20 = 8000;
+            public static final double POWERn20TOn30 = 9000;
 
             //public static final double OUTOFTIME = 1;
         }

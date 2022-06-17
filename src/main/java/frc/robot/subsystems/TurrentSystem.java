@@ -205,20 +205,20 @@ public class TurrentSystem extends SubsystemBase{
     public void autoFire(){
         double getYGet = getY();
 
-        /*if(getYGet > -10 && getYGet <= 0){
+        if(getYGet > -3.4 && getYGet <= 0.9){
             setshootForward(AutoFire.POWER0TOn10);
         }
-        else if(getYGet > -20 && getYGet <= -10){
-            setshootForward(AutoFire.POWERn10TOn20);
+        else if(getYGet <= -3.4 && getYGet >= -6.3){
+            setshootForward(AutoFire.POWER0TOn15);
         }
-        else if(getYGet > -30 && getYGet <= -20){
-            setshootForward(AutoFire.POWERn20TOn30);
+        else if(getYGet < -6.3 && getYGet >= -10.1){
+            setshootForward(AutoFire.POWERn10TOn20);
         }
         else{
             setshootForward(AutoFire.POWERDEFAULT);
-        }*/
+        }
 
-        setshootForward(AutoFire.POWERDEFAULT);
+        // setshootForward(AutoFire.POWERDEFAULT);
 
         //setshootForward(5000);
 
