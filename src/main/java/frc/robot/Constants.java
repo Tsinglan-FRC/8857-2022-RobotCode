@@ -184,9 +184,9 @@ public final class Constants {
             public static final double POWERn20TOn30 = 9000;*/
 
             public static final ShootZone[] shootZone={ 
-                new ShootZone(-5, 5, 7000),
-                new ShootZone(-15,-5,8000),
-                new ShootZone(-25,-15,9000)
+                new ShootZone(-5, 8, 7000),
+                new ShootZone(-10,-5,8000),
+                new ShootZone(-15,-10,8300)
             };
 
             //public static final double OUTOFTIME = 1;
