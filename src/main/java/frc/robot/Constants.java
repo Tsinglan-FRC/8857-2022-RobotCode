@@ -173,7 +173,7 @@ public final class Constants {
 
             public static final double EncoderToRPM = 1 / 2048 * 600;
 
-            public static final double POWERDEFAULT = 0;
+            public static final double POWERDEFAULT = 10000;
             public static final double POWER0TOn10 = 6000;
             public static final double POWERn10TOn20 = 10000;
             public static final double POWERn20TOn30 = 10000;

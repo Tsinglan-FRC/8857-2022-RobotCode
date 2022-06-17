@@ -82,7 +82,7 @@ public class TurrentCmd extends CommandBase{
 		}
 		else {
 			turrentSystem.setMotorX(0.0);
-			turrentSystem.setshootForward(AutoFire.POWERDEFAULT);
+			turrentSystem.setshootForward(0);
 		}
 	}
 
