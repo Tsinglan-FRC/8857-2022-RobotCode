@@ -91,11 +91,20 @@ public class DriveSystem extends SubsystemBase{
     configMotor(rightFollower, P, I, D, F, Izone, maxout);
   }*/
 
+  private double f(double x){
+    if(x>0){
+      return x*x;
+    }
+    else{
+      return x*x * -1;
+    }
+  }
+
 
   public void arcade(double speed, double turn, boolean lowspeed) {
     if (lowspeed) {
-      setLeftSpeed(speed * DriveConstants.speedFactor_slowspeed + turn * DriveConstants.turnFactor_slowspeed);
-      setRightSpeed(speed * DriveConstants.speedFactor_slowspeed - turn * DriveConstants.turnFactor_slowspeed);
+      setLeftSpeed(f(speed) * DriveConstants.speedFactor_slowspeed + f(turn) * DriveConstants.turnFactor_slowspeed);
+      setRightSpeed(f(speed) * DriveConstants.speedFactor_slowspeed - f(turn) * DriveConstants.turnFactor_slowspeed);
     }
 
     else {

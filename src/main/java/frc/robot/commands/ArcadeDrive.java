@@ -68,7 +68,7 @@ public class ArcadeDrive extends CommandBase {
       turn = 0;
     }
 
-    driveSubsystem.arcade(Math.pow(speed,2), Math.pow(turn,2), lowspeed);
+    driveSubsystem.arcade(speed, turn, lowspeed);
   }
 
   @Override
