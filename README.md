@@ -38,12 +38,6 @@ You can contact us on...
 - 郭老师
 - WhiteZH
 - Lanbin
-- Alice Ke
-<<<<<<< HEAD
-- King theKing
- 
-https://prod.liveshare.vsengsaas.visualstudio.com/join?E05A333DDCA0F14935B09973E5672CDE8944 
-=======
+- Alice Ke 
 - King Wu
  
->>>>>>> c201e4d5ef0c74f1a64afb696b3a345e94cb1212
