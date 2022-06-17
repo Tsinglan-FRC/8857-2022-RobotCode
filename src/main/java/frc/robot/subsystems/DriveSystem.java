@@ -94,13 +94,13 @@ public class DriveSystem extends SubsystemBase{
 
   public void arcade(double speed, double turn, boolean lowspeed) {
     if (lowspeed) {
-      setLeftPower(speed * DriveConstants.speedFactor_slowspeed + turn * DriveConstants.turnFactor_slowspeed);
-      setRightPower(speed * DriveConstants.speedFactor_slowspeed - turn * DriveConstants.turnFactor_slowspeed);
+      setLeftSpeed(speed * DriveConstants.speedFactor_slowspeed + turn * DriveConstants.turnFactor_slowspeed);
+      setRightSpeed(speed * DriveConstants.speedFactor_slowspeed - turn * DriveConstants.turnFactor_slowspeed);
     }
 
     else {
-      setLeftPower(speed * DriveConstants.speedFactor + turn * DriveConstants.turnFacotr);
-      setRightPower(speed * DriveConstants.speedFactor- turn * DriveConstants.turnFacotr);
+      setLeftSpeed(speed * DriveConstants.speedFactor + turn * DriveConstants.turnFacotr);
+      setRightSpeed(speed * DriveConstants.speedFactor- turn * DriveConstants.turnFacotr);
     }
   }
 
