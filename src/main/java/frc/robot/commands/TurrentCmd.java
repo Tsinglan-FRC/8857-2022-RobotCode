@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Toolkit;
 // import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.TurrentConstants;
 import frc.robot.Constants.VisionConstants.AutoFire;
@@ -46,6 +47,7 @@ public class TurrentCmd extends CommandBase{
 	@Override
 	public void initialize(){
 		turrentSystem.setLED(true);
+		turrentSystem.setZero();
 	}
 
 	@Override
@@ -71,11 +73,21 @@ public class TurrentCmd extends CommandBase{
 		else if(fireGet == true){
 			if(turrentSystem.isValid()){
 				double getXGet = turrentSystem.getX();
-				turrentSystem.setMotorX(m_PIDController.calculate(getXGet,0));
 
-				if(Math.abs(getXGet) < AutoFire.allowedDiff){
+				if(Math.abs(getXGet) <= AutoFire.allowedDiff){
 					turrentSystem.autoFire();
 				}
+				else{
+					turrentSystem.setshootForward(0);
+				}
+
+				/*if(Math.abs(getXGet) >= AutoFire.okDiff){
+					turrentSystem.setMotorXSpeed(m_PIDController.calculate(getXGet,0)*AutoFire.PIDCONTROLTOSPEEDFACTOR);
+					//turrentSystem.setMotorXSpeed(Toolkit.turrentController(getXGet));
+				}
+				else{
+					turrentSystem.setMotorX(0);
+				}*/
 			}
 		}
 		else if(xTurnGet < TurrentConstants.deadZone * -1){

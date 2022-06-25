@@ -28,6 +28,10 @@ public class DriveStick extends Joystick{
         return getRawButton(OIConstants.drive_BPort);
     }
 
+    public boolean getXbtn(){
+        return getRawButton(OIConstants.drive_XPort);
+    }
+
     public double getLeft2(){
         return getRawAxis(OIConstants.drive_Left2Port);
     }

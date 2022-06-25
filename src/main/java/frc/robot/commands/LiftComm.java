@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import java.util.function.Supplier;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.LiftConstants;
 import frc.robot.Constants.LiftConstants.FGTB;
@@ -33,21 +34,27 @@ public class LiftComm extends CommandBase {
   private final Supplier<Double> liftForward; 
   private final Supplier<Double> liftBackward;
   private final Supplier<Boolean> liftPneumatic;
+  private final Supplier<Boolean> setZero;
 
   private final Toggle togglePneumatic = new Toggle();
 
-  public LiftComm(LiftSystem liftSubsystem, Supplier<Double> liftForward, Supplier<Double> liftBackward,
-      Supplier<Boolean> liftPneumatic) {
+  public LiftComm(LiftSystem liftSubsystem, 
+      Supplier<Double> liftForward, 
+      Supplier<Double> liftBackward,
+      Supplier<Boolean> liftPneumatic,
+      Supplier<Boolean> _setZero) {
     this.liftForward = liftForward;
     this.liftBackward = liftBackward;
     this.liftSubsystem = liftSubsystem;
     this.liftPneumatic = liftPneumatic;
+    this.setZero = _setZero;
     addRequirements(liftSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    liftSubsystem.setLiftPositionzero();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -56,6 +63,7 @@ public class LiftComm extends CommandBase {
     double forward = liftForward.get();
     double backward = liftBackward.get();
     boolean Pneumatic = liftPneumatic.get();
+    boolean setZeroGet = setZero.get();
 
     if (Math.abs(forward) < LiftConstants.joystickDeadZone){
       forward = 0;
@@ -64,19 +72,20 @@ public class LiftComm extends CommandBase {
       backward = 0;
     }
 
-    if (forward > backward) {
-      if (liftSubsystem.getLiftPosition() < FGTB.LPosMAX) {
+    if(setZeroGet){
+      liftSubsystem.setLiftPosition(0);
+    }
+    else if (forward > backward) {
+      if (liftSubsystem.getLiftPosition() > FGTB.LPosMAX) {
         liftSubsystem.setLiftPower(forward * FGTB.LPowFAC);
-        System.out.println(liftSubsystem.getLiftPosition());
       } 
       else{
         liftSubsystem.setLiftPower(0);
       }
     } 
     else if (forward < backward) {
-      if (liftSubsystem.getLiftPosition() > FSTB.LPosMIN) {
+      if (liftSubsystem.getLiftPosition() < FSTB.LPosMIN) {
         liftSubsystem.setLiftPower(-backward * FSTB.LPowFAC);
-        System.out.println(liftSubsystem.getLiftPosition());
       } 
       else{
         liftSubsystem.setLiftPower(0);

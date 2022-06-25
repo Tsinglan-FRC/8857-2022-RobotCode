@@ -161,18 +161,21 @@ public final class Constants {
         public static final int drive_Left2Port = 2;
         public static final int drive_Right2Port = 3;
         public static final int drive_BPort = 2;
+        public static final int drive_XPort = 3;
 
     }
     
     public static final class VisionConstants{
         public static final class PIDCtrl{
-            public static final double kP = 0.01;
+            public static final double kP = 100;
             public static final double kI = 0;
+            //public static final double kD = 0.00001;
             public static final double kD = 0.00001;
         }
 
         public static final class AutoFire{
-            public static final double allowedDiff = 200;
+            public static final double allowedDiff = 100;
+            public static final double okDiff = 1.5;
 
             public static final double EncoderToRPM = 1 / 2048 * 600;
 
@@ -183,10 +186,17 @@ public final class Constants {
             public static final double POWERn10TOn20 = 8000;
             public static final double POWERn20TOn30 = 9000;*/
 
+            public static final double PIDCONTROLTOSPEEDFACTOR = 1;
+
             public static final ShootZone[] shootZone={ 
-                new ShootZone(-5, 8, 7000),
-                new ShootZone(-10,-5,8000),
-                new ShootZone(-15,-10,8300)
+                new ShootZone(2, 8, 7000),
+                new ShootZone(-7,2,7300),
+                new ShootZone(-10,-7,8100),
+                new ShootZone(-11,-10,8300),
+                new ShootZone(-12,-11,8600),
+                new ShootZone(-13,-12,8700),
+                new ShootZone(-14,-13,8800),
+                new ShootZone(-15,-14,9300)
             };
 
             //public static final double OUTOFTIME = 1;
@@ -224,13 +234,20 @@ public final class Constants {
         public static final double joystickDeadZone = 0.05;
 
         public static final class FGTB{
-            public static final double LPosMAX = 10000000;
-            public static final double LPowFAC = 0.5;
+            public static final double LPosMAX = -900000;
+            public static final double LPowFAC = 1;
         }
 
         public static final class FSTB{
-            public static final double LPosMIN = -10000000;
-            public static final double LPowFAC = 0.5;
+            public static final double LPosMIN = 100000000;
+            public static final double LPowFAC = 1;
+        }
+    }
+
+    public static final class ToolkitConst{
+        public static final class TurrentControllerConst{
+            public static final double speed = 12;
+            public static final double limit = 12;
         }
     }
 }

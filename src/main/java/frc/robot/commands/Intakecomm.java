@@ -46,7 +46,7 @@ public class Intakecomm extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    //intakeSystem.intakeSet(false);
+    //intakeToggle.press(true);
   }
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -61,9 +61,8 @@ public class Intakecomm extends CommandBase {
 
     boolean slowUpGet = slowUp.get();
     boolean slowDownGet = slowDown.get();
-
-
-		if(putOutGet == true){
+		
+    if(putOutGet == true){
 			intakeSystem.moveBallUP(IntakeConstants.power_MoveBallUp);
       //intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedTruePower);
       intakeSystem.moveBallIn(IntakeConstants.power_MoveBallIn);

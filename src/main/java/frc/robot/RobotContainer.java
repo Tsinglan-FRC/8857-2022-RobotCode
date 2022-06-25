@@ -71,7 +71,8 @@ public class RobotContainer {
                 
 			() -> joystick1.getLeft2(),
             () -> joystick1.getRight2(),
-            () -> joystick1.getB()
+            () -> joystick1.getB(),
+            () -> joystick1.getXbtn()
 		));
 
         /*m_VisionSystem.setDefaultCommand(new VisionCmd(

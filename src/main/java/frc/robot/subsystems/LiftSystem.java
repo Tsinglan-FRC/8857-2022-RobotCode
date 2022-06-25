@@ -11,6 +11,7 @@ import frc.robot.Toolkit.TKTalonFX;
 import frc.robot.Toolkit.TKTalonFX.PIDType;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -39,7 +40,8 @@ public class LiftSystem extends SubsystemBase{
 
   @Override
   public void periodic() {
-
+    
+    SmartDashboard.putNumber("LiftPosition", getLiftPosition());
   }
 
   public void setBrake(boolean brake) {
@@ -69,6 +71,7 @@ public class LiftSystem extends SubsystemBase{
   }
 
   public void setLiftPower(double power) {
+    power = power*-1;
     lift_L.set(ControlMode.PercentOutput, power);
     lift_R.set(ControlMode.PercentOutput, power);
 

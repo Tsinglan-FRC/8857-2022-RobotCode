@@ -9,6 +9,7 @@ import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.MotorConstants.Liftpid;
 import frc.robot.Constants.MotorConstants.Movepid;
 import frc.robot.Constants.MotorConstants.Telepid;
+import frc.robot.Constants.ToolkitConst.TurrentControllerConst;
 import pabeles.concurrency.IntOperatorTask.Max;
 
 public class Toolkit {
@@ -84,4 +85,23 @@ public class Toolkit {
             this.Speed = Speed;
         }
     }
+
+    /*public static double turrentController(double x){
+        if(x>0){
+            if(x<TurrentControllerConst.limit){
+                return -TurrentControllerConst.speed*x/TurrentControllerConst.limit;
+            }
+            else{
+                return -TurrentControllerConst.speed;
+            }
+        }
+        else{
+            if(x>-TurrentControllerConst.limit){
+                return -TurrentControllerConst.speed*x/TurrentControllerConst.limit;
+            }
+            else{
+                return TurrentControllerConst.speed;
+            }
+        }
+    }*/
 }
