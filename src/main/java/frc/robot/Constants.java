@@ -189,14 +189,17 @@ public final class Constants {
             public static final double PIDCONTROLTOSPEEDFACTOR = 1;
 
             public static final ShootZone[] shootZone={ 
-                new ShootZone(2, 8, 7000),
-                new ShootZone(-7,2,7300),
+                new ShootZone(2,10,6750),
+                new ShootZone(0, 2, 6900),
+                new ShootZone(-7,0,7300),
                 new ShootZone(-10,-7,8100),
                 new ShootZone(-11,-10,8300),
                 new ShootZone(-12,-11,8600),
                 new ShootZone(-13,-12,8700),
-                new ShootZone(-14,-13,8800),
-                new ShootZone(-15,-14,9300)
+                new ShootZone(-14,-13,8900),
+                new ShootZone(-15,-14,9300),
+                new ShootZone(-16,-15,9600),
+                new ShootZone(-17,-16,10000)
             };
 
             //public static final double OUTOFTIME = 1;
