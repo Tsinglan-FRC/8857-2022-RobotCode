@@ -13,6 +13,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Toolkit;
 import frc.robot.Toolkit.TimedCommand;
 import frc.robot.Toolkit.TimedCommandHandle;
 import frc.robot.autocmds.PlanDemo;
@@ -75,13 +76,13 @@ public class I_Will extends CommandBase{
         m_Timer.stop();
         m_Timer.reset();
         m_Timer.start();
-
-        execute();
     }
 
     @Override
     public void execute(){
         SmartDashboard.putNumber("m_Timer : ", m_Timer.get());
+        SmartDashboard.putNumber("Cancel : ",Toolkit.TimedCommand.count);
+        if(nowDriveCmd!=null) SmartDashboard.putNumber("nowDriveCmd.getEndTime() : ", nowDriveCmd.getEndTime());
 
         TimedCommand[] driveCmds = handle.getDriveGroup().getCommands();
         TimedCommand[] intakeCmds = handle.getIntakeGroup().getCommands();
@@ -89,8 +90,10 @@ public class I_Will extends CommandBase{
         TimedCommand[] pcmCmds = handle.getPneumaticGroup().getCommands();
         TimedCommand[] turrentCmds = handle.getTurrentGroup().getCommands();
 
+        double time = m_Timer.get();
+
         if(driveCmds!=null){
-            if(m_Timer.get() <= driveCmds[0].getEndTime()){
+            if(time <= driveCmds[0].getEndTime()){
                 if(nowDriveCmd!=driveCmds[0]){
                     if(nowDriveCmd!=null) nowDriveCmd.cancel();
                     nowDriveCmd = driveCmds[0];
@@ -99,7 +102,7 @@ public class I_Will extends CommandBase{
             }
             else{
                 for(int i=1;i<driveCmds.length;i++){
-                    if(m_Timer.get() <= driveCmds[i].getEndTime() && m_Timer.get() > driveCmds[i-1].getEndTime()){
+                    if(time <= driveCmds[i].getEndTime() && time > driveCmds[i-1].getEndTime()){
                         if(nowDriveCmd!=driveCmds[i]){
                             if(nowDriveCmd!=null) nowDriveCmd.cancel();
                             nowDriveCmd = driveCmds[i];
@@ -108,10 +111,14 @@ public class I_Will extends CommandBase{
                     }
                 }
             }
+            
+            if(nowDriveCmd!=null) if(nowDriveCmd.getEndTime() < time) {
+                nowDriveCmd.cancel();
+            }
         }
 
         if(intakeCmds!=null){
-            if(m_Timer.get() <= intakeCmds[0].getEndTime()){
+            if(time <= intakeCmds[0].getEndTime()){
                 if(nowIntakeCmd!=intakeCmds[0]){
                     if(nowIntakeCmd!=null) nowIntakeCmd.cancel();
                     nowIntakeCmd = intakeCmds[0];
@@ -120,7 +127,7 @@ public class I_Will extends CommandBase{
             }
             else{
                 for(int i=1;i<intakeCmds.length;i++){
-                    if(m_Timer.get() <= intakeCmds[i].getEndTime() && m_Timer.get() > intakeCmds[i-1].getEndTime()){
+                    if(time <= intakeCmds[i].getEndTime() && time > intakeCmds[i-1].getEndTime()){
                         if(nowIntakeCmd!=intakeCmds[i]){
                             if(nowIntakeCmd!=null) nowIntakeCmd.cancel();
                             nowIntakeCmd = intakeCmds[i];
@@ -129,10 +136,12 @@ public class I_Will extends CommandBase{
                     }
                 }
             }
+            
+            if(nowIntakeCmd!=null) if(nowIntakeCmd.getEndTime() < time) nowIntakeCmd.cancel();
         }
 
         if(liftCmds!=null){
-            if(m_Timer.get() <= liftCmds[0].getEndTime()){
+            if(time <= liftCmds[0].getEndTime()){
                 if(nowLiftCmd!=liftCmds[0]){
                     if(nowLiftCmd!=null) nowLiftCmd.getCommand().cancel();
                     nowLiftCmd = liftCmds[0];
@@ -141,7 +150,7 @@ public class I_Will extends CommandBase{
             }
             else{
                 for(int i=1;i<liftCmds.length;i++){
-                    if(m_Timer.get() <= liftCmds[i].getEndTime() && m_Timer.get() > liftCmds[i-1].getEndTime()){
+                    if(time <= liftCmds[i].getEndTime() && time > liftCmds[i-1].getEndTime()){
                         if(nowLiftCmd!=liftCmds[i]){
                             if(nowLiftCmd!=null) nowLiftCmd.cancel();
                             nowLiftCmd = liftCmds[i];
@@ -150,10 +159,12 @@ public class I_Will extends CommandBase{
                     }
                 }
             }
+            
+            if(nowLiftCmd!=null) if(nowLiftCmd.getEndTime() < time) nowLiftCmd.cancel();
         }
 
         if(pcmCmds!=null){
-            if(m_Timer.get() <= pcmCmds[0].getEndTime()){
+            if(time <= pcmCmds[0].getEndTime()){
                 if(nowPcmCmd!=pcmCmds[0]){
                     if(nowPcmCmd!=null) nowPcmCmd.cancel();
                     nowPcmCmd = pcmCmds[0];
@@ -162,7 +173,7 @@ public class I_Will extends CommandBase{
             }
             else{
                 for(int i=1;i<pcmCmds.length;i++){
-                    if(m_Timer.get() <= pcmCmds[i].getEndTime() && m_Timer.get() > pcmCmds[i-1].getEndTime()){
+                    if(time <= pcmCmds[i].getEndTime() && time > pcmCmds[i-1].getEndTime()){
                         if(nowPcmCmd!=pcmCmds[i]){
                             if(nowPcmCmd!=null) nowPcmCmd.cancel();
                             nowPcmCmd = pcmCmds[i];
@@ -171,10 +182,12 @@ public class I_Will extends CommandBase{
                     }
                 }
             }
+            
+            if(nowPcmCmd!=null) if(nowPcmCmd.getEndTime() < time) nowPcmCmd.cancel();
         }
 
         if(turrentCmds!=null){
-            if(m_Timer.get() <= turrentCmds[0].getEndTime()){
+            if(time <= turrentCmds[0].getEndTime()){
                 if(nowTurrentCmd!=turrentCmds[0]){
                     if(nowTurrentCmd!=null) nowTurrentCmd.cancel();
                     nowTurrentCmd = turrentCmds[0];
@@ -183,7 +196,7 @@ public class I_Will extends CommandBase{
             }
             else{
                 for(int i=1;i<turrentCmds.length;i++){
-                    if(m_Timer.get() <= turrentCmds[i].getEndTime() && m_Timer.get() > turrentCmds[i-1].getEndTime()){
+                    if(time <= turrentCmds[i].getEndTime() && time > turrentCmds[i-1].getEndTime()){
                         if(nowTurrentCmd!=turrentCmds[i]){
                             if(nowTurrentCmd!=null) nowTurrentCmd.cancel();
                             nowTurrentCmd = turrentCmds[i];
@@ -192,14 +205,9 @@ public class I_Will extends CommandBase{
                     }
                 }
             }
+            
+            if(nowTurrentCmd!=null) if(nowTurrentCmd.getEndTime() < time) nowTurrentCmd.cancel();
         }
-
-
-        if(nowDriveCmd!=null) if(nowDriveCmd.getEndTime() < m_Timer.get()) nowDriveCmd.cancel();
-        if(nowIntakeCmd!=null) if(nowIntakeCmd.getEndTime() < m_Timer.get()) nowIntakeCmd.cancel();
-        if(nowLiftCmd!=null) if(nowLiftCmd.getEndTime() < m_Timer.get()) nowLiftCmd.cancel();
-        if(nowPcmCmd!=null) if(nowPcmCmd.getEndTime() < m_Timer.get()) nowPcmCmd.cancel();
-        if(nowTurrentCmd!=null) if(nowTurrentCmd.getEndTime() < m_Timer.get()) nowTurrentCmd.cancel();
     }
     
     @Override

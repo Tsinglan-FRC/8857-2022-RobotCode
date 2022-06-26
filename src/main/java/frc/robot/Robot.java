@@ -63,15 +63,16 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     // schedule the autonomous command (example)
     //CommandScheduler.getInstance().cancelAll();
-    if (m_autonomousCommand != null) {
+    /*if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
-    }
+    }*/
+    if(m_autonomousCommand != null) m_autonomousCommand.initialize();
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    //if(m_autonomousCommand != null) m_autonomousCommand.execute();
+    if(m_autonomousCommand != null) m_autonomousCommand.execute();
   }
 
   @Override

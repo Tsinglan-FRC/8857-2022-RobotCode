@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.MotorConstants;
@@ -89,6 +90,8 @@ public class Toolkit {
     }
 
     public static class TimedCommand{
+        public static int count = 0;
+
         private final CommandBase m_command;
         private final double m_endTime;
 
@@ -111,6 +114,7 @@ public class Toolkit {
 
         public void cancel(){
             m_command.cancel();
+            count++;
         }
     }
 

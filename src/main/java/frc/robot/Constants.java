@@ -122,8 +122,8 @@ public final class Constants {
 
         public static final double slowMovementDeadzone = 0.1;
 
-        public static final double doing_stage1 = 0.5;
-        public static final double doing_stage2 = doing_stage1 + 0.2;
+        public static final double doing_stage1 = 0.2;
+        public static final double doing_stage2 = doing_stage1 + 0.1;
 
     }
 
@@ -193,17 +193,21 @@ public final class Constants {
             public static final double PIDCONTROLTOSPEEDFACTOR = 1;
 
             public static final ShootZone[] shootZone={ 
-                new ShootZone(2,10,6750),
-                new ShootZone(0, 2, 6900),
-                new ShootZone(-7,0,7300),
+                new ShootZone(6,10,6500),
+                new ShootZone(2,6,6750),
+                new ShootZone(-3, 2, 6900),
+                new ShootZone(-7,-3,7300),
                 new ShootZone(-10,-7,8100),
                 new ShootZone(-11,-10,8300),
                 new ShootZone(-12,-11,8600),
                 new ShootZone(-13,-12,8700),
                 new ShootZone(-14,-13,8900),
-                new ShootZone(-15,-14,9300),
-                new ShootZone(-16,-15,9600),
-                new ShootZone(-17,-16,10000),
+                new ShootZone(-14.5,-14,9200),
+                new ShootZone(-15,-14.5,9300),
+                new ShootZone(-15.5,-15,9600),
+                new ShootZone(-16,-15.5,9700),
+                new ShootZone(-16.5,-16,9900),
+                new ShootZone(-17,-16.5,10000),
                 new ShootZone(-17.5,-17,10400),
                 new ShootZone(-18,-17.5,10500),
                 new ShootZone(-18.5,-18,10800),

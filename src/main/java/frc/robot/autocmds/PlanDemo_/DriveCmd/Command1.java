@@ -16,11 +16,12 @@ public class Command1 extends CommandBase{
 
     @Override
     public void execute(){
-        drive.arcade(0.1,0.2,false);
+        drive.arcade(0.2,-0.5,false);
     }
 
     @Override
-    public void end(boolean interrupted){}
+    public void end(boolean interrupted){
+    }
 
     @Override
     public boolean isFinished(){return false;}
