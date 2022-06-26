@@ -81,13 +81,13 @@ public class TurrentCmd extends CommandBase{
 					turrentSystem.setshootForward(0);
 				}
 
-				/*if(Math.abs(getXGet) >= AutoFire.okDiff){
+				if(Math.abs(getXGet) >= AutoFire.okDiff){
 					turrentSystem.setMotorXSpeed(m_PIDController.calculate(getXGet,0)*AutoFire.PIDCONTROLTOSPEEDFACTOR);
 					//turrentSystem.setMotorXSpeed(Toolkit.turrentController(getXGet));
 				}
 				else{
 					turrentSystem.setMotorX(0);
-				}*/
+				}
 			}
 		}
 		else if(xTurnGet < TurrentConstants.deadZone * -1){

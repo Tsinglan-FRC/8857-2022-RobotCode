@@ -5,6 +5,8 @@ import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.MotorConstants.Liftpid;
 import frc.robot.Constants.MotorConstants.Movepid;
@@ -86,22 +88,43 @@ public class Toolkit {
         }
     }
 
-    /*public static double turrentController(double x){
-        if(x>0){
-            if(x<TurrentControllerConst.limit){
-                return -TurrentControllerConst.speed*x/TurrentControllerConst.limit;
-            }
-            else{
-                return -TurrentControllerConst.speed;
-            }
+    public static class TimedCommand{
+        private final CommandBase m_command;
+        private final double m_endTime;
+
+        public TimedCommand(double endTime,CommandBase command){
+            m_endTime = endTime;
+            m_command = command;
         }
-        else{
-            if(x>-TurrentControllerConst.limit){
-                return -TurrentControllerConst.speed*x/TurrentControllerConst.limit;
-            }
-            else{
-                return TurrentControllerConst.speed;
-            }
+
+        public double getEndTime(){
+            return m_endTime;
         }
-    }*/
+
+        public CommandBase getCommand(){
+            return m_command;
+        }
+
+        public void schedule(){
+            m_command.schedule();
+        }
+
+        public void cancel(){
+            m_command.cancel();
+        }
+    }
+
+    public static abstract class TimedCommandGroup{
+        public TimedCommand[] getCommands(){return null;}
+        public TimedCommand getCommand(int index){return null;}
+        public int getLength(){return 0;}
+    }
+
+    public static abstract class TimedCommandHandle{
+        public TimedCommandGroup getDriveGroup(){return null;}
+        public TimedCommandGroup getIntakeGroup(){return null;}
+        public TimedCommandGroup getLiftGroup(){return null;}
+        public TimedCommandGroup getPneumaticGroup(){return null;}
+        public TimedCommandGroup getTurrentGroup(){return null;}
+    }
 }

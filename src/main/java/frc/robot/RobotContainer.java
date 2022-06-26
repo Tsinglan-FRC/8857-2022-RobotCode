@@ -21,6 +21,7 @@ import frc.robot.joysticks.DriveStick;
 import frc.robot.joysticks.OperateStick;
 import edu.wpi.first.wpilibj2.command.Command;
 // import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class RobotContainer {
     private final DriveSystem m_driveSubsystem = new DriveSystem();
@@ -50,7 +51,8 @@ public class RobotContainer {
             () -> joystick2.getSTART(),
             () -> joystick2.getLeft1(),
             () -> joystick2.getRight2()>IntakeConstants.slowMovementDeadzone,
-            () -> joystick2.getLeft2()>IntakeConstants.slowMovementDeadzone
+            () -> joystick2.getLeft2()>IntakeConstants.slowMovementDeadzone,
+            () -> joystick2.getB()
 		));
 
         /*m_upAndShootSystem.setDefaultCommand(new UpAndShootComm(
@@ -93,8 +95,14 @@ public class RobotContainer {
         ));
     }
 
-    public Command getAutonomousCommand() {
-        return new I_Will(m_driveSubsystem);
+    public CommandBase getAutonomousCommand() {
+        return new I_Will(
+            m_driveSubsystem,
+            m_IntakeSystem,
+            m_LiftSystem,
+            m_PneumaticSystem,
+            m_TurrentSystem
+        );
     }
 
 	/*public Command getTeleopCommand(){

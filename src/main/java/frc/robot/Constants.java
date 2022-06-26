@@ -122,6 +122,9 @@ public final class Constants {
 
         public static final double slowMovementDeadzone = 0.1;
 
+        public static final double doing_stage1 = 0.5;
+        public static final double doing_stage2 = doing_stage1 + 0.2;
+
     }
 
     public static final class OIConstants {
@@ -153,6 +156,7 @@ public final class Constants {
         public static final int operate_Right2Port = 3;
         public static final int operate_Left2Port = 2;
         public static final int operate_XPort = 3;
+        public static final int operate_BPort = 2;
 
         public static final int drive_LeftYPort = 1;
         public static final int drive_RightXPort = 4;
@@ -199,7 +203,11 @@ public final class Constants {
                 new ShootZone(-14,-13,8900),
                 new ShootZone(-15,-14,9300),
                 new ShootZone(-16,-15,9600),
-                new ShootZone(-17,-16,10000)
+                new ShootZone(-17,-16,10000),
+                new ShootZone(-17.5,-17,10400),
+                new ShootZone(-18,-17.5,10500),
+                new ShootZone(-18.5,-18,10800),
+                new ShootZone(-19,-18.5,11000)
             };
 
             //public static final double OUTOFTIME = 1;

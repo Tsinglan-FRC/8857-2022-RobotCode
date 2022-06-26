@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import java.util.function.Supplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.IntakeConstants;
@@ -18,8 +19,13 @@ public class Intakecomm extends CommandBase {
   private final Supplier<Boolean> getOut;
   private final Supplier<Boolean> slowUp;
   private final Supplier<Boolean> slowDown;
+  private final Supplier<Boolean> seperateBalls;
 
   private final Toggle intakeToggle = new Toggle();
+
+  private final Timer timer = new Timer();
+  private Boolean doing = false;
+  private Boolean done = false;
 
   //private boolean togglePressed = false;
 
@@ -30,7 +36,8 @@ public class Intakecomm extends CommandBase {
     Supplier<Boolean> _intakeStatus,
     Supplier<Boolean> _getOut,
     Supplier<Boolean> _slowUp,
-    Supplier<Boolean> _slowDown) {
+    Supplier<Boolean> _slowDown,
+    Supplier<Boolean> _seperateBalls) {
     // Use addRequirements() here to declare subsystem dependencies.
     // m_IntakeSysten = mIntakeSysten;
     intakeSystem = _intakeSystem;
@@ -39,6 +46,7 @@ public class Intakecomm extends CommandBase {
     getOut = _getOut;
     slowUp = _slowUp;
     slowDown = _slowDown;
+    seperateBalls = _seperateBalls;
 
     addRequirements(intakeSystem);
   }
@@ -61,8 +69,24 @@ public class Intakecomm extends CommandBase {
 
     boolean slowUpGet = slowUp.get();
     boolean slowDownGet = slowDown.get();
+
+    boolean seperateBallsGet = seperateBalls.get();
 		
-    if(putOutGet == true){
+    if(doing){
+      if(timer.get()<=IntakeConstants.doing_stage1){
+        intakeSystem.moveBallDown(IntakeConstants.slowDownpower);
+      }
+      else if(timer.get()<=IntakeConstants.doing_stage2){
+        intakeSystem.moveBallUP(IntakeConstants.slowUppower);
+      }
+      else{
+        doing = false;
+        done = true;
+        timer.stop();
+        timer.reset();
+      }
+    }
+    else if(putOutGet == true){
 			intakeSystem.moveBallUP(IntakeConstants.power_MoveBallUp);
       //intakeSystem.setIntake(intakeStatusGet, MotorConstants.intakeSpeedTruePower);
       intakeSystem.moveBallIn(IntakeConstants.power_MoveBallIn);
@@ -78,6 +102,10 @@ public class Intakecomm extends CommandBase {
     else if(slowDownGet && !slowUpGet){
       intakeSystem.moveBallDown(IntakeConstants.slowDownpower);
     }
+    else if(seperateBallsGet && !done){
+      doing = true;
+      timer.start();
+    }
 		else{
 			intakeSystem.moveBallUP(0);
       //intakeSystem.setIntake(intakeStatusGet,0);
@@ -87,7 +115,9 @@ public class Intakecomm extends CommandBase {
     intakeToggle.press(intakeStatusGet);
     intakeSystem.intakeSet(intakeToggle.get());
     
-
+    if(seperateBallsGet==false && doing==false){
+      done = false;
+    }
   }
 
   // Called once the command ends or is interrupted.

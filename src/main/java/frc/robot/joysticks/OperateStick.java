@@ -40,6 +40,10 @@ public class OperateStick extends Joystick{
         return getRawButton(OIConstants.operate_APort);
     }
 
+    public boolean getB(){
+        return getRawButton(OIConstants.operate_BPort);
+    }
+
     public boolean getXbtn(){
         return getRawButton(OIConstants.operate_XPort);
     }
