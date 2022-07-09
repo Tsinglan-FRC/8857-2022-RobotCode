@@ -407,8 +407,8 @@ but please also remember the name 'Judy'.
 Because though the two names are short,
 the stories behind them are quite long.
 
-I won't explain it now,
-and I won't explain it in the future.
+I won't explain them now,
+and I won't explain them in the future.
 I don't determine which name is better,
 because they mean different to me no matter.
 
