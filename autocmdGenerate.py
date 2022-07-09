@@ -405,7 +405,7 @@ def createNewPlan(plan_name,home_path="src/main/java/frc/robot/autocmds"):
 Her name is Lili,
 but please also remember the name 'Judy'.
 Because though the two names are short,
-the story behind them is quite long.
+the stories behind them are quite long.
 
 I won't explain it now,
 and I won't explain it in the future.
