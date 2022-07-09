@@ -288,3 +288,24 @@ def createNewPlan(plan_name,home_path="src/main/java/frc/robot/autocmds"):
     d("\t\treturn timedCommands.length;\n")
     d("\t}\n")
     d("}\n")
+
+
+'''
+
+## Words from someone who don't talk much
+Her name is Lili,
+but please also remember the name 'Judy'.
+Because though the two names are short,
+the story behind them is quite long.
+
+I won't explain it now,
+and I won't explain it in the future.
+I don't determine which name is better,
+because they mean different to me no matter.
+
+Yet yet,
+none your business.
+Let the words rest here,
+and farewell.
+
+'''
