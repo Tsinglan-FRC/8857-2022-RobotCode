@@ -5,7 +5,6 @@ def createNewCommand(name,sys):
     def c(a):
         command_file.write(a)
 
-    c("package;\n")
     c("\n")
     c("import edu.wpi.first.wpilibj2.command.CommandBase;\n")
     c("import frc.robot.subsystems."+sys+";\n")
