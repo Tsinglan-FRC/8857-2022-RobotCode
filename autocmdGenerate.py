@@ -402,19 +402,24 @@ def createNewPlan(plan_name,home_path="src/main/java/frc/robot/autocmds"):
 '''
 
 ## Words from someone who don't talk much
-Her name is Lili,
-but please also remember the name 'Judy'.
-Because though the two names are short,
-the stories behind them are quite long.
+When you are reading this, I'm already gone.
+If you don't know me, that's fine, you don't need to.
+If you do, thank you for listening my bullsh*ts.
 
-I won't explain them now,
-and I won't explain them in the future.
-I don't determine which name is better,
-because they mean different to me no matter.
-
-Yet yet,
-none your business.
-Let the words rest here,
-and farewell.
+1.  Nothing last forever.
+2.  There always need a guy to do the sh*ts.
+3.  What happened happened, and cannot be changed.
+4.  Treat people nice, please.
+5.  Be brave to make friends with your crush, but think twice before you express yourself.
+6.  If you are an outgoing one, try spending some time alone. Since it's how you born and how you die.
+7.  If you are an introvert, try to make one or two outgoing good friends. They'll help you join the party.
+8.  Don't spend too much time on gaming or social media, instead, go hiking or riding.
+9.  Be responsible.
+10. Be on time.
+11. Isolate yourself when you are in low mood and might hurt people.
+12. No one is really 'right' or 'wrong', just don't judge.
+13. Forgive people, but don't forget what they've done.
+14. If your crush also crush on you, be boyfriend & girlfriend. Don't say, "let's just be friends".
+15. If you think someone curse you at the back, but you don't have evidence, assume they don't.
 
 '''
