@@ -427,10 +427,7 @@ If you do, thank you for listening my bullsh*ts.
 20. Don't be cold blooded.
 
 
-I'm sorry for everything I've done. Please forgive me.
-But I won't blame if you don't. I am willing to accept the consequences.
-It's what I deserve, after all, isn't it?
-
+I'm sorry for everything I've done. 
 Farewell.
 
 '''
