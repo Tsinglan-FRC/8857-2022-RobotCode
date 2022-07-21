@@ -408,7 +408,7 @@ If you do, thank you for listening my bullsh*ts.
 
 1.  Nothing last forever.
 2.  There always need a guy to do the sh*ts.
-3.  What happened happened, and cannot be changed.
+3.  What happened happened, and cannot be changed. Admit the reality.
 4.  Treat people nice, please.
 5.  Be brave to make friends with your crush, but think twice before you express yourself.
 6.  If you are an outgoing one, try spending some time alone. Since it's how you born and how you die.
@@ -421,5 +421,17 @@ If you do, thank you for listening my bullsh*ts.
 13. Forgive people, but don't forget what they've done.
 14. If your crush also crush on you, be boyfriend & girlfriend. Don't say, "let's just be friends".
 15. If you think someone curse you at the back, but you don't have evidence, assume they don't.
+16. You can always change the present.
+17. Efforts increase the possibility, but can never reach 100%.
+18. No matter how mess you screwed the thing up, the chance of having a good result is never zero. Do keep hope.
+19. Before you find the meaning of your life, the meaning of your life is to find the meaning of your life.
+20. Don't be cold blooded.
+
+
+I'm sorry for everything I've done. Please forgive me.
+But I won't blame if you don't. I am willing to accept the consequences.
+It's what I deserve, after all, isn't it?
+
+Farewell.
 
 '''
