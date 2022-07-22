@@ -425,6 +425,11 @@ If you do, thank you for listening my bullsh*ts.
 18. No matter how mess you screwed the thing up, the chance of having a good result is never zero. Do keep hope.
 19. Before you find the meaning of your life, the meaning of your life is to find the meaning of your life.
 20. Don't be cold blooded.
+21. 6 is bad. Overcome it.
+22. No expectations——neither good hoping nor bad hoping. When it happens, it happens.
+24. There is only one true enemy, that is yourself.
+25. There is only one true friend, that is yourself.
+26. When you sad, cry it out. Don't hold it or you will only become the next me.
 
 
 I'm sorry for everything I've done. 
