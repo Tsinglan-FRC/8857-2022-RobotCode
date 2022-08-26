@@ -487,6 +487,24 @@ Just go,
 farewell,
 my friend.
 
-26 Aug. 2022
+26 July. 2022
 Leo
+'''
+
+'''
+Her name is Lili,
+but please also remember the name 'Judy'.
+Because though the two names are short,
+the stories behind them are quite long.
+I won't explain them now,
+and I won't explain them in the future.
+I don't determine which name is better,
+because they mean different to me no matter.
+Yet yet,
+none your business.
+Let the words rest here,
+and farewell.
+
+*Im sorry I put these words back*
+*If you like, leave these words for me as a memorial*
 '''
