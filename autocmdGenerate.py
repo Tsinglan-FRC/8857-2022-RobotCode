@@ -436,3 +436,57 @@ I'm sorry for everything I've done.
 Farewell.
 
 '''
+
+'''
+## Words from someone who always talk much.
+
+I read your words,
+I will take care of her.
+Whether she is Lili or Judy, 
+she carries the good times of your past.
+
+So,
+Just take these good memories and leave.
+I still remember that starry night,
+when we sat on the front steps and talked.
+We talked so much,
+about love, about future, about life.
+These are my good memories.
+I will take these memories to the future.
+
+Just go,
+my friend.
+The road ahead is long and full of difficulties and dangers. 
+I can only send you here. 
+You have to go through the rest of the way.
+
+Two roads diverged in a yellow wood,
+And sorry I could not travel both.
+And be one traveler, long I stood,
+And looked down one as far as I could.
+
+Thank you for your company and guidance.
+You know what? I have started to learn Java. 
+Since that night, you let me learn Java by myself,
+I have fallen in love with this language. 
+Programmers who write java have a feeling. 
+I have chosen Java for many other reasons, 
+but I think it is more because of you. 
+Thank you, 
+familiar stranger.
+Thank you,
+my friend.
+
+I don't know if you see these words.
+Perhaps no.
+Always let these memories in your brain.
+When we look back after a long journey, 
+this journey will become our happy memories
+
+Just go,
+farewell,
+my friend.
+
+26 Aug. 2022
+Leo
+'''
