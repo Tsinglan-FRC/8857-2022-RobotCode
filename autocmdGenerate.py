@@ -508,3 +508,14 @@ and farewell.
 *Im sorry I put these words back*
 *If you like, leave these words for me as a memorial*
 '''
+
+'''
+Thanks.
+The words may stay,
+for our shared old good memories.
+WeChat will abandoned after a few days,
+since the teacher decided to change the code
+so you won't likely to need me anymore.
+I'm still not fully in here so I don't know whether they use anything beside Text or not.
+Goodbye for real.
+'''
