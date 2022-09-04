@@ -7,8 +7,8 @@
 
 [**中文**](/docs/zh-cn/README.md) | [**English**](/docs/en-us/README.md)
 
-# Some words to say
-Farewell, WhiteZH.
+# Before Reading
+If you read this paragraph, the code is probably obsolete. The reason why it has not been abandoned is that it may be updated in the future. This code is an early version of the official code of the 2022 FRC Tsinglan School robot. We have paid a lot of effort for it. Please treat it kindly or give it a star.
 
 # Tsinglan FRC Robot Code
 Tsinglan School First Robot Competition 8857 Robot Code Official Docs
@@ -23,8 +23,6 @@ For more Information, you can click and Turn to this Page: [How does it work](/d
 You can contact us on...
 1. QQ chanel: [QQChanel](#)
 2. Wechat: [Wechat Number](#)
-
-# Bilingual Board
 
 # Developers
 
