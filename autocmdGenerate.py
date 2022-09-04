@@ -519,3 +519,9 @@ so you won't likely to need me anymore.
 I'm still not fully in here so I don't know whether they use anything beside Text or not.
 Goodbye for real.
 '''
+
+'''
+Good Bye.
+I wish you have a good time.
+Thank You.
+'''
